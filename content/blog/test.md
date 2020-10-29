@@ -5,3 +5,9 @@ title: test
 description: test
 ---
 test
+
+```js
+const Button = props => (
+  <ButtonWrapper props={props}>{props.children}</ButtonWrapper>
+)
+```
