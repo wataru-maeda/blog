@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `Gatsby Starter Personal Blog`,
-    author: `Gatsby`,
-    description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `KISS ブログ`,
+    author: `Wataru Maeda`,
+    description: `シンプルにわかりやすく書いたテックブログ`,
+    siteUrl: `https://kiss-blog.netlify.app/`,
     social: {
-      twitter: `gatsbyjs`,
+      twitter: `wmaeda_ca`,
     },
   },
   plugins: [
@@ -108,15 +108,15 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // edit below
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `G-WZQ8MEE3P8`,
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
+        name: `KISS ブログ`,
+        short_name: `KISS`,
+        start_url: `/blog`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
