@@ -4,7 +4,17 @@ import { graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Post from "../components/post"
 import SearchPosts from "../components/searchPosts"
+
+const styles = {
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+}
 
 class IndexPage extends React.Component {
   render() {
@@ -12,10 +22,22 @@ class IndexPage extends React.Component {
     const siteTitle = "KISS ブログ"
     const posts = data.allMdx.edges
     const localSearchBlog = data.localSearchBlog
+    const props = {
+      date: "10/10",
+      title: "test",
+      description: "ogsogosgoso",
+      excerpt: "/test",
+      slug: "/test",
+    }
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
+        <div style={styles.root}>
+          <Post {...props} />
+          <Post {...props} />
+          <Post {...props} />
+        </div>
         <Bio />
         <SearchPosts
           posts={posts}
