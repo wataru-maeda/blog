@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { PropTypes } from "prop-types"
+import Img from "gatsby-image"
 import { rhythm } from "../utils/typography"
 
 const styles = {
@@ -16,10 +17,9 @@ const styles = {
   },
   thumbnail: {
     width: "100%",
-    marginBottom: 0,
   },
   h3: {
-    margin: `0 ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
+    margin: `${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
   },
   small: {
     color: "var(--textNormal)",
@@ -31,25 +31,27 @@ const styles = {
   },
 }
 
-const Post = ({ slug, title, date, description, excerpt }) => (
-  <Link style={styles.root} to={`/blog${slug}`}>
-    <div key={slug} style={styles.container}>
-      <img
-        src="https://www.rasmussen.edu/-/media/images/blogs/school-of-technology/computerprogramminghard_banner.jpg?la=en&hash=1897D131AAF9AA952B206B04C44A4969E9D644D5"
-        style={styles.thumbnail}
-        alt={title}
-      />
-      <h3 style={styles.h3}>{title}</h3>
-      <small style={styles.small}>{date}</small>
-      <p
-        style={styles.p}
-        dangerouslySetInnerHTML={{
-          __html: description || excerpt,
-        }}
-      />
-    </div>
-  </Link>
-)
+const Post = ({ thumbnail, slug, title, date, description, excerpt }) => {
+  return (
+    <Link style={styles.root} to={`/blog${slug}`}>
+      <div key={slug} style={styles.container}>
+        <Img
+          fluid={thumbnail?.childImageSharp?.fluid}
+          style={styles.thumbnail}
+          alt={title}
+        />
+        <h3 style={styles.h3}>{title}</h3>
+        <small style={styles.small}>{date}</small>
+        <p
+          style={styles.p}
+          dangerouslySetInnerHTML={{
+            __html: description || excerpt,
+          }}
+        />
+      </div>
+    </Link>
+  )
+}
 
 Post.propTypes = {
   className: PropTypes.string,
