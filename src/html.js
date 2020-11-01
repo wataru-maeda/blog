@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import "./global.css"
 
 export default function HTML(props) {
   return (

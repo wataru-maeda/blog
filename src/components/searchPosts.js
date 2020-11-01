@@ -77,27 +77,51 @@ const SearchedPosts = ({ results }) =>
   )
 
 const AllPosts = ({ posts }) => (
-  <div style={{ margin: "20px 0 40px" }}>
+  <div style={{ margin: `${rhythm(1)} 0 ${rhythm(2)}` }}>
     {posts.map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
       return (
-        <div key={node.fields.slug}>
-          <h3
+        <Link style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
+          <div
+            key={node.fields.slug}
             style={{
-              marginBottom: rhythm(1 / 4),
+              backgroundImage: "var(--post)",
+              borderRadius: rhythm(0.5),
+              marginBottom: rhythm(1.5),
+              overflow: "hidden",
             }}
           >
-            <Link style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
+            <img
+              src="https://www.rasmussen.edu/-/media/images/blogs/school-of-technology/computerprogramminghard_banner.jpg?la=en&hash=1897D131AAF9AA952B206B04C44A4969E9D644D5"
+              style={{ width: "100%", marginBottom: 0 }}
+              alt="test"
+            />
+            <h3
+              style={{
+                margin: `0 ${rhythm(1 / 4)} ${rhythm(1 / 4)}`,
+              }}
+            >
               {title}
-            </Link>
-          </h3>
-          <small>{node.frontmatter.date}</small>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: node.frontmatter.description || node.excerpt,
-            }}
-          />
-        </div>
+            </h3>
+            <small
+              style={{
+                color: "var(--textNormal)",
+                margin: `0 ${rhythm(1 / 4)} ${rhythm(1)}`,
+              }}
+            >
+              {node.frontmatter.date}
+            </small>
+            <p
+              style={{
+                color: "var(--textNormal)",
+                margin: `0 ${rhythm(1 / 4)} ${rhythm(1 / 4)}`,
+              }}
+              dangerouslySetInnerHTML={{
+                __html: node.frontmatter.description || node.excerpt,
+              }}
+            />
+          </div>
+        </Link>
       )
     })}
   </div>

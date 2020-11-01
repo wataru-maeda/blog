@@ -118,10 +118,6 @@ module.exports = {
         name: `KISS ブログ`,
         short_name: `KISS`,
         start_url: `/blog`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        // edit below
         icon: `content/assets/gatsby-icon.png`,
       },
     },
