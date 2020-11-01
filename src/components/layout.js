@@ -14,57 +14,34 @@ const styles = {
     color: "var(--textNormal)",
     transition: "color 0.2s ease-out, background 0.2s ease-out",
   },
+  h1: {
+    ...scale(1.2),
+    marginBottom: rhythm(1.5),
+    marginTop: 0,
+  },
+  link: {
+    boxShadow: `none`,
+    textDecoration: `none`,
+    color: `inherit`,
+  },
 }
 
 class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
+    // const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
-    let header
+    const header = (
+      <h1 style={styles.h1}>
+        <Link
+          style={styles.link}
+          to={location.pathname === blogPath ? `/blog/` : `/`}
+        >
+          {title}
+        </Link>
+      </h1>
+    )
 
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.2),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
     return (
       <Wrapper>
         <div style={styles.root}>
@@ -72,9 +49,9 @@ class Layout extends React.Component {
           <main>{children}</main>
         </div>
         <Footer>
-          © {new Date().getFullYear()}, Built with
+          {/* © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href="https://www.gatsbyjs.org">Gatsby</a> */}
         </Footer>
       </Wrapper>
     )
