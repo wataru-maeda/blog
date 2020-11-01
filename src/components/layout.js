@@ -26,36 +26,33 @@ const styles = {
   },
 }
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    // const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog/`
-    const header = (
-      <h1 style={styles.h1}>
-        <Link
-          style={styles.link}
-          to={location.pathname === blogPath ? `/blog/` : `/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    )
+const Header = ({ location, title }) => {
+  const blogPath = `${__PATH_PREFIX__}/blog/`
+  return (
+    <h1 style={styles.h1}>
+      <Link
+        style={styles.link}
+        to={location.pathname === blogPath ? `/blog/` : `/`}
+      >
+        {title}
+      </Link>
+    </h1>
+  )
+}
 
-    return (
-      <Wrapper>
-        <div style={styles.root}>
-          <header>{header}</header>
-          <main>{children}</main>
-        </div>
-        <Footer>
-          {/* © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a> */}
-        </Footer>
-      </Wrapper>
-    )
-  }
+const Layout = props => {
+  const { children } = props
+  return (
+    <Wrapper>
+      <div style={styles.root}>
+        <header>
+          <Header {...props} />
+        </header>
+        <main>{children}</main>
+      </div>
+      <Footer></Footer>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`
