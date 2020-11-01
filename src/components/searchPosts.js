@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 import { useFlexSearch } from "react-use-flexsearch"
 import * as queryString from "query-string"
 
+import Post from "./post"
 import { rhythm } from "../utils/typography"
 
 const SearchBar = styled.div`
@@ -44,31 +44,14 @@ const SearchBar = styled.div`
 const SearchedPosts = ({ results }) =>
   results.length > 0 ? (
     results.map(node => {
-      const date = node.date
-      const title = node.title || node.slug
-      const description = node.description
-      const excerpt = node.excerpt
-      const slug = node.slug
-
-      return (
-        <div key={slug}>
-          <h3
-            style={{
-              marginBottom: rhythm(1 / 4),
-            }}
-          >
-            <Link style={{ boxShadow: `none` }} to={`/blog${slug}`}>
-              {title}
-            </Link>
-          </h3>
-          <small>{date}</small>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: description || excerpt,
-            }}
-          />
-        </div>
-      )
+      const props = {
+        date: node.date,
+        title: node.title || node.slug,
+        description: node.description,
+        excerpt: node.excerpt,
+        slug: node.slug,
+      }
+      return <Post {...props} />
     })
   ) : (
     <p style={{ textAlign: "center" }}>
@@ -79,50 +62,14 @@ const SearchedPosts = ({ results }) =>
 const AllPosts = ({ posts }) => (
   <div style={{ margin: `${rhythm(1)} 0 ${rhythm(2)}` }}>
     {posts.map(({ node }) => {
-      const title = node.frontmatter.title || node.fields.slug
-      return (
-        <Link style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
-          <div
-            key={node.fields.slug}
-            style={{
-              backgroundImage: "var(--post)",
-              borderRadius: rhythm(0.5),
-              marginBottom: rhythm(1.5),
-              overflow: "hidden",
-            }}
-          >
-            <img
-              src="https://www.rasmussen.edu/-/media/images/blogs/school-of-technology/computerprogramminghard_banner.jpg?la=en&hash=1897D131AAF9AA952B206B04C44A4969E9D644D5"
-              style={{ width: "100%", marginBottom: 0 }}
-              alt="test"
-            />
-            <h3
-              style={{
-                margin: `0 ${rhythm(1 / 4)} ${rhythm(1 / 4)}`,
-              }}
-            >
-              {title}
-            </h3>
-            <small
-              style={{
-                color: "var(--textNormal)",
-                margin: `0 ${rhythm(1 / 4)} ${rhythm(1)}`,
-              }}
-            >
-              {node.frontmatter.date}
-            </small>
-            <p
-              style={{
-                color: "var(--textNormal)",
-                margin: `0 ${rhythm(1 / 4)} ${rhythm(1 / 4)}`,
-              }}
-              dangerouslySetInnerHTML={{
-                __html: node.frontmatter.description || node.excerpt,
-              }}
-            />
-          </div>
-        </Link>
-      )
+      const props = {
+        date: node.date,
+        title: node.title || node.slug,
+        description: node.description,
+        excerpt: node.excerpt,
+        slug: node.slug,
+      }
+      return <Post {...props} />
     })}
   </div>
 )
