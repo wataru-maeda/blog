@@ -10,6 +10,7 @@ const styles = {
   },
   container: {
     backgroundImage: "var(--post)",
+    background: "var(--post)",
     borderRadius: rhythm(0.5),
     marginBottom: rhythm(1.5),
     overflow: "hidden",

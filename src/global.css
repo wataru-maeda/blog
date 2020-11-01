@@ -16,6 +16,7 @@ body {
 body.dark {
   -webkit-font-smoothing: antialiased;
   --post: white;
+
   --bg: white;
   --textNormal: #282a37;
   --textLink: #0372eb;

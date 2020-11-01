@@ -19,6 +19,7 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
+          image={post.frontmatter.thumbnail?.childImageSharp?.fluid?.src}
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
@@ -88,6 +89,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        thumbnail {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       tableOfContents
     }
