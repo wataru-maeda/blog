@@ -63,11 +63,11 @@ const AllPosts = ({ posts }) => (
   <div style={{ margin: `${rhythm(1)} 0 ${rhythm(2)}` }}>
     {posts.map(({ node }) => {
       const props = {
-        date: node.date,
-        title: node.title || node.slug,
-        description: node.description,
-        excerpt: node.excerpt,
-        slug: node.slug,
+        date: node.frontmatter.date,
+        title: node.frontmatter.title || node.fields.slug,
+        description: node.frontmatter.description,
+        excerpt: node.frontmatter.excerpt,
+        slug: node.fields.slug,
       }
       return <Post {...props} />
     })}
