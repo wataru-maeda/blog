@@ -11,7 +11,10 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
+    const tableOfContents = this.props.data.mdx.tableOfContents.items
     const { previous, next } = this.props.pageContext
+
+    console.log("[##] table of contents", tableOfContents)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -86,6 +89,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
       }
+      tableOfContents
     }
   }
 `

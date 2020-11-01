@@ -9,7 +9,7 @@ import SearchPosts from "../components/searchPosts"
 class IndexPage extends React.Component {
   render() {
     const { data, navigate, location } = this.props
-    const siteTitle = "KISS ブログ - IT物づくり"
+    const siteTitle = "KISS ブログ"
     const posts = data.allMdx.edges
     const localSearchBlog = data.localSearchBlog
 
