@@ -5,11 +5,14 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchPosts from "../components/searchPosts"
+import Connector from "../utils/connector"
 
-const IndexPage = ({ data, navigate, location }) => {
+const IndexPage = ({ data, navigate, location, keyword }) => {
   const { allMdx, site, localSearchBlog, categoriesGroup } = data
   const siteTitle = site.siteMetadata.title
   const posts = allMdx.edges
+
+  console.log("[##] keyword", keyword)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -25,7 +28,16 @@ const IndexPage = ({ data, navigate, location }) => {
   )
 }
 
-export default IndexPage
+export default props => (
+  <Connector>
+    {({
+      actions,
+      state: {
+        search: { keyword },
+      },
+    }) => <IndexPage actions={actions.search} keyword={keyword} {...props} />}
+  </Connector>
+)
 
 export const pageQuery = graphql`
   query {
