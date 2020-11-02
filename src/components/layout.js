@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
 
 import Switch from "../components/switch"
+import Search from "../components/search"
 import { rhythm, scale } from "../utils/typography"
 
 const styles = {
@@ -11,14 +11,20 @@ const styles = {
     background: "var(--bg)",
     backgroundImage: "var(--bg)",
     transition: "color 0.2s ease-out, background 0.2s ease-out",
+    minHeight: "100vh",
   },
   header: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: `${rhythm(1 / 2)} ${rhythm(3 / 4)}`,
-    background: "var(--bg)",
-    backgroundImage: "var(--bg)",
+    background: "var(--headerBg)",
+    padding: `${rhythm(1)} ${rhythm(3)} ${rhythm(1 / 4)}`,
+    marginBottom: rhythm(1),
+  },
+  headerContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   h1: {
     ...scale(1 / 2),
@@ -43,7 +49,11 @@ const Header = ({ location, title }) => {
           {title}
         </Link>
       </h1>
-      <Switch />
+      <div style={styles.headerContainer}>
+        <Search />
+        <span style={{ width: rhythm(1) }} />
+        <Switch />
+      </div>
     </div>
   )
 }
@@ -51,25 +61,13 @@ const Header = ({ location, title }) => {
 const Layout = props => {
   const { children } = props
   return (
-    <Wrapper>
-      <div style={styles.root}>
-        <header>
-          <Header {...props} />
-        </header>
-        <main>{children}</main>
-      </div>
-      <Footer></Footer>
-    </Wrapper>
+    <div style={styles.root}>
+      <header>
+        <Header {...props} />
+      </header>
+      <main>{children}</main>
+    </div>
   )
 }
-
-const Wrapper = styled.div`
-  min-height: 100vh;
-`
-
-const Footer = styled.footer`
-  text-align: center;
-  margin: 24px;
-`
 
 export default Layout

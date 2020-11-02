@@ -9,14 +9,22 @@ const colors = {
   blue: "#0372eb",
   blue_light: "#09c0fb",
 
+  // green
+  green: "#aceb10",
+
   // gradient
   black_to_gray: `
   linear-gradient(
     0deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(54, 56, 71, 1) 0%,
-    rgba(40, 43, 59, 1) 100%)
-  `,
+    rgba(40, 43, 59, 1) 100%
+  )`,
+  green_to_green: `linear-gradient(
+    90deg,
+    rgba(175,232,28,1) 0%,
+    rgba(102,181,13,1) 100%
+  )`,
 
   // shadow
   shadow: `

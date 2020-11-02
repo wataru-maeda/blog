@@ -8,7 +8,8 @@ import "../theme/app.css"
 // ------------------------------------
 
 const lightTheme = {
-  bg: "white",
+  bg: colors.gray_light,
+  headerBg: "white",
   post: "white",
   textNormal: colors.gray_dark,
   textLink: colors.blue,
@@ -19,6 +20,7 @@ const lightTheme = {
 
 const darkTheme = {
   bg: colors.gray_heavy,
+  headerBg: "transparent",
   post: colors.black_to_gray,
   textNormal: colors.gray_light,
   textLink: colors.blue_light,

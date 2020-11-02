@@ -1,30 +1,47 @@
-import React, { Component } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchPosts from "../components/searchPosts"
+import { rhythm, scale } from "../utils/typography"
 
-class IndexPage extends Component {
-  render() {
-    const { data, navigate, location } = this.props
-    const { allMdx, site, localSearchBlog, categoriesGroup } = data
-    const siteTitle = site.siteMetadata.title
-    const posts = allMdx.edges
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
+const styles = {
+  container: {
+    display: "flex",
+    padding: `0 ${rhythm(3)}`,
+    width: "100%",
+  },
+  side: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: rhythm(16),
+  },
+}
+
+const IndexPage = ({ data, navigate, location }) => {
+  const { allMdx, site, localSearchBlog, categoriesGroup } = data
+  const siteTitle = site.siteMetadata.title
+  const posts = allMdx.edges
+
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO title="All posts" />
+      <div style={styles.container}>
         <SearchPosts
           posts={posts}
           localSearchBlog={localSearchBlog}
           navigate={navigate}
           location={location}
         />
-      </Layout>
-    )
-  }
+        <div style={styles.side}>
+          <Bio />
+        </div>
+      </div>
+    </Layout>
+  )
 }
 
 export default IndexPage
