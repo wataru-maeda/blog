@@ -17,7 +17,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: `${rhythm(1 / 2)} ${rhythm(3 / 4)}`,
+    padding: `${rhythm(1)} ${rhythm(3)}`,
     background: "var(--bg)",
     backgroundImage: "var(--bg)",
   },
