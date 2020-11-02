@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { images, colors } from "../theme"
+import { colors } from "../theme"
 import "../theme/app.css"
 
 // ------------------------------------
@@ -74,12 +74,14 @@ const Switch = () => {
           stiffness: 700,
           damping: 30,
         }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        <img
-          src={isOn ? images.sun : images.moon}
-          style={{ width: 20, height: 20 }}
-          alt=""
-        />
+        <span style={{ fontSize: 20 }}>{isOn ? "🌞" : "🌛"}</span>
       </motion.div>
     </div>
   )

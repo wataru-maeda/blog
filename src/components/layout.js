@@ -7,12 +7,10 @@ import { rhythm, scale } from "../utils/typography"
 
 const styles = {
   root: {
-    marginLeft: `auto`,
-    marginRight: `auto`,
     color: "var(--textNormal)",
-    transition: "color 0.2s ease-out, background 0.2s ease-out",
     background: "var(--bg)",
     backgroundImage: "var(--bg)",
+    transition: "color 0.2s ease-out, background 0.2s ease-out",
   },
   header: {
     display: "flex",

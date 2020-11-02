@@ -44,7 +44,6 @@ const SearchBar = styled.div`
 const SearchedPosts = ({ results }) =>
   results.length > 0 ? (
     results.map(node => {
-      console.log("[##] node", node)
       const props = {
         date: node.date,
         title: node.title || node.slug,
