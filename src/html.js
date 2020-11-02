@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import "./global.css"
+import "../src/theme/app.css"
 
 export default function HTML(props) {
   return (

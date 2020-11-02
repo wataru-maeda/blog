@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
+// import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/post"
@@ -10,31 +10,10 @@ import SearchPosts from "../components/searchPosts"
 const styles = {
   root: {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     width: "100%",
   },
-}
-
-const whiteColors = {
-  // -webkit-font-smoothing: 'antialiased';
-  bg: "white",
-  post: "white",
-  textNormal: "#282a37",
-  textLink: "#0372eb",
-  shadow: `0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 2.3px 17.9px rgba(0, 0, 0, 0.072)`,
-  hr: `hsla(0, 0%, 100%, 0.2)`,
-  backgroundColor: "var(--bg)",
-}
-
-const switchTheme = () => {
-  Object.keys(whiteColors).forEach(key => {
-    const cssKey = `--${key}`
-    const cssVal = whiteColors[key]
-    document.body.style.setProperty(cssKey, cssVal)
-  })
 }
 
 class IndexPage extends React.Component {
@@ -54,13 +33,11 @@ class IndexPage extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
-        <button onClick={switchTheme}>test</button>
         <div style={styles.root}>
           <Post {...props} />
           <Post {...props} />
           <Post {...props} />
         </div>
-        <Bio />
         <SearchPosts
           posts={posts}
           localSearchBlog={localSearchBlog}

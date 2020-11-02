@@ -3,19 +3,24 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import { rhythm, scale } from "../utils/typography"
-import "../global.css"
+import Switch from "../components/switch"
+import "../theme/app.css"
 
 const styles = {
   root: {
     marginLeft: `auto`,
     marginRight: `auto`,
-    maxWidth: rhythm(24),
-    padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
     color: "var(--textNormal)",
     transition: "color 0.2s ease-out, background 0.2s ease-out",
   },
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: `${rhythm(1 / 2)} ${rhythm(3 / 4)}`,
+  },
   h1: {
-    ...scale(1.2),
+    ...scale(1 / 2),
     marginBottom: rhythm(1.5),
     marginTop: 0,
   },
@@ -29,14 +34,17 @@ const styles = {
 const Header = ({ location, title }) => {
   const blogPath = `${__PATH_PREFIX__}/blog/`
   return (
-    <h1 style={styles.h1}>
-      <Link
-        style={styles.link}
-        to={location.pathname === blogPath ? `/blog/` : `/`}
-      >
-        {title}
-      </Link>
-    </h1>
+    <div style={styles.header}>
+      <h1 style={styles.h1}>
+        <Link
+          style={styles.link}
+          to={location.pathname === blogPath ? `/blog/` : `/`}
+        >
+          {title}
+        </Link>
+      </h1>
+      <Switch />
+    </div>
   )
 }
 
