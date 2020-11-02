@@ -12,9 +12,8 @@ const styles = {
     backgroundImage: "var(--post)",
     background: "var(--post)",
     borderRadius: rhythm(0.3),
-    marginBottom: rhythm(1.5),
+    marginBottom: rhythm(1),
     overflow: "hidden",
-    boxShadow: `var(--shadow)`,
     textAlign: "center",
   },
   thumbnail: {
@@ -37,13 +36,13 @@ const Post = ({ thumbnail, slug, title, date, description, excerpt }) => {
   return (
     <Link style={styles.root} to={`${slug}`}>
       <div key={slug} style={styles.container}>
+        <h3 style={styles.h3}>{title}</h3>
+        <small style={styles.small}>{date}</small>
         <Img
           fluid={thumbnail?.childImageSharp?.fluid}
           style={styles.thumbnail}
           alt={title}
         />
-        <h3 style={styles.h3}>{title}</h3>
-        <small style={styles.small}>{date}</small>
         <p
           style={styles.p}
           dangerouslySetInnerHTML={{

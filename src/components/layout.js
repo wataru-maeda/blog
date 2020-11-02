@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
 
 import Switch from "../components/switch"
 import Search from "../components/search"
@@ -18,9 +17,8 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    background: "var(--bg)",
-    backgroundImage: "var(--bg)",
-    padding: `${rhythm(1)} ${rhythm(3)}`,
+    background: "var(--headerBg)",
+    padding: `${rhythm(1)} ${rhythm(3)} ${rhythm(1 / 4)}`,
     marginBottom: rhythm(1),
   },
   headerContainer: {
@@ -60,13 +58,16 @@ const Header = ({ location, title }) => {
   )
 }
 
-const Layout = ({ children }) => (
-  <div style={styles.root}>
-    <header>
-      <Header {...props} />
-    </header>
-    <main>{children}</main>
-  </div>
-)
+const Layout = props => {
+  const { children } = props
+  return (
+    <div style={styles.root}>
+      <header>
+        <Header {...props} />
+      </header>
+      <main>{children}</main>
+    </div>
+  )
+}
 
 export default Layout
