@@ -10,10 +10,12 @@ module.exports = {
     },
   },
   plugins: [
+    "gatsby-plugin-dark-mode",
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
@@ -107,7 +109,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // edit below
         trackingId: `G-WZQ8MEE3P8`,
       },
     },
@@ -117,10 +118,6 @@ module.exports = {
         name: `KISS ブログ`,
         short_name: `KISS`,
         start_url: `/blog`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        // edit below
         icon: `content/assets/gatsby-icon.png`,
       },
     },

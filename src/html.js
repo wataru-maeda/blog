@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import "../src/theme/app.css"
 
 export default function HTML(props) {
   return (

@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 import { useFlexSearch } from "react-use-flexsearch"
 import * as queryString from "query-string"
 
+import Post from "./post"
 import { rhythm } from "../utils/typography"
 
 const SearchBar = styled.div`
@@ -44,31 +44,14 @@ const SearchBar = styled.div`
 const SearchedPosts = ({ results }) =>
   results.length > 0 ? (
     results.map(node => {
-      const date = node.date
-      const title = node.title || node.slug
-      const description = node.description
-      const excerpt = node.excerpt
-      const slug = node.slug
-
-      return (
-        <div key={slug}>
-          <h3
-            style={{
-              marginBottom: rhythm(1 / 4),
-            }}
-          >
-            <Link style={{ boxShadow: `none` }} to={`/blog${slug}`}>
-              {title}
-            </Link>
-          </h3>
-          <small>{date}</small>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: description || excerpt,
-            }}
-          />
-        </div>
-      )
+      const props = {
+        date: node.date,
+        title: node.title || node.slug,
+        description: node.description,
+        excerpt: node.excerpt,
+        slug: node.slug,
+      }
+      return <Post {...props} />
     })
   ) : (
     <p style={{ textAlign: "center" }}>
@@ -77,28 +60,17 @@ const SearchedPosts = ({ results }) =>
   )
 
 const AllPosts = ({ posts }) => (
-  <div style={{ margin: "20px 0 40px" }}>
+  <div style={{ margin: `${rhythm(1)} 0 ${rhythm(2)}` }}>
     {posts.map(({ node }) => {
-      const title = node.frontmatter.title || node.fields.slug
-      return (
-        <div key={node.fields.slug}>
-          <h3
-            style={{
-              marginBottom: rhythm(1 / 4),
-            }}
-          >
-            <Link style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
-              {title}
-            </Link>
-          </h3>
-          <small>{node.frontmatter.date}</small>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: node.frontmatter.description || node.excerpt,
-            }}
-          />
-        </div>
-      )
+      const props = {
+        date: node.frontmatter.date,
+        title: node.frontmatter.title || node.fields.slug,
+        description: node.frontmatter.description,
+        excerpt: node.frontmatter.excerpt,
+        slug: node.fields.slug,
+        thumbnail: node.frontmatter.thumbnail,
+      }
+      return <Post {...props} />
     })}
   </div>
 )

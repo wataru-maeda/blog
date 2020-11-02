@@ -6,6 +6,18 @@ Wordpress2016.overrideThemeStyles = () => {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
+    a: {
+      color: "var(--textLink)",
+    },
+    "a.anchor": {
+      boxShadow: "none",
+    },
+    'a.anchor svg[aria-hidden="true"]': {
+      stroke: "var(--textLink)",
+    },
+    hr: {
+      background: "var(--hr)",
+    },
   }
 }
 

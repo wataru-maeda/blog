@@ -1,18 +1,17 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React, { Component } from "react"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchPosts from "../components/searchPosts"
 
-class IndexPage extends React.Component {
+class IndexPage extends Component {
   render() {
     const { data, navigate, location } = this.props
-    const siteTitle = "KISS ブログ - IT物づくり"
-    const posts = data.allMdx.edges
-    const localSearchBlog = data.localSearchBlog
-
+    const { allMdx, site, localSearchBlog, categoriesGroup } = data
+    const siteTitle = site.siteMetadata.title
+    const posts = allMdx.edges
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
@@ -52,8 +51,20 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
+      }
+    }
+    categoriesGroup: allMdx(limit: 2000) {
+      group(field: frontmatter___categories) {
+        fieldValue
       }
     }
   }
