@@ -57,7 +57,7 @@ const SearchPosts = ({
   )
 
   useEffect(() => {
-    navigate(keyword ? `/blog/?search=${keyword}` : "/blog/")
+    navigate(keyword ? `?search=${keyword}` : "/")
     setQuery(keyword)
   }, [keyword])
 
