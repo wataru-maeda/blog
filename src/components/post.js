@@ -20,6 +20,8 @@ const styles = {
     width: "100%",
   },
   h3: {
+    fontSize: rhythm(1),
+    fontWeight: "normal",
     margin: `${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
   },
   small: {
