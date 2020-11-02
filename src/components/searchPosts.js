@@ -6,26 +6,29 @@ import Post from "./post"
 import { rhythm } from "../utils/typography"
 import Connector from "../utils/connector"
 
-const SearchedPosts = ({ results }) =>
-  results.length > 0 ? (
-    results.map(node => {
-      const props = {
-        date: node.date,
-        title: node.title || node.slug,
-        description: node.description,
-        excerpt: node.excerpt,
-        slug: node.slug,
-      }
-      return <Post {...props} />
-    })
-  ) : (
-    <p style={{ textAlign: "center" }}>
-      Sorry, couldn't find any posts matching this search.
-    </p>
-  )
+const SearchedPosts = ({ results }) => (
+  <div style={{ flex: 1 }}>
+    {results.length > 0 ? (
+      results.map(node => {
+        const props = {
+          date: node.date,
+          title: node.title || node.slug,
+          description: node.description,
+          excerpt: node.excerpt,
+          slug: node.slug,
+        }
+        return <Post {...props} />
+      })
+    ) : (
+      <p style={{ textAlign: "center" }}>
+        Sorry, couldn't find any posts matching this search.
+      </p>
+    )}
+  </div>
+)
 
 const AllPosts = ({ posts }) => (
-  <div style={{ margin: `${rhythm(1)} 0 ${rhythm(2)}` }}>
+  <div style={{ flex: 1 }}>
     {posts.map(({ node }) => {
       const props = {
         date: node.frontmatter.date,

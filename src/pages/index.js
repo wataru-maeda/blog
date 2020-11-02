@@ -13,6 +13,12 @@ const styles = {
     padding: `0 ${rhythm(3)}`,
     width: "100%",
   },
+  side: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: rhythm(16),
+  },
 }
 
 const IndexPage = ({ data, navigate, location }) => {
@@ -30,7 +36,9 @@ const IndexPage = ({ data, navigate, location }) => {
           navigate={navigate}
           location={location}
         />
-        <Bio />
+        <div style={styles.side}>
+          <Bio />
+        </div>
       </div>
     </Layout>
   )

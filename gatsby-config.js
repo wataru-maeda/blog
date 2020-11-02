@@ -1,12 +1,13 @@
 module.exports = {
   siteMetadata: {
-    // edit below
     title: `KISS ブログ`,
     author: `Wataru Maeda`,
     description: `シンプルにわかりやすく書いたテックブログ`,
     siteUrl: `https://kiss-blog.netlify.app/`,
     social: {
       twitter: `wmaeda_ca`,
+      email: `w.maeda.jp@gmail.com`,
+      github: `WataruMaeda`,
     },
   },
   plugins: [

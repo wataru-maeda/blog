@@ -5,6 +5,7 @@ title: test
 description: test
 tags: ["animals", "Chicago", "zoos"]
 categories: ["Programming", "Life"]
+thumbnail: "./test.jpg"
 ---
 
 test

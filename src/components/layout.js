@@ -12,14 +12,16 @@ const styles = {
     background: "var(--bg)",
     backgroundImage: "var(--bg)",
     transition: "color 0.2s ease-out, background 0.2s ease-out",
+    minHeight: "100vh",
   },
   header: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: `${rhythm(1)} ${rhythm(3)}`,
     background: "var(--bg)",
     backgroundImage: "var(--bg)",
+    padding: `${rhythm(1)} ${rhythm(3)}`,
+    marginBottom: rhythm(1),
   },
   headerContainer: {
     display: "flex",
@@ -58,28 +60,13 @@ const Header = ({ location, title }) => {
   )
 }
 
-const Layout = props => {
-  const { children } = props
-  return (
-    <Wrapper>
-      <div style={styles.root}>
-        <header>
-          <Header {...props} />
-        </header>
-        <main>{children}</main>
-      </div>
-      <Footer></Footer>
-    </Wrapper>
-  )
-}
-
-const Wrapper = styled.div`
-  min-height: 100vh;
-`
-
-const Footer = styled.footer`
-  text-align: center;
-  margin: 24px;
-`
+const Layout = ({ children }) => (
+  <div style={styles.root}>
+    <header>
+      <Header {...props} />
+    </header>
+    <main>{children}</main>
+  </div>
+)
 
 export default Layout

@@ -8,19 +8,25 @@ const styles = {
   root: {
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "center",
-    // alignItems: "center",
+    alignItems: "center",
+    backgroundImage: "var(--post)",
+    background: "var(--post)",
+    borderRadius: rhythm(0.3),
+    width: rhythm(14),
+    marginLeft: rhythm(2),
+    padding: rhythm(0.4),
   },
   profile: {
-    marginRight: rhythm(1 / 2),
-    marginBottom: 0,
-    minWidth: 50,
-    borderRadius: `100%`,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginBottom: rhythm(0.4),
   },
 }
 
 const Bio = data => {
   const { author, social } = data.site.siteMetadata
+  console.log("[##] social", social)
   return (
     <div style={styles.root}>
       <Image
@@ -32,12 +38,8 @@ const Bio = data => {
         }}
       />
       <p>
-        Written by <strong>{author}</strong>, a framework built upon the React
-        library.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          Follow me on Twitter
-        </a>
+        Lorem ipsum is placeholder text commonly used in the graphic, print, and
+        publishing industries for previewing layouts and visual mockups.
       </p>
     </div>
   )
@@ -57,6 +59,8 @@ const bioQuery = graphql`
         author
         social {
           twitter
+          github
+          email
         }
       }
     }
