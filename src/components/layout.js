@@ -2,9 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-import { rhythm, scale } from "../utils/typography"
 import Switch from "../components/switch"
-import "../theme/app.css"
+import { rhythm, scale } from "../utils/typography"
 
 const styles = {
   root: {
@@ -12,17 +11,20 @@ const styles = {
     marginRight: `auto`,
     color: "var(--textNormal)",
     transition: "color 0.2s ease-out, background 0.2s ease-out",
+    background: "var(--bg)",
+    backgroundImage: "var(--bg)",
   },
   header: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     padding: `${rhythm(1 / 2)} ${rhythm(3 / 4)}`,
+    background: "var(--bg)",
+    backgroundImage: "var(--bg)",
   },
   h1: {
     ...scale(1 / 2),
-    marginBottom: rhythm(1.5),
-    marginTop: 0,
+    margin: 0,
   },
   link: {
     boxShadow: `none`,

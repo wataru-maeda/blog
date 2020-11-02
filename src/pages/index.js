@@ -10,8 +10,6 @@ import SearchPosts from "../components/searchPosts"
 const styles = {
   root: {
     display: "flex",
-    // justifyContent: "center",
-    // alignItems: "center",
     width: "100%",
   },
 }
