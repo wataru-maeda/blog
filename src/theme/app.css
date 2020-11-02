@@ -1,0 +1,27 @@
+/* switch  */
+
+.switch {
+  width: 64px;
+  height: 34px;
+  background-color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 20px;
+  padding: 2px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.switch[data-isOn="true"] {
+  justify-content: flex-end;
+  background-color: var(--gray_light);
+}
+
+.handle {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 0;
+}

@@ -2,78 +2,65 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
+import Switch from "../components/switch"
 import { rhythm, scale } from "../utils/typography"
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog/`
-    let header
+const styles = {
+  root: {
+    color: "var(--textNormal)",
+    background: "var(--bg)",
+    backgroundImage: "var(--bg)",
+    transition: "color 0.2s ease-out, background 0.2s ease-out",
+  },
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: `${rhythm(1 / 2)} ${rhythm(3 / 4)}`,
+    background: "var(--bg)",
+    backgroundImage: "var(--bg)",
+  },
+  h1: {
+    ...scale(1 / 2),
+    margin: 0,
+  },
+  link: {
+    boxShadow: `none`,
+    textDecoration: `none`,
+    color: `inherit`,
+  },
+}
 
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
+const Header = ({ location, title }) => {
+  const blogPath = `${__PATH_PREFIX__}/blog/`
+  return (
+    <div style={styles.header}>
+      <h1 style={styles.h1}>
+        <Link
+          style={styles.link}
+          to={location.pathname === blogPath ? `/blog/` : `/`}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
-    return (
-      <Wrapper>
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-        >
-          <header>{header}</header>
-          <main>{children}</main>
-        </div>
-        <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
-      </Wrapper>
-    )
-  }
+          {title}
+        </Link>
+      </h1>
+      <Switch />
+    </div>
+  )
+}
+
+const Layout = props => {
+  const { children } = props
+  return (
+    <Wrapper>
+      <div style={styles.root}>
+        <header>
+          <Header {...props} />
+        </header>
+        <main>{children}</main>
+      </div>
+      <Footer></Footer>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`
