@@ -15,7 +15,7 @@ const Blog = ({ data, navigate, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
+      {/* <Bio /> */}
       <SearchPosts
         posts={posts}
         localSearchBlog={localSearchBlog}

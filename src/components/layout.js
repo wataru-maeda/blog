@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import Switch from "../components/switch"
+import Search from "../components/search"
 import { rhythm, scale } from "../utils/typography"
 
 const styles = {
@@ -19,6 +20,11 @@ const styles = {
     padding: `${rhythm(1 / 2)} ${rhythm(3 / 4)}`,
     background: "var(--bg)",
     backgroundImage: "var(--bg)",
+  },
+  headerContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   h1: {
     ...scale(1 / 2),
@@ -43,7 +49,11 @@ const Header = ({ location, title }) => {
           {title}
         </Link>
       </h1>
-      <Switch />
+      <div style={styles.headerContainer}>
+        <Search />
+        <span style={{ width: rhythm(1) }} />
+        <Switch />
+      </div>
     </div>
   )
 }

@@ -1,23 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
+// import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchPosts from "../components/searchPosts"
-import Connector from "../utils/connector"
 
 const IndexPage = ({ data, navigate, location, keyword }) => {
   const { allMdx, site, localSearchBlog, categoriesGroup } = data
   const siteTitle = site.siteMetadata.title
   const posts = allMdx.edges
 
-  console.log("[##] keyword", keyword)
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
+      {/* <Bio /> */}
       <SearchPosts
         posts={posts}
         localSearchBlog={localSearchBlog}
@@ -28,16 +25,7 @@ const IndexPage = ({ data, navigate, location, keyword }) => {
   )
 }
 
-export default props => (
-  <Connector>
-    {({
-      actions,
-      state: {
-        search: { keyword },
-      },
-    }) => <IndexPage actions={actions.search} keyword={keyword} {...props} />}
-  </Connector>
-)
+export default IndexPage
 
 export const pageQuery = graphql`
   query {
