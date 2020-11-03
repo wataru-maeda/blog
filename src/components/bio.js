@@ -1,8 +1,16 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope, faGlobe } from "@fortawesome/free-solid-svg-icons"
+import {
+  faGithub,
+  faTwitter,
+  faFacebook,
+} from "@fortawesome/free-brands-svg-icons"
 import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
+import "../theme/app.css"
 
 const styles = {
   root: {
@@ -14,13 +22,18 @@ const styles = {
     borderRadius: rhythm(0.3),
     width: rhythm(14),
     marginLeft: rhythm(2),
-    padding: rhythm(0.4),
+    padding: rhythm(0.6),
   },
   profile: {
     width: 60,
     height: 60,
     borderRadius: 30,
     marginBottom: rhythm(0.4),
+  },
+  snsContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }
 
@@ -37,10 +50,42 @@ const Bio = data => {
           borderRadius: `50%`,
         }}
       />
-      <p>
+      <p style={{ textAlign: "center" }}>
         Lorem ipsum is placeholder text commonly used in the graphic, print, and
         publishing industries for previewing layouts and visual mockups.
       </p>
+      <div style={styles.snsContainer}>
+        {Object.keys(social).map(key => {
+          let icon
+          switch (key) {
+            case "email":
+              icon = faEnvelope
+              break
+            case "github":
+              icon = faGithub
+              break
+            case "twitter":
+              icon = faTwitter
+              break
+            case "facebook":
+              icon = faFacebook
+              break
+            case "website":
+              icon = faGlobe
+              break
+            default:
+              break
+          }
+          return (
+            <a className="sns-link">
+              <FontAwesomeIcon
+                icon={icon}
+                style={{ color: "white", margin: `0 ${rhythm(0.4)}` }}
+              />
+            </a>
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -59,7 +104,9 @@ const bioQuery = graphql`
         author
         social {
           twitter
+          facebook
           github
+          website
           email
         }
       }

@@ -6,8 +6,10 @@ module.exports = {
     siteUrl: `https://kiss-blog.netlify.app/`,
     social: {
       twitter: `wmaeda_ca`,
-      email: `w.maeda.jp@gmail.com`,
+      facebook: `100011319736559`,
       github: `WataruMaeda`,
+      website: `https://watarumaeda.com/`,
+      email: `w.maeda.jp@gmail.com`,
     },
   },
   plugins: [
