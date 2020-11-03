@@ -39,7 +39,6 @@ const styles = {
 
 const Bio = data => {
   const { author, social } = data.site.siteMetadata
-  console.log("[##] social", social)
   return (
     <div style={styles.root}>
       <Image
