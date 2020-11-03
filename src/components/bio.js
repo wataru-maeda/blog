@@ -85,7 +85,7 @@ const Bio = data => {
             <a href={uri} target="_blank" className="sns-link">
               <FontAwesomeIcon
                 icon={icon}
-                style={{ color: "white", margin: `0 ${rhythm(0.4)}` }}
+                style={{ color: "var(--snsLink)", margin: `0 ${rhythm(0.4)}` }}
               />
             </a>
           )

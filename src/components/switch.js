@@ -15,6 +15,7 @@ const lightTheme = {
   textLink: colors.blue,
   shadow: colors.shadow,
   hr: `hsla(0, 0%, 100%, 0.2)`,
+  snsLink: colors.gray_dark,
   backgroundColor: "var(--bg)",
 }
 
@@ -24,8 +25,9 @@ const darkTheme = {
   post: colors.black_to_gray,
   textNormal: colors.gray_light,
   textLink: colors.blue_light,
-  hr: "hsla(0, 0%, 0%, 0.2)",
   shadow: "transparent",
+  hr: "hsla(0, 0%, 0%, 0.2)",
+  snsLink: "white",
   backgroundColor: "var(--bg)",
 }
 
