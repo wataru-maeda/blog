@@ -57,27 +57,33 @@ const Bio = data => {
       <div style={styles.snsContainer}>
         {Object.keys(social).map(key => {
           let icon
+          let uri
           switch (key) {
             case "email":
               icon = faEnvelope
+              uri = `mailto: ${social[key]}`
               break
             case "github":
               icon = faGithub
+              uri = `https://github.com/${social[key]}`
               break
             case "twitter":
               icon = faTwitter
+              uri = `https://twitter.com/${social[key]}`
               break
             case "facebook":
               icon = faFacebook
+              uri = `https://www.facebook.com/profile.php?id=${social[key]}`
               break
             case "website":
               icon = faGlobe
+              uri = social[key]
               break
             default:
               break
           }
           return (
-            <a className="sns-link">
+            <a href={uri} target="_blank" className="sns-link">
               <FontAwesomeIcon
                 icon={icon}
                 style={{ color: "white", margin: `0 ${rhythm(0.4)}` }}
