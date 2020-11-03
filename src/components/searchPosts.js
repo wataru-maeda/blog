@@ -3,7 +3,6 @@ import { useFlexSearch } from "react-use-flexsearch"
 import * as queryString from "query-string"
 
 import Post from "./post"
-import { rhythm } from "../utils/typography"
 import Connector from "../utils/connector"
 
 const SearchedPosts = ({ results }) => (
