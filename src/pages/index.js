@@ -5,7 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchPosts from "../components/searchPosts"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 const styles = {
   container: {
@@ -25,6 +25,7 @@ const IndexPage = ({ data, navigate, location }) => {
   const { allMdx, site, localSearchBlog, categoriesGroup } = data
   const siteTitle = site.siteMetadata.title
   const posts = allMdx.edges
+  console.log("[##] categories", categoriesGroup)
 
   return (
     <Layout location={location} title={siteTitle}>
