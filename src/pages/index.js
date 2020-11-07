@@ -12,7 +12,6 @@ const styles = {
   container: {
     display: "flex",
     padding: `0 ${rhythm(3)}`,
-    width: "100%",
   },
   side: {
     display: "flex",
