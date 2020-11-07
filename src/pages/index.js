@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
+import Tags from "../components/tags"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchPosts from "../components/searchPosts"
@@ -11,7 +12,6 @@ const styles = {
   container: {
     display: "flex",
     padding: `0 ${rhythm(3)}`,
-    width: "100%",
   },
   side: {
     display: "flex",
@@ -39,6 +39,7 @@ const IndexPage = ({ data, navigate, location }) => {
         />
         <div style={styles.side}>
           <Bio />
+          <Tags />
         </div>
       </div>
     </Layout>
