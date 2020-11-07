@@ -10,7 +10,7 @@ import SearchPosts from "../components/searchPosts"
 const Blog = ({ data, navigate, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMdx.edges
-  const localSearchBlog = data.localSearchBlog
+  const {localSearchBlog} = data
 
   return (
     <Layout location={location} title={siteTitle}>

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import "../src/theme/app.css"
+import "./theme/app.css"
 
 export default function HTML(props) {
   return (
@@ -22,7 +22,7 @@ export default function HTML(props) {
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
         <div
-          key={`body`}
+          key="body"
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: props.body }}
         />

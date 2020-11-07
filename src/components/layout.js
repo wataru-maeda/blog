@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Switch from "../components/switch"
-import Search from "../components/search"
+import Switch from "./switch"
+import Search from "./search"
 import { rhythm, scale } from "../utils/typography"
 
 const styles = {

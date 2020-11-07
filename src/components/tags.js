@@ -1,6 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
-import { StaticQuery, graphql } from "gatsby"
+import { Link , StaticQuery, graphql } from "gatsby"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHashtag } from "@fortawesome/free-solid-svg-icons"
 import kebabCase from "lodash/kebabCase"
