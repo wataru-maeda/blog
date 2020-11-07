@@ -16,6 +16,7 @@ const lightTheme = {
   shadow: colors.shadow,
   hr: `hsla(0, 0%, 100%, 0.2)`,
   snsLink: colors.gray_dark,
+  tagBg: colors.gray_light,
   backgroundColor: "var(--bg)",
 }
 
@@ -28,6 +29,7 @@ const darkTheme = {
   shadow: "transparent",
   hr: "hsla(0, 0%, 0%, 0.2)",
   snsLink: "white",
+  tagBg: colors.gray_dark,
   backgroundColor: "var(--bg)",
 }
 

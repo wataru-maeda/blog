@@ -6,7 +6,9 @@ import { rhythm } from "../utils/typography"
 
 const styles = {
   root: {
-    boxShadow: `none`,
+    display: "flex",
+    boxShadow: "none",
+    width: "48%",
   },
   container: {
     backgroundImage: "var(--post)",
@@ -15,6 +17,7 @@ const styles = {
     marginBottom: rhythm(1),
     overflow: "hidden",
     textAlign: "center",
+    width: "100%",
   },
   thumbnail: {
     width: "100%",

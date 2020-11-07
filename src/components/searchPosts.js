@@ -5,8 +5,17 @@ import * as queryString from "query-string"
 import Post from "./post"
 import Connector from "../utils/connector"
 
+const styles = {
+  root: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    width: "100%",
+  },
+}
+
 const SearchedPosts = ({ results }) => (
-  <div style={{ flex: 1 }}>
+  <>
     {results.length > 0 ? (
       results.map(node => {
         const props = {
@@ -23,11 +32,11 @@ const SearchedPosts = ({ results }) => (
         Sorry, couldn't find any posts matching this search.
       </p>
     )}
-  </div>
+  </>
 )
 
 const AllPosts = ({ posts }) => (
-  <div style={{ flex: 1 }}>
+  <>
     {posts.map(({ node }) => {
       const props = {
         date: node.frontmatter.date,
@@ -39,7 +48,7 @@ const AllPosts = ({ posts }) => (
       }
       return <Post {...props} />
     })}
-  </div>
+  </>
 )
 
 const SearchPosts = ({
@@ -63,10 +72,10 @@ const SearchPosts = ({
     setQuery(keyword)
   }, [keyword])
 
-  return query ? (
-    <SearchedPosts results={results} />
-  ) : (
-    <AllPosts posts={posts} />
+  return (
+    <div style={styles.root}>
+      {query ? <SearchedPosts results={results} /> : <AllPosts posts={posts} />}
+    </div>
   )
 }
 
