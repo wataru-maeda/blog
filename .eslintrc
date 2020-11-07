@@ -33,7 +33,6 @@
     "Request": true,
     "fetch": true
   },
-  // "parser": "babel-eslint",
   "settings": {
     "import/resolver": {
       "node": {
