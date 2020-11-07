@@ -7,7 +7,7 @@ import { rhythm, scale } from "../utils/typography"
 
 const styles = {
   root: {
-    color: "var(--textNormal)",
+    color: 'var(--textNormal)',
     background: "var(--bg)",
     backgroundImage: "var(--bg)",
     transition: "color 0.2s ease-out, background 0.2s ease-out",

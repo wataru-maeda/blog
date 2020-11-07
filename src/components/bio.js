@@ -82,10 +82,10 @@ const Bio = data => {
               break
           }
           return (
-            <a href={uri} target="_blank" className="sns-link">
+            <a href={uri} target="_blank" rel="noreferrer" className="sns-link">
               <FontAwesomeIcon
                 icon={icon}
-                style={{ color: "var(--snsLink)", margin: `0 ${rhythm(0.4)}` }}
+                style={{ color: 'var(--snsLink)', margin: `0 ${rhythm(0.4)}` }}
               />
             </a>
           )
