@@ -1,19 +1,19 @@
-import React from "react"
-import { Link , StaticQuery, graphql } from "gatsby"
+import React from 'react'
+import { Link, StaticQuery, graphql } from 'gatsby'
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHashtag } from "@fortawesome/free-solid-svg-icons"
-import kebabCase from "lodash/kebabCase"
-import { rhythm } from "../utils/typography"
-import "../theme/app.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHashtag } from '@fortawesome/free-solid-svg-icons'
+import kebabCase from 'lodash/kebabCase'
+import { rhythm } from '../utils/typography'
+import '../theme/app.css'
 
 const styles = {
   root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundImage: "var(--post)",
-    background: "var(--post)",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundImage: 'var(--post)',
+    background: 'var(--post)',
     borderRadius: rhythm(0.3),
     width: rhythm(14),
     marginLeft: rhythm(2),
@@ -21,10 +21,10 @@ const styles = {
     padding: rhythm(0.6),
   },
   tagContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexWrap: "wrap",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
   },
   header: {
     margin: `0 0 ${rhythm(0.6)}`,
@@ -32,13 +32,13 @@ const styles = {
   tag: {
     padding: `${rhythm(0.1)} ${rhythm(0.4)}`,
     borderRadius: 20,
-    backgroundColor: "var(--tagBg)",
+    backgroundColor: 'var(--tagBg)',
     margin: rhythm(0.15),
   },
   link: {
-    color: "var(--textNormal)",
-    textDecoration: "none",
-    boxShadow: "none",
+    color: 'var(--textNormal)',
+    textDecoration: 'none',
+    boxShadow: 'none',
   },
 }
 
@@ -53,7 +53,7 @@ const Tags = ({ tags }) => {
             <Link to={`/tags/${kebabCase(fieldValue)}/`} style={styles.link}>
               <FontAwesomeIcon
                 icon={faHashtag}
-                style={{ color: "var(--snsLink)", marginRight: rhythm(0.2) }}
+                style={{ color: 'var(--snsLink)', marginRight: rhythm(0.2) }}
               />
               {fieldValue}
             </Link>

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { colors } from "../theme"
-import "../theme/app.css"
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { colors } from '../theme'
+import '../theme/app.css'
 
 // ------------------------------------
 // Styles
@@ -9,28 +9,28 @@ import "../theme/app.css"
 
 const lightTheme = {
   bg: colors.gray_light,
-  headerBg: "white",
-  post: "white",
+  headerBg: 'white',
+  post: 'white',
   textNormal: colors.gray_dark,
   textLink: colors.blue,
   shadow: colors.shadow,
   hr: `hsla(0, 0%, 100%, 0.2)`,
   snsLink: colors.gray_dark,
   tagBg: colors.gray_light,
-  backgroundColor: "var(--bg)",
+  backgroundColor: 'var(--bg)',
 }
 
 const darkTheme = {
   bg: colors.gray_heavy,
-  headerBg: "transparent",
+  headerBg: 'transparent',
   post: colors.black_to_gray,
   textNormal: colors.gray_light,
   textLink: colors.blue_light,
-  shadow: "transparent",
-  hr: "hsla(0, 0%, 0%, 0.2)",
-  snsLink: "white",
+  shadow: 'transparent',
+  hr: 'hsla(0, 0%, 0%, 0.2)',
+  snsLink: 'white',
   tagBg: colors.gray_dark,
-  backgroundColor: "var(--bg)",
+  backgroundColor: 'var(--bg)',
 }
 
 // ------------------------------------
@@ -48,7 +48,7 @@ const Switch = () => {
   // ------------------------------------
   const toggleSwitch = () => {
     const theme = isOn ? darkTheme : lightTheme
-    Object.keys(theme).forEach(key => {
+    Object.keys(theme).forEach((key) => {
       const cssKey = `--${key}`
       const cssVal = theme[key]
       document.body.style.setProperty(cssKey, cssVal)
@@ -61,7 +61,7 @@ const Switch = () => {
   // ------------------------------------
   useEffect(() => {
     const theme = { ...colors, ...darkTheme }
-    Object.keys(theme).forEach(key => {
+    Object.keys(theme).forEach((key) => {
       const cssKey = `--${key}`
       const cssVal = theme[key]
       document.body.style.setProperty(cssKey, cssVal)
@@ -76,18 +76,18 @@ const Switch = () => {
         layout
         className="handle"
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 700,
           damping: 30,
         }}
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <span style={{ fontSize: 20 }}>{isOn ? "🌞" : "🌛"}</span>
+        <span style={{ fontSize: 20 }}>{isOn ? '🌞' : '🌛'}</span>
       </motion.div>
     </div>
   )

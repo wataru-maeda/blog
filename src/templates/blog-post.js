@@ -1,11 +1,11 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import Bio from '../components/bio'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import { rhythm, scale } from '../utils/typography'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class BlogPostTemplate extends React.Component {
     const tableOfContents = this.props.data.mdx.tableOfContents.items
     const { previous, next } = this.props.pageContext
 
-    console.log("[##] table of contents", tableOfContents)
+    console.log('[##] table of contents', tableOfContents)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>

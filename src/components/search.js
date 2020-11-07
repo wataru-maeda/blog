@@ -1,14 +1,14 @@
-import React from "react"
-import { PropTypes } from "prop-types"
-import Connector from "../utils/connector"
-import { rhythm } from "../utils/typography"
-import { colors } from "../theme"
+import React from 'react'
+import { PropTypes } from 'prop-types'
+import Connector from '../utils/connector'
+import { rhythm } from '../utils/typography'
+import { colors } from '../theme'
 
 const styles = {
   root: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderBottom: `${rhythm(1 / 8)} solid ${colors.green}`,
   },
   search: {
@@ -18,8 +18,8 @@ const styles = {
   },
   input: {
     color: colors.gray_light,
-    background: "transparent",
-    border: "none",
+    background: 'transparent',
+    border: 'none',
   },
 }
 
@@ -61,10 +61,10 @@ Search.propTypes = {
 
 Search.defaultProps = {
   action: {},
-  keyword: "",
+  keyword: '',
 }
 
-export default props => (
+export default (props) => (
   <Connector>
     {({
       actions,

@@ -89,8 +89,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "lint": "node_modules/.bin/eslint src/ --fix",
-    "precommit": "cross-env NODE_ENV=production lint-staged"
+    "lint": "node_modules/.bin/eslint src/ --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -109,9 +108,9 @@
   },
   "lint-staged": {
     "*.{js,jsx,css}": [
-      "pretty-quick --staged",
+      "yarn format",
       "yarn lint",
-      "jest --bail --findRelatedTests"
+      "yarn test"
     ]
   }
 }

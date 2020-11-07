@@ -1,8 +1,8 @@
-import { Component } from "react"
-import PropTypes from "prop-types"
-import { connect } from "react-redux"
-import { bindActionCreators } from "redux"
-import { actions as searchActions } from "../modules/search.module"
+import { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actions as searchActions } from '../modules/search.module'
 
 class Connector extends Component {
   render() {
@@ -12,10 +12,10 @@ class Connector extends Component {
   }
 }
 
-const mapStateToProps = state => ({ state })
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state) => ({ state })
+const mapDispatchToProps = (dispatch) => {
   const actionList = [
-    { label: "search", value: searchActions },
+    { label: 'search', value: searchActions },
     // add more actions here
   ]
 
@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => {
         ...prev,
         [cur.label]: bindActionCreators(cur.value, dispatch),
       }),
-      {}
+      {},
     ),
   }
 }

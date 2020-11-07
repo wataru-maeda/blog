@@ -1,22 +1,22 @@
-import Typography from "typography"
-import Wordpress2016 from "typography-theme-wordpress-2016"
+import Typography from 'typography'
+import Wordpress2016 from 'typography-theme-wordpress-2016'
 
 Wordpress2016.overrideThemeStyles = () => {
   return {
-    "a.gatsby-resp-image-link": {
+    'a.gatsby-resp-image-link': {
       boxShadow: `none`,
     },
     a: {
-      color: "var(--textLink)",
+      color: 'var(--textLink)',
     },
-    "a.anchor": {
-      boxShadow: "none",
+    'a.anchor': {
+      boxShadow: 'none',
     },
     'a.anchor svg[aria-hidden="true"]': {
-      stroke: "var(--textLink)",
+      stroke: 'var(--textLink)',
     },
     hr: {
-      background: "var(--hr)",
+      background: 'var(--hr)',
     },
   }
 }
@@ -31,5 +31,5 @@ if (process.env.NODE_ENV !== `production`) {
 }
 
 export default typography
-export const {rhythm} = typography
-export const {scale} = typography
+export const { rhythm } = typography
+export const { scale } = typography
