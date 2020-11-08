@@ -71,7 +71,12 @@ const Switch = () => {
   // Rendering
   // ------------------------------------
   return (
-    <div className="switch" data-isOn={isOn} onClick={toggleSwitch}>
+    <button
+      type="button"
+      className="switch"
+      data-isOn={isOn}
+      onClick={toggleSwitch}
+    >
       <motion.div
         layout
         className="handle"
@@ -89,7 +94,7 @@ const Switch = () => {
       >
         <span style={{ fontSize: 20 }}>{isOn ? '🌞' : '🌛'}</span>
       </motion.div>
-    </div>
+    </button>
   )
 }
 

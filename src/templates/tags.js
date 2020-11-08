@@ -35,26 +35,13 @@ const Tags = ({ pageContext, data }) => {
 }
 
 Tags.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-  }),
-  data: PropTypes.shape({
-    allMdx: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-            }),
-          }),
-        }).isRequired,
-      ),
-    }),
-  }),
+  pageContext: PropTypes.shape({}),
+  data: PropTypes.shape({}),
+}
+
+Tags.defaultProps = {
+  pageContext: {},
+  data: {},
 }
 
 export default Tags

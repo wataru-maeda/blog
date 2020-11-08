@@ -35,26 +35,13 @@ const Categories = ({ pageContext, data }) => {
 }
 
 Categories.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-  }),
-  data: PropTypes.shape({
-    allMdx: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-            }),
-          }),
-        }).isRequired,
-      ),
-    }),
-  }),
+  pageContext: PropTypes.shape({}),
+  data: PropTypes.shape({}),
+}
+
+Categories.defaultProps = {
+  pageContext: {},
+  data: {},
 }
 
 export default Categories

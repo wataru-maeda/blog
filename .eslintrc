@@ -31,7 +31,8 @@
     "navigator": true,
     "Headers": true,
     "Request": true,
-    "fetch": true
+    "fetch": true,
+    "__PATH_PREFIX__": true
   },
   "settings": {
     "import/resolver": {

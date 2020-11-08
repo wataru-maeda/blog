@@ -4,6 +4,10 @@ import { PropTypes } from 'prop-types'
 import Img from 'gatsby-image'
 import { rhythm } from '../utils/typography'
 
+// ------------------------------------
+// Styles
+// ------------------------------------
+
 const styles = {
   root: {
     display: 'flex',
@@ -37,17 +41,28 @@ const styles = {
   },
 }
 
+// ------------------------------------
+// Helpers
+// ------------------------------------
+
+const getFluid = (thumbnail) => {
+  if (!thumbnail) return null
+  if (!thumbnail.childImageSharp) return null
+  return thumbnail.childImageSharp.fluid
+}
+
+// ------------------------------------
+// Classes
+// ------------------------------------
+
 const Post = ({ thumbnail, slug, title, date, description, excerpt }) => {
+  const fluid = getFluid(thumbnail)
   return (
     <Link style={styles.root} to={`${slug}`}>
       <div key={slug} style={styles.container}>
         <h3 style={styles.h3}>{title}</h3>
         <small style={styles.small}>{date}</small>
-        <Img
-          fluid={thumbnail?.childImageSharp?.fluid}
-          style={styles.thumbnail}
-          alt={title}
-        />
+        {fluid && <Img fluid={fluid} style={styles.thumbnail} alt={title} />}
         <p
           style={styles.p}
           dangerouslySetInnerHTML={{
@@ -60,13 +75,11 @@ const Post = ({ thumbnail, slug, title, date, description, excerpt }) => {
 }
 
 Post.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.shape({}),
+  props: PropTypes.shape({}),
 }
 
 Post.defaultProps = {
-  className: '',
-  style: {},
+  props: {},
 }
 
 export default Post
