@@ -31,9 +31,10 @@
   padding: 2px;
   cursor: pointer;
   margin: 0;
+  border: none;
 }
 
-.switch[data-isOn="true"] {
+.switch[data-isOn='true'] {
   justify-content: flex-end;
   background-color: var(--gray_light);
 }
@@ -58,7 +59,7 @@
 
 .sns-link:after {
   display: block;
-  content: "";
+  content: '';
   border-bottom: solid 3px var(--blue_light);
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;

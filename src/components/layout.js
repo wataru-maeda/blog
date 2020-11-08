@@ -1,30 +1,30 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
 
-import Switch from "../components/switch"
-import Search from "../components/search"
-import { rhythm, scale } from "../utils/typography"
+import Switch from './switch'
+import Search from './search'
+import { rhythm, scale } from '../utils/typography'
 
 const styles = {
   root: {
-    color: "var(--textNormal)",
-    background: "var(--bg)",
-    backgroundImage: "var(--bg)",
-    transition: "color 0.2s ease-out, background 0.2s ease-out",
-    minHeight: "100vh",
+    color: 'var(--textNormal)',
+    background: 'var(--bg)',
+    backgroundImage: 'var(--bg)',
+    transition: 'color 0.2s ease-out, background 0.2s ease-out',
+    minHeight: '100vh',
   },
   header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    background: "var(--headerBg)",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    background: 'var(--headerBg)',
     padding: `${rhythm(1)} ${rhythm(3)} ${rhythm(1 / 4)}`,
     marginBottom: rhythm(1),
   },
   headerContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   h1: {
     ...scale(1 / 2),
@@ -58,7 +58,7 @@ const Header = ({ location, title }) => {
   )
 }
 
-const Layout = props => {
+const Layout = (props) => {
   const { children } = props
   return (
     <div style={styles.root}>

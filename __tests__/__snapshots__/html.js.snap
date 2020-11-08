@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HTML renders correctly 1`] = `
+<html
+  lang="ja"
+>
+  <head>
+    <meta
+      charSet="utf-8"
+    />
+    <meta
+      content="ie=edge"
+      httpEquiv="x-ua-compatible"
+    />
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      href="opensearch.xml"
+      rel="search"
+      type="application/opensearchdescription+xml"
+    />
+  </head>
+  <body>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+      id="___gatsby"
+    />
+  </body>
+</html>
+`;

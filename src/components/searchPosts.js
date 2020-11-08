@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react"
-import { useFlexSearch } from "react-use-flexsearch"
-import * as queryString from "query-string"
+import React, { useState, useEffect } from 'react'
+import { useFlexSearch } from 'react-use-flexsearch'
+import * as queryString from 'query-string'
 
-import Post from "./post"
-import Connector from "../utils/connector"
+import Post from './post'
+import Connector from '../utils/connector'
 
 const styles = {
   root: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    width: "100%",
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    width: '100%',
   },
 }
 
 const SearchedPosts = ({ results }) => (
   <>
     {results.length > 0 ? (
-      results.map(node => {
+      results.map((node) => {
         const props = {
           date: node.date,
           title: node.title || node.slug,
@@ -28,8 +28,8 @@ const SearchedPosts = ({ results }) => (
         return <Post {...props} />
       })
     ) : (
-      <p style={{ textAlign: "center" }}>
-        Sorry, couldn't find any posts matching this search.
+      <p style={{ textAlign: 'center' }}>
+        Sorry, couldn&apos;t find any posts matching this search.
       </p>
     )}
   </>
@@ -59,16 +59,16 @@ const SearchPosts = ({
   keyword,
 }) => {
   const { search } = queryString.parse(location.search)
-  const [query, setQuery] = useState(search || "")
+  const [query, setQuery] = useState(search || '')
 
   const results = useFlexSearch(
     query,
     localSearchBlog.index,
-    JSON.parse(localSearchBlog.store)
+    JSON.parse(localSearchBlog.store),
   )
 
   useEffect(() => {
-    navigate(keyword ? `?search=${keyword}` : "/")
+    navigate(keyword ? `?search=${keyword}` : '/')
     setQuery(keyword)
   }, [keyword])
 
@@ -79,7 +79,7 @@ const SearchPosts = ({
   )
 }
 
-export default props => (
+export default (props) => (
   <Connector>
     {({
       state: {

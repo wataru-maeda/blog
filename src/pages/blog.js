@@ -1,16 +1,16 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 
 // import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Button from "../components/button"
-import SearchPosts from "../components/searchPosts"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+// import Button from '../components/button'
+import SearchPosts from '../components/searchPosts'
 
 const Blog = ({ data, navigate, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMdx.edges
-  const localSearchBlog = data.localSearchBlog
+  const { localSearchBlog } = data
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -22,9 +22,6 @@ const Blog = ({ data, navigate, location }) => {
         navigate={navigate}
         location={location}
       />
-      <Link to="/">
-        <Button marginTop="85px">Go Home</Button>
-      </Link>
     </Layout>
   )
 }
