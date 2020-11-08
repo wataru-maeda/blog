@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware, compose, combineReducers } from "redux"
-import thunk from "redux-thunk"
-import logger from "redux-logger"
-import search from "../modules/search.module"
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
+import search from '../modules/search.module'
 
-const analytics = () => next => action => {
+const analytics = () => (next) => (action) => {
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
     event: action.type,
@@ -22,7 +22,7 @@ const configureStore = (initialState = {}) => {
   // Middleware and store enhancers
   const middlewares = [
     thunk,
-    process.env.NODE_ENV !== "production" && logger,
+    process.env.NODE_ENV !== 'production' && logger,
     analytics,
   ].filter(Boolean)
   const enhancer = compose(applyMiddleware(...middlewares))

@@ -1,22 +1,22 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 
-import Bio from "../components/bio"
-import Tags from "../components/tags"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import SearchPosts from "../components/searchPosts"
-import { rhythm } from "../utils/typography"
+import Bio from '../components/bio'
+import Tags from '../components/tags'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import SearchPosts from '../components/searchPosts'
+import { rhythm } from '../utils/typography'
 
 const styles = {
   container: {
-    display: "flex",
+    display: 'flex',
     padding: `0 ${rhythm(3)}`,
   },
   side: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     width: rhythm(16),
   },
 }
@@ -25,7 +25,7 @@ const IndexPage = ({ data, navigate, location }) => {
   const { allMdx, site, localSearchBlog, categoriesGroup } = data
   const siteTitle = site.siteMetadata.title
   const posts = allMdx.edges
-  console.log("[##] categories", categoriesGroup)
+  console.log('[##] categories', categoriesGroup)
 
   return (
     <Layout location={location} title={siteTitle}>

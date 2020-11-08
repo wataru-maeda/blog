@@ -1,16 +1,16 @@
 const colors = {
   // gray
-  gray_heavy: "#222431",
-  gray_dark: "#282a37",
-  gray: "#7a7c84",
-  gray_light: "#d5d6db",
+  gray_heavy: '#222431',
+  gray_dark: '#282a37',
+  gray: '#7a7c84',
+  gray_light: '#d5d6db',
 
   // blue
-  blue: "#0372eb",
-  blue_light: "#09c0fb",
+  blue: '#0372eb',
+  blue_light: '#09c0fb',
 
   // green
-  green: "#aceb10",
+  green: '#aceb10',
 
   // gradient
   black_to_gray: `

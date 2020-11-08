@@ -1,5 +1,5 @@
-import sun from "../../content/assets/sun.svg"
-import moon from "../../content/assets/moon.svg"
+import sun from '../../content/assets/sun.svg'
+import moon from '../../content/assets/moon.svg'
 
 const images = {
   sun,

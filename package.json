@@ -39,7 +39,9 @@
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-remark": "^2.8.47",
     "gatsby-transformer-sharp": "^2.5.20",
+    "lodash": "^4.17.20",
     "netlify-cms-app": "^2.9.1",
+    "prop-types": "^15.7.2",
     "query-string": "^6.13.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -58,9 +60,23 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "babel-jest": "^26.6.3",
+    "babel-preset-gatsby": "^0.5.16",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
     "gatsby-cli": "^2.12.66",
     "gatsby-plugin-root-import": "^2.0.5",
-    "prettier": "^1.17.0"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.1.2",
+    "pretty-quick": "^3.1.0",
+    "react-test-renderer": "^17.0.1"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -75,9 +91,25 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "yarn pretty-quick",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "jest",
+    "lint": "node_modules/.bin/eslint src/ --fix"
+  },
+  "pre-commit": [
+    "format",
+    "lint",
+    "test"
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "bracketSpacing": true
   }
 }

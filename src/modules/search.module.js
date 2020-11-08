@@ -2,17 +2,17 @@
 // Constants
 // ------------------------------------
 
-const UPDATE_KEYWORD = "UPDATE_KEYWORD"
+const UPDATE_KEYWORD = 'UPDATE_KEYWORD'
 
 const initialState = {
-  keyword: "",
+  keyword: '',
 }
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-const updateKeyword = keyword => dispatch =>
+const updateKeyword = (keyword) => (dispatch) =>
   dispatch({
     type: UPDATE_KEYWORD,
     keyword,

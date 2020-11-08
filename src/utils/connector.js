@@ -1,8 +1,8 @@
-import { Component } from "react"
-import PropTypes from "prop-types"
-import { connect } from "react-redux"
-import { bindActionCreators } from "redux"
-import { actions as searchActions } from "../modules/search.module"
+import { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actions as searchActions } from '../modules/search.module'
 
 class Connector extends Component {
   render() {
@@ -12,10 +12,10 @@ class Connector extends Component {
   }
 }
 
-const mapStateToProps = state => ({ state })
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state) => ({ state })
+const mapDispatchToProps = (dispatch) => {
   const actionList = [
-    { label: "search", value: searchActions },
+    { label: 'search', value: searchActions },
     // add more actions here
   ]
 
@@ -25,15 +25,16 @@ const mapDispatchToProps = dispatch => {
         ...prev,
         [cur.label]: bindActionCreators(cur.value, dispatch),
       }),
-      {}
+      {},
     ),
   }
 }
 
 Connector.propTypes = {
-  state: PropTypes.any.isRequired,
-  actions: PropTypes.any.isRequired,
-  children: PropTypes.any.isRequired,
+  state: PropTypes.shape({}).isRequired,
+  actions: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.func])
+    .isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Connector)
