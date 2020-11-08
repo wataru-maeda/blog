@@ -99,7 +99,8 @@
   },
   "pre-commit": [
     "format",
-    "lint"
+    "lint",
+    "test"
   ],
   "eslintConfig": {
     "extends": "react-app"
