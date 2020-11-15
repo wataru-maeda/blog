@@ -26,6 +26,7 @@ const IndexPage = ({ data, navigate, location }) => {
   const siteTitle = site.siteMetadata.title
   const posts = allMdx.edges
   console.log('[##] categories', categoriesGroup)
+  console.log('[##] url', process.env.GATSBY_API_URL)
 
   return (
     <Layout location={location} title={siteTitle}>
