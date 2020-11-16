@@ -1,13 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faGlobe } from '@fortawesome/free-solid-svg-icons'
-import {
-  faGithub,
-  faTwitter,
-  faFacebook,
-} from '@fortawesome/free-brands-svg-icons'
 import Image from 'gatsby-image'
+import Icon from './icon'
 
 import { rhythm } from '../utils/typography'
 import { styler } from '../theme'
@@ -56,27 +50,21 @@ const Bio = (data) => {
       </p>
       <div className={styles.snsContainer}>
         {Object.keys(social).map((key) => {
-          let icon
           let uri
           switch (key) {
             case 'email':
-              icon = faEnvelope
               uri = `mailto: ${social[key]}`
               break
             case 'github':
-              icon = faGithub
               uri = `https://github.com/${social[key]}`
               break
             case 'twitter':
-              icon = faTwitter
               uri = `https://twitter.com/${social[key]}`
               break
             case 'facebook':
-              icon = faFacebook
               uri = `https://www.facebook.com/profile.php?id=${social[key]}`
               break
             case 'website':
-              icon = faGlobe
               uri = social[key]
               break
             default:
@@ -84,8 +72,8 @@ const Bio = (data) => {
           }
           return (
             <a href={uri} target="_blank" rel="noreferrer" className="sns-link">
-              <FontAwesomeIcon
-                icon={icon}
+              <Icon
+                name={key}
                 style={{ color: 'var(--snsLink)', margin: `0 ${rhythm(0.4)}` }}
               />
             </a>

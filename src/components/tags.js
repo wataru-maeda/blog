@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHashtag } from '@fortawesome/free-solid-svg-icons'
 import kebabCase from 'lodash/kebabCase'
+import Icon from './icon'
 import { rhythm } from '../utils/typography'
 import { styler } from '../theme'
 import '../theme/app.css'
@@ -41,32 +39,27 @@ const styles = styler({
     textDecoration: 'none',
     boxShadow: 'none',
   },
+  icon: {
+    color: 'var(--snsLink)',
+    marginRight: rhythm(0.2),
+  },
 })
 
-const Tags = ({ tags }) => {
-  const { group } = tags
-  return (
-    <div className={styles.root}>
-      <h4 className={styles.header}>タグ一覧</h4>
-      <div className={styles.tagContainer}>
-        {group.map(({ fieldValue }) => (
-          <span className={styles.tag}>
-            <Link
-              to={`/tags/${kebabCase(fieldValue)}/`}
-              className={styles.link}
-            >
-              <FontAwesomeIcon
-                icon={faHashtag}
-                style={{ color: 'var(--snsLink)', marginRight: rhythm(0.2) }}
-              />
-              {fieldValue}
-            </Link>
-          </span>
-        ))}
-      </div>
+const Tags = ({ tags: { group } }) => (
+  <div className={styles.root}>
+    <h4 className={styles.header}>タグ一覧</h4>
+    <div className={styles.tagContainer}>
+      {group.map(({ fieldValue }) => (
+        <span className={styles.tag}>
+          <Link to={`/tags/${kebabCase(fieldValue)}/`} className={styles.link}>
+            <Icon name="hashtag" className={styles.icon} />
+            {fieldValue}
+          </Link>
+        </span>
+      ))}
     </div>
-  )
-}
+  </div>
+)
 
 const tagsQuery = graphql`
   query {
