@@ -56,7 +56,18 @@ const getFluid = (thumbnail) => {
 // Classes
 // ------------------------------------
 
-const Post = ({ thumbnail, slug, title, date, description, excerpt }) => {
+const Post = ({
+  thumbnail,
+  slug,
+  title,
+  date,
+  description,
+  excerpt,
+  tags,
+  categories,
+}) => {
+  console.log('[##] tags', tags)
+  console.log('[##] categories', categories)
   const fluid = getFluid(thumbnail)
   return (
     <Link className={styles.root} to={`${slug}`}>

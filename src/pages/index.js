@@ -27,7 +27,7 @@ const IndexPage = ({ data, navigate, location }) => {
   const siteTitle = site.siteMetadata.title
   const posts = allMdx.edges
   console.log('[##] categories', categoriesGroup)
-  console.log('[##] url', process.env.GATSBY_API_URL)
+  // console.log('[##] url', process.env.GATSBY_API_URL)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -72,6 +72,8 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
+            categories
             thumbnail {
               childImageSharp {
                 fluid(maxWidth: 800) {
