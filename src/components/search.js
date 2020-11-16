@@ -2,8 +2,7 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import Connector from '../utils/connector'
 import { rhythm } from '../utils/typography'
-import { colors , styler } from '../theme'
-
+import { colors, styler } from '../theme'
 
 const styles = styler({
   root: {
