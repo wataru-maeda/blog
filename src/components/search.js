@@ -2,9 +2,10 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import Connector from '../utils/connector'
 import { rhythm } from '../utils/typography'
-import { colors } from '../theme'
+import { colors , styler } from '../theme'
 
-const styles = {
+
+const styles = styler({
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -21,7 +22,7 @@ const styles = {
     background: 'transparent',
     border: 'none',
   },
-}
+})
 
 const Search = ({ actions, keyword }) => {
   // ------------------------------------
@@ -35,12 +36,12 @@ const Search = ({ actions, keyword }) => {
   // Renderings
   // ------------------------------------
   return (
-    <div style={styles.root}>
+    <div className={styles.root}>
       <svg
         focusable="false"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        style={styles.search}
+        className={styles.search}
       >
         <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
       </svg>
@@ -48,7 +49,7 @@ const Search = ({ actions, keyword }) => {
         value={keyword}
         onChange={onChange}
         placeholder="記事を検索"
-        style={styles.input}
+        className={styles.input}
       />
     </div>
   )

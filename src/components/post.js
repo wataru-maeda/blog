@@ -3,12 +3,13 @@ import { Link } from 'gatsby'
 import { PropTypes } from 'prop-types'
 import Img from 'gatsby-image'
 import { rhythm } from '../utils/typography'
+import { styler } from '../theme'
 
 // ------------------------------------
 // Styles
 // ------------------------------------
 
-const styles = {
+const styles = styler({
   root: {
     display: 'flex',
     boxShadow: 'none',
@@ -39,7 +40,7 @@ const styles = {
     color: 'var(--textNormal)',
     margin: `0 ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
   },
-}
+})
 
 // ------------------------------------
 // Helpers
@@ -58,13 +59,15 @@ const getFluid = (thumbnail) => {
 const Post = ({ thumbnail, slug, title, date, description, excerpt }) => {
   const fluid = getFluid(thumbnail)
   return (
-    <Link style={styles.root} to={`${slug}`}>
-      <div key={slug} style={styles.container}>
-        <h3 style={styles.h3}>{title}</h3>
-        <small style={styles.small}>{date}</small>
-        {fluid && <Img fluid={fluid} style={styles.thumbnail} alt={title} />}
+    <Link className={styles.root} to={`${slug}`}>
+      <div key={slug} className={styles.container}>
+        <h3 className={styles.h3}>{title}</h3>
+        <small className={styles.small}>{date}</small>
+        {fluid && (
+          <Img fluid={fluid} className={styles.thumbnail} alt={title} />
+        )}
         <p
-          style={styles.p}
+          className={styles.p}
           dangerouslySetInnerHTML={{
             __html: description || excerpt,
           }}

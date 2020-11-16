@@ -10,9 +10,10 @@ import {
 import Image from 'gatsby-image'
 
 import { rhythm } from '../utils/typography'
+import { styler } from '../theme'
 import '../theme/app.css'
 
-const styles = {
+const styles = styler({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -35,16 +36,16 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-}
+})
 
 const Bio = (data) => {
   const { author, social } = data.site.siteMetadata
   return (
-    <div style={styles.root}>
+    <div className={styles.root}>
       <Image
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
-        style={styles.profile}
+        className={styles.profile}
         imgStyle={{
           borderRadius: `50%`,
         }}
@@ -53,7 +54,7 @@ const Bio = (data) => {
         Lorem ipsum is placeholder text commonly used in the graphic, print, and
         publishing industries for previewing layouts and visual mockups.
       </p>
-      <div style={styles.snsContainer}>
+      <div className={styles.snsContainer}>
         {Object.keys(social).map((key) => {
           let icon
           let uri
