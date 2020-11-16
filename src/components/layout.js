@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 
 import Switch from './switch'
 import Search from './search'
 import { rhythm, scale } from '../utils/typography'
 import { styler } from '../theme'
+import Icon from './icon'
 
 const styles = styler({
   root: {
@@ -32,13 +33,20 @@ const styles = styler({
     margin: 0,
   },
   link: {
+    fontSize: '1.2rem',
     boxShadow: `none`,
     textDecoration: `none`,
     color: `inherit`,
   },
+  category: {
+    fontSize: '1.2rem',
+    marginLeft: rhythm(2 / 3),
+    color: 'var(--snsLink)',
+    boxShadow: 'none',
+  },
 })
 
-const Header = ({ location, title }) => {
+const Header = ({ location, categoriesGroup: { group } }) => {
   const blogPath = `${__PATH_PREFIX__}/blog/`
   return (
     <div className={styles.header}>
@@ -47,8 +55,17 @@ const Header = ({ location, title }) => {
           className={styles.link}
           to={location.pathname === blogPath ? `/blog/` : `/`}
         >
-          {title}
+          <Icon name="home" />
         </Link>
+
+        {group.map(({ fieldValue }) => (
+          <Link
+            className={`sns-link ${styles.category}`}
+            to={`/categories/${fieldValue.toLowerCase()}/`}
+          >
+            {fieldValue}
+          </Link>
+        ))}
       </h1>
       <div className={styles.headerContainer}>
         <Search />
@@ -59,16 +76,30 @@ const Header = ({ location, title }) => {
   )
 }
 
-const Layout = (props) => {
+const Layout = (props) => (data) => {
+  console.log('[##] props', props)
+  console.log('[##] data', data)
   const { children } = props
   return (
     <div className={styles.root}>
       <header>
-        <Header {...props} />
+        <Header {...props} {...data} />
       </header>
       <main>{children}</main>
     </div>
   )
 }
 
-export default Layout
+const layoutQuery = graphql`
+  query LayoutQuery {
+    categoriesGroup: allMdx(limit: 2000) {
+      group(field: frontmatter___categories) {
+        fieldValue
+      }
+    }
+  }
+`
+
+export default (props) => (
+  <StaticQuery query={layoutQuery} render={Layout(props)} />
+)
