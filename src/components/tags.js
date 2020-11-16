@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons'
 import kebabCase from 'lodash/kebabCase'
 import { rhythm } from '../utils/typography'
+import { styler } from '../theme'
 import '../theme/app.css'
 
-const styles = {
+const styles = styler({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -40,17 +41,20 @@ const styles = {
     textDecoration: 'none',
     boxShadow: 'none',
   },
-}
+})
 
 const Tags = ({ tags }) => {
   const { group } = tags
   return (
-    <div style={styles.root}>
-      <h4 style={styles.header}>タグ一覧</h4>
-      <div style={styles.tagContainer}>
+    <div className={styles.root}>
+      <h4 className={styles.header}>タグ一覧</h4>
+      <div className={styles.tagContainer}>
         {group.map(({ fieldValue }) => (
-          <span style={styles.tag}>
-            <Link to={`/tags/${kebabCase(fieldValue)}/`} style={styles.link}>
+          <span className={styles.tag}>
+            <Link
+              to={`/tags/${kebabCase(fieldValue)}/`}
+              className={styles.link}
+            >
               <FontAwesomeIcon
                 icon={faHashtag}
                 style={{ color: 'var(--snsLink)', marginRight: rhythm(0.2) }}
