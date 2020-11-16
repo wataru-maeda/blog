@@ -3,16 +3,17 @@ import { useFlexSearch } from 'react-use-flexsearch'
 import * as queryString from 'query-string'
 
 import Post from './post'
+import { styler } from '../theme'
 import Connector from '../utils/connector'
 
-const styles = {
+const styles = styler({
   root: {
     display: 'flex',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
     width: '100%',
   },
-}
+})
 
 const SearchedPosts = ({ results }) => (
   <>
@@ -73,7 +74,7 @@ const SearchPosts = ({
   }, [keyword])
 
   return (
-    <div style={styles.root}>
+    <div className={styles.root}>
       {query ? <SearchedPosts results={results} /> : <AllPosts posts={posts} />}
     </div>
   )

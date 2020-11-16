@@ -4,8 +4,9 @@ import { Link } from 'gatsby'
 import Switch from './switch'
 import Search from './search'
 import { rhythm, scale } from '../utils/typography'
+import { styler } from '../theme'
 
-const styles = {
+const styles = styler({
   root: {
     color: 'var(--textNormal)',
     background: 'var(--bg)',
@@ -35,21 +36,21 @@ const styles = {
     textDecoration: `none`,
     color: `inherit`,
   },
-}
+})
 
 const Header = ({ location, title }) => {
   const blogPath = `${__PATH_PREFIX__}/blog/`
   return (
-    <div style={styles.header}>
-      <h1 style={styles.h1}>
+    <div className={styles.header}>
+      <h1 className={styles.h1}>
         <Link
-          style={styles.link}
+          className={styles.link}
           to={location.pathname === blogPath ? `/blog/` : `/`}
         >
           {title}
         </Link>
       </h1>
-      <div style={styles.headerContainer}>
+      <div className={styles.headerContainer}>
         <Search />
         <span style={{ width: rhythm(1) }} />
         <Switch />
@@ -61,7 +62,7 @@ const Header = ({ location, title }) => {
 const Layout = (props) => {
   const { children } = props
   return (
-    <div style={styles.root}>
+    <div className={styles.root}>
       <header>
         <Header {...props} />
       </header>

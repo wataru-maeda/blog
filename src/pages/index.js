@@ -7,8 +7,9 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import SearchPosts from '../components/searchPosts'
 import { rhythm } from '../utils/typography'
+import { styler } from '../theme'
 
-const styles = {
+const styles = styler({
   container: {
     display: 'flex',
     padding: `0 ${rhythm(3)}`,
@@ -19,7 +20,7 @@ const styles = {
     alignItems: 'center',
     width: rhythm(16),
   },
-}
+})
 
 const IndexPage = ({ data, navigate, location }) => {
   const { allMdx, site, localSearchBlog, categoriesGroup } = data
@@ -31,14 +32,14 @@ const IndexPage = ({ data, navigate, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <div style={styles.container}>
+      <div className={styles.container}>
         <SearchPosts
           posts={posts}
           localSearchBlog={localSearchBlog}
           navigate={navigate}
           location={location}
         />
-        <div style={styles.side}>
+        <div className={styles.side}>
           <Bio />
           <Tags />
         </div>
