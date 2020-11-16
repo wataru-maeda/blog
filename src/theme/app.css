@@ -22,8 +22,8 @@
 /* switch  */
 
 .switch {
-  width: 54px;
-  height: 34px;
+  width: 48px;
+  height: 29px;
   background-color: rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: flex-start;
@@ -40,10 +40,10 @@
 }
 
 .handle {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 12px;
   padding: 5px;
   margin: 0;
 }
