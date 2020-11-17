@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { PropTypes } from 'prop-types'
 import Img from 'gatsby-image'
+import Tag from './tag'
 import { rhythm } from '../utils/typography'
 import { styler } from '../theme'
 
@@ -27,12 +28,12 @@ const styles = styler({
   thumbnail: {
     width: '100%',
   },
-  h3: {
-    fontSize: rhythm(1),
+  title: {
+    fontSize: rhythm(2 / 3),
     fontWeight: 'normal',
     margin: `${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
   },
-  small: {
+  date: {
     color: 'var(--textNormal)',
     margin: `0 ${rhythm(1 / 2)} ${rhythm(1)}`,
   },
@@ -72,8 +73,9 @@ const Post = ({
   return (
     <Link className={styles.root} to={`${slug}`}>
       <div key={slug} className={styles.container}>
-        <h3 className={styles.h3}>{title}</h3>
-        <small className={styles.small}>{date}</small>
+        <h3 className={styles.title}>{title}</h3>
+        <small className={styles.date}>{date}</small>
+        {categories && categories[0]}
         {fluid && (
           <Img fluid={fluid} className={styles.thumbnail} alt={title} />
         )}
@@ -83,6 +85,7 @@ const Post = ({
             __html: description || excerpt,
           }}
         />
+        {tags && tags.map((name) => <Tag name={name} />)}
       </div>
     </Link>
   )
