@@ -42,6 +42,7 @@ const styles = styler({
     marginLeft: rhythm(2 / 3),
     color: 'var(--snsLink)',
     boxShadow: 'none',
+    textDecoration: 'none',
   },
 })
 

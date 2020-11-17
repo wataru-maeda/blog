@@ -17,11 +17,12 @@ const styles = styler({
     color: 'var(--textNormal)',
     textDecoration: 'none',
     boxShadow: 'none',
+    fontSize: rhythm(0.5),
   },
   icon: {
     color: 'var(--snsLink)',
     marginRight: rhythm(0.2),
-    fontSize: 14,
+    fontSize: rhythm(0.4),
   },
 })
 

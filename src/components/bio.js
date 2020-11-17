@@ -20,15 +20,25 @@ const styles = styler({
     padding: rhythm(0.6),
   },
   profile: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginBottom: rhythm(0.4),
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginBottom: rhythm(1 / 2),
+  },
+  name: {
+    color: 'var(--textNormal)',
+    paddingBottom: rhythm(1 / 3),
+    borderBottom: '2px solid var(--textLink)',
+    marginBottom: rhythm(1 / 2),
   },
   snsContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  icon: {
+    color: 'var(--snsLink)',
+    margin: `0 ${rhythm(0.4)}`,
   },
 })
 
@@ -44,9 +54,9 @@ const Bio = (data) => {
           borderRadius: `50%`,
         }}
       />
+      <h4 className={styles.name}>Wataru</h4>
       <p style={{ textAlign: 'center' }}>
-        Lorem ipsum is placeholder text commonly used in the graphic, print, and
-        publishing industries for previewing layouts and visual mockups.
+        iOS開発5年、ここ2年はReactばかり触ってます。隙間時間にweb-app、mobile-app開発してます。バンクーバー在住。現地のソフトウェア開発会社に勤務。
       </p>
       <div className={styles.snsContainer}>
         {Object.keys(social).map((key) => {
@@ -72,10 +82,7 @@ const Bio = (data) => {
           }
           return (
             <a href={uri} target="_blank" rel="noreferrer" className="sns-link">
-              <Icon
-                name={key}
-                style={{ color: 'var(--snsLink)', margin: `0 ${rhythm(0.4)}` }}
-              />
+              <Icon name={key} className={styles.icon} />
             </a>
           )
         })}
@@ -88,7 +95,7 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 60, height: 60) {
           ...GatsbyImageSharpFixed
         }
       }

@@ -5,6 +5,8 @@ import Img from 'gatsby-image'
 import Tag from './tag'
 import { rhythm } from '../utils/typography'
 import { styler } from '../theme'
+import Icon from '../components/icon'
+import '../theme/app.css'
 
 // ------------------------------------
 // Styles
@@ -12,11 +14,6 @@ import { styler } from '../theme'
 
 const styles = styler({
   root: {
-    display: 'flex',
-    boxShadow: 'none',
-    width: '48%',
-  },
-  container: {
     backgroundImage: 'var(--post)',
     background: 'var(--post)',
     borderRadius: rhythm(0.3),
@@ -40,6 +37,20 @@ const styles = styler({
   p: {
     color: 'var(--textNormal)',
     margin: `0 ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
+  },
+  tagsContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginBottom: rhythm(1),
+  },
+  link: {
+    display: 'inline-block',
+    padding: `${rhythm(1 / 4)} ${rhythm(1 / 2)}`,
+    marginBottom: rhythm(1 / 2),
+    textDecoration: 'none',
+    fontWeight: 'bold',
   },
 })
 
@@ -71,10 +82,10 @@ const Post = ({
   console.log('[##] categories', categories)
   const fluid = getFluid(thumbnail)
   return (
-    <div key={slug} className={styles.container}>
+    <div key={slug} className={styles.root}>
       <h3 className={styles.title}>{title}</h3>
       <small className={styles.date}>{date}</small>
-      {categories && categories[0]}
+      {Array.isArray(categories) && categories.length > 0 && categories[0]}
       {fluid && <Img fluid={fluid} className={styles.thumbnail} alt={title} />}
       <p
         className={styles.p}
@@ -82,9 +93,12 @@ const Post = ({
           __html: description || excerpt,
         }}
       />
-      {tags && tags.map((name) => <Tag name={name} />)}
-      <Link className={styles.root} to={`${slug}`}>
-        Read More
+      <div className={styles.tagsContainer}>
+        {tags && tags.map((name) => <Tag name={name} />)}
+      </div>
+      <Link className={`${styles.link} readme-link`} to={`${slug}`}>
+        READ MORE &nbsp;
+        <Icon name="right" />
       </Link>
     </div>
   )

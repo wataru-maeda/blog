@@ -26,6 +26,7 @@ const styles = styler({
   },
   header: {
     margin: `0 0 ${rhythm(0.6)}`,
+    color: 'var(--textNormal)',
   },
 })
 
