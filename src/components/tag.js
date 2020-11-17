@@ -21,6 +21,7 @@ const styles = styler({
   icon: {
     color: 'var(--snsLink)',
     marginRight: rhythm(0.2),
+    fontSize: 14,
   },
 })
 

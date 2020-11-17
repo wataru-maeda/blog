@@ -30,8 +30,8 @@ const styles = styler({
   },
   title: {
     fontSize: rhythm(2 / 3),
-    fontWeight: 'normal',
     margin: `${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
+    color: 'var(--textNormal)',
   },
   date: {
     color: 'var(--textNormal)',
@@ -71,23 +71,22 @@ const Post = ({
   console.log('[##] categories', categories)
   const fluid = getFluid(thumbnail)
   return (
-    <Link className={styles.root} to={`${slug}`}>
-      <div key={slug} className={styles.container}>
-        <h3 className={styles.title}>{title}</h3>
-        <small className={styles.date}>{date}</small>
-        {categories && categories[0]}
-        {fluid && (
-          <Img fluid={fluid} className={styles.thumbnail} alt={title} />
-        )}
-        <p
-          className={styles.p}
-          dangerouslySetInnerHTML={{
-            __html: description || excerpt,
-          }}
-        />
-        {tags && tags.map((name) => <Tag name={name} />)}
-      </div>
-    </Link>
+    <div key={slug} className={styles.container}>
+      <h3 className={styles.title}>{title}</h3>
+      <small className={styles.date}>{date}</small>
+      {categories && categories[0]}
+      {fluid && <Img fluid={fluid} className={styles.thumbnail} alt={title} />}
+      <p
+        className={styles.p}
+        dangerouslySetInnerHTML={{
+          __html: description || excerpt,
+        }}
+      />
+      {tags && tags.map((name) => <Tag name={name} />)}
+      <Link className={styles.root} to={`${slug}`}>
+        Read More
+      </Link>
+    </div>
   )
 }
 

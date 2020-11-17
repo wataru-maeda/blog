@@ -20,8 +20,7 @@ const styles = styler({
     justifyContent: 'space-between',
     alignItems: 'center',
     background: 'var(--headerBg)',
-    padding: `${rhythm(1)} ${rhythm(3)} ${rhythm(1 / 4)}`,
-    marginBottom: rhythm(1),
+    padding: `0 ${rhythm(3)}}`,
   },
   headerContainer: {
     display: 'flex',
@@ -82,7 +81,7 @@ const Layout = (props) => (data) => {
   const { children } = props
   return (
     <div className={styles.root}>
-      <header>
+      <header style={{ marginBottom: rhythm(1) }}>
         <Header {...props} {...data} />
       </header>
       <main>{children}</main>
