@@ -13,7 +13,7 @@ const styles = styler({
     backgroundImage: 'var(--post)',
     background: 'var(--post)',
     borderRadius: rhythm(0.3),
-    width: rhythm(14),
+    width: rhythm(13),
     marginLeft: rhythm(2),
     marginTop: rhythm(1),
     padding: rhythm(0.6),

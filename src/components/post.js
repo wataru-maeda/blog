@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import Tag from './tag'
 import { rhythm } from '../utils/typography'
 import { styler } from '../theme'
-import Icon from '../components/icon'
+import Icon from './icon'
 import '../theme/app.css'
 
 // ------------------------------------
@@ -20,6 +20,7 @@ const styles = styler({
     marginBottom: rhythm(1),
     overflow: 'hidden',
     textAlign: 'center',
+    // width: '48%',
     width: '100%',
   },
   thumbnail: {

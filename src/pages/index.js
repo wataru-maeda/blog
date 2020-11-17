@@ -18,7 +18,7 @@ const styles = styler({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: rhythm(16),
+    width: rhythm(15),
   },
 })
 
