@@ -30,10 +30,16 @@ const styles = styler({
     fontSize: rhythm(2 / 3),
     margin: `${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
     color: 'var(--textNormal)',
+    marginBottom: rhythm(0.3),
   },
   date: {
     color: 'var(--textNormal)',
-    margin: `0 ${rhythm(1 / 2)} ${rhythm(1)}`,
+    margin: `0 ${rhythm(1 / 2)} ${rhythm(0.3)}`,
+    fontSize: rhythm(0.5),
+  },
+  categoryLink: {
+    display: 'inline-block',
+    marginBottom: rhythm(0.3),
   },
   p: {
     color: 'var(--textNormal)',
@@ -65,6 +71,9 @@ const getFluid = (thumbnail) => {
   return thumbnail.childImageSharp.fluid
 }
 
+const getCategory = (categories) =>
+  Array.isArray(categories) && categories.length > 0 ? categories[0] : null
+
 // ------------------------------------
 // Classes
 // ------------------------------------
@@ -82,11 +91,19 @@ const Post = ({
   console.log('[##] tags', tags)
   console.log('[##] categories', categories)
   const fluid = getFluid(thumbnail)
+  const category = getCategory(categories)
   return (
     <div key={slug} className={styles.root}>
       <h3 className={styles.title}>{title}</h3>
-      <small className={styles.date}>{date}</small>
-      {Array.isArray(categories) && categories.length > 0 && categories[0]}
+      <div className={styles.date}>{date}</div>
+      {category && (
+        <Link
+          to={`/categories/${category.toLowerCase()}`}
+          className={styles.categoryLink}
+        >
+          {category}
+        </Link>
+      )}
       {fluid && <Img fluid={fluid} className={styles.thumbnail} alt={title} />}
       <p
         className={styles.p}
