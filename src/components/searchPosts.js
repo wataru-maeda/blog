@@ -19,6 +19,7 @@ const SearchedPosts = ({ results }) => (
   <>
     {results.length > 0 ? (
       results.map((node) => {
+        console.log('[##] node', node)
         const props = {
           date: node.date,
           title: node.title || node.slug,
@@ -46,6 +47,8 @@ const AllPosts = ({ posts }) => (
         excerpt: node.frontmatter.excerpt,
         slug: node.fields.slug,
         thumbnail: node.frontmatter.thumbnail,
+        tags: node.frontmatter.tags,
+        categories: node.frontmatter.categories,
       }
       return <Post {...props} />
     })}

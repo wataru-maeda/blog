@@ -1,7 +1,7 @@
 import Typography from 'typography'
-import Wordpress2016 from 'typography-theme-wordpress-2016'
+import JapaneseTypography from 'typography-theme-japanese-tofu'
 
-Wordpress2016.overrideThemeStyles = () => {
+JapaneseTypography.overrideThemeStyles = () => {
   return {
     'a.gatsby-resp-image-link': {
       boxShadow: `none`,
@@ -21,9 +21,9 @@ Wordpress2016.overrideThemeStyles = () => {
   }
 }
 
-delete Wordpress2016.googleFonts
+// delete Wordpress2016.googleFonts
 
-const typography = new Typography(Wordpress2016)
+const typography = new Typography(JapaneseTypography)
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {
