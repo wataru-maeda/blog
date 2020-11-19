@@ -77,8 +77,6 @@ const Header = ({ location, categoriesGroup: { group } }) => {
 }
 
 const Layout = (props) => (data) => {
-  // console.log('[##] props', props)
-  // console.log('[##] data', data)
   const { children } = props
   return (
     <div className={styles.root}>

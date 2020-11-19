@@ -1,13 +1,13 @@
 const path = require(`path`)
-const _ = require("lodash")
+const _ = require('lodash')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const tagTemplate = path.resolve("src/templates/tags.js")
-  const categoryTemplate = path.resolve("src/templates/categories.js")
+  const tagTemplate = path.resolve('src/templates/tags.js')
+  const categoryTemplate = path.resolve('src/templates/categories.js')
 
   return graphql(
     `
@@ -23,23 +23,25 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                year: date(formatString: "YYYY")
+                month: date(formatString: "MM")
               }
             }
           }
         }
-        tagsGroup: allMdx(limit: 2000) {
+        tagsGroup: allMdx(limit: 1000) {
           group(field: frontmatter___tags) {
             fieldValue
           }
         }
-        categoriesGroup: allMdx(limit: 2000) {
+        categoriesGroup: allMdx(limit: 1000) {
           group(field: frontmatter___categories) {
             fieldValue
           }
         }
       }
-    `
-  ).then(result => {
+    `,
+  ).then((result) => {
     if (result.errors) {
       throw result.errors
     }
@@ -67,7 +69,7 @@ exports.createPages = ({ graphql, actions }) => {
     const categories = result.data.categoriesGroup.group
 
     // Make tag pages
-    tags.forEach(tag => {
+    tags.forEach((tag) => {
       createPage({
         path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
         component: tagTemplate,
@@ -76,7 +78,9 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-    categories.forEach(category => {
+
+    // make category page
+    categories.forEach((category) => {
       createPage({
         path: `/categories/${_.kebabCase(category.fieldValue)}/`,
         component: categoryTemplate,
@@ -85,6 +89,9 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
+
+    // TODO: archive
+    // https://qiita.com/kyohei8/items/c112a49359e9ca360393
 
     return null
   })

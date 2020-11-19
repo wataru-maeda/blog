@@ -88,8 +88,6 @@ const Post = ({
   tags,
   categories,
 }) => {
-  console.log('[##] tags', tags)
-  console.log('[##] categories', categories)
   const fluid = getFluid(thumbnail)
   const category = getCategory(categories)
   return (

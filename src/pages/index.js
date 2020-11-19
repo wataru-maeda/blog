@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 
 import Bio from '../components/bio'
 import Tags from '../components/tags'
+import Archives from '../components/archives'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import SearchPosts from '../components/searchPosts'
@@ -23,12 +24,9 @@ const styles = styler({
 })
 
 const IndexPage = ({ data, navigate, location }) => {
-  const { allMdx, site, localSearchBlog, categoriesGroup } = data
+  const { allMdx, site, localSearchBlog } = data
   const siteTitle = site.siteMetadata.title
   const posts = allMdx.edges
-  console.log('[##] categories', categoriesGroup)
-  // console.log('[##] url', process.env.GATSBY_API_URL)
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
@@ -42,6 +40,7 @@ const IndexPage = ({ data, navigate, location }) => {
         <div className={styles.side}>
           <Bio />
           <Tags />
+          <Archives />
         </div>
       </div>
     </Layout>
@@ -83,11 +82,6 @@ export const pageQuery = graphql`
             }
           }
         }
-      }
-    }
-    categoriesGroup: allMdx(limit: 2000) {
-      group(field: frontmatter___categories) {
-        fieldValue
       }
     }
   }
