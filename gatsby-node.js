@@ -8,6 +8,7 @@ exports.createPages = ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const tagTemplate = path.resolve('src/templates/tags.js')
   const categoryTemplate = path.resolve('src/templates/categories.js')
+  const archivedTemplate = path.resolve('src/templates/archives.js')
 
   return graphql(
     `
@@ -68,7 +69,7 @@ exports.createPages = ({ graphql, actions }) => {
     const tags = result.data.tagsGroup.group
     const categories = result.data.categoriesGroup.group
 
-    // Make tag pages
+    // create tag pages
     tags.forEach((tag) => {
       createPage({
         path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
@@ -79,7 +80,7 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    // make category page
+    // create category page
     categories.forEach((category) => {
       createPage({
         path: `/categories/${_.kebabCase(category.fieldValue)}/`,
@@ -90,8 +91,26 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    // TODO: archive
+    // create archive pages
     // https://qiita.com/kyohei8/items/c112a49359e9ca360393
+    const yymms = posts.map(
+      ({ node: { frontmatter } }) => `${frontmatter.year}-${frontmatter.month}`,
+    )
+    const uniques = [...new Set(yymms)]
+    uniques.map((yymm) => {
+      const year = yymm.split('-')[0]
+      const month = yymm.split('-')[1]
+      const start = new Date(year, month - 1, 1)
+      const end = new Date(year, month, 0)
+      createPage({
+        path: `/archives/${year}/${month}/`,
+        component: archivedTemplate,
+        context: {
+          start,
+          end,
+        },
+      })
+    })
 
     return null
   })

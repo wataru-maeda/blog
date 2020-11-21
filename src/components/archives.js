@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { StaticQuery, graphql } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
+
 import { rhythm } from '../utils/typography'
 import { styler } from '../theme'
 import '../theme/app.css'
