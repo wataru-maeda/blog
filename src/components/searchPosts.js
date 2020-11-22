@@ -19,7 +19,6 @@ const SearchedPosts = ({ results }) => (
   <>
     {results.length > 0 ? (
       results.map((node) => {
-        console.log('[##] node', node)
         const props = {
           date: node.date,
           title: node.title || node.slug,
@@ -64,6 +63,7 @@ const SearchPosts = ({
 }) => {
   const { search } = queryString.parse(location.search)
   const [query, setQuery] = useState(search || '')
+  const [didLoad, setLoaded] = useState(false)
 
   const results = useFlexSearch(
     query,
@@ -72,7 +72,11 @@ const SearchPosts = ({
   )
 
   useEffect(() => {
-    navigate(keyword ? `?search=${keyword}` : '/')
+    if (!didLoad) {
+      setLoaded(true)
+      return
+    }
+    if (keyword) navigate(`?search=${keyword}`)
     setQuery(keyword)
   }, [keyword])
 

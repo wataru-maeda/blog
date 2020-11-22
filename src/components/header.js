@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-
 import Switch from './switch'
 import Search from './search'
 import { rhythm, scale } from '../utils/typography'
@@ -9,20 +8,14 @@ import Icon from './icon'
 
 const styles = styler({
   root: {
-    color: 'var(--textNormal)',
-    background: 'var(--bg)',
-    backgroundImage: 'var(--bg)',
-    transition: 'color 0.2s ease-out, background 0.2s ease-out',
-    minHeight: '100vh',
-  },
-  header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     background: 'var(--headerBg)',
     padding: `0 ${rhythm(3)}}`,
+    width: '100%',
   },
-  headerContainer: {
+  container: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -39,23 +32,26 @@ const styles = styler({
   },
   category: {
     fontSize: '1.2rem',
-    marginLeft: rhythm(2 / 3),
-    color: 'var(--snsLink)',
+    marginLeft: `${rhythm(2 / 3)} !important`,
+    color: 'var(--snsLink) !important',
     boxShadow: 'none',
     textDecoration: 'none',
   },
+  home: {
+    color: 'var(--snsLink)',
+  },
 })
 
-const Header = ({ location, categoriesGroup: { group } }) => {
+const Header = ({ location }) => ({ categoriesGroup: { group } }) => {
   const blogPath = `${__PATH_PREFIX__}/blog/`
   return (
-    <div className={styles.header}>
+    <div className={styles.root}>
       <h1 className={styles.h1}>
         <Link
           className={styles.link}
           to={location.pathname === blogPath ? `/blog/` : `/`}
         >
-          <Icon name="home" />
+          <Icon name="home" className={styles.home} />
         </Link>
 
         {group.map(({ fieldValue }) => (
@@ -67,7 +63,7 @@ const Header = ({ location, categoriesGroup: { group } }) => {
           </Link>
         ))}
       </h1>
-      <div className={styles.headerContainer}>
+      <div className={styles.container}>
         <Search />
         <span style={{ width: rhythm(1) }} />
         <Switch />
@@ -76,22 +72,8 @@ const Header = ({ location, categoriesGroup: { group } }) => {
   )
 }
 
-const Layout = (props) => (data) => {
-  // console.log('[##] props', props)
-  // console.log('[##] data', data)
-  const { children } = props
-  return (
-    <div className={styles.root}>
-      <header style={{ marginBottom: rhythm(1) }}>
-        <Header {...props} {...data} />
-      </header>
-      <main>{children}</main>
-    </div>
-  )
-}
-
-const layoutQuery = graphql`
-  query LayoutQuery {
+const headerQuery = graphql`
+  query {
     categoriesGroup: allMdx(limit: 2000) {
       group(field: frontmatter___categories) {
         fieldValue
@@ -101,5 +83,5 @@ const layoutQuery = graphql`
 `
 
 export default (props) => (
-  <StaticQuery query={layoutQuery} render={Layout(props)} />
+  <StaticQuery query={headerQuery} render={Header(props)} />
 )

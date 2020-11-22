@@ -1,15 +1,24 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
+import Header from '../components/header'
 import Bio from '../components/bio'
 import Tags from '../components/tags'
-import Layout from '../components/layout'
+import Archives from '../components/archives'
 import SEO from '../components/seo'
 import SearchPosts from '../components/searchPosts'
 import { rhythm } from '../utils/typography'
-import { styler } from '../theme'
+import { styler, breakpoints } from '../theme'
 
 const styles = styler({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    color: 'var(--textNormal)',
+    background: 'var(--bg)',
+    backgroundImage: 'var(--bg)',
+    transition: 'color 0.2s ease-out, background 0.2s ease-out',
+    minHeight: '100vh',
+  },
   container: {
     display: 'flex',
     padding: `0 ${rhythm(3)}`,
@@ -19,19 +28,21 @@ const styles = styler({
     flexDirection: 'column',
     alignItems: 'center',
     width: rhythm(15),
+    [breakpoints.desktop]: {
+      display: 'none',
+    },
   },
 })
 
 const IndexPage = ({ data, navigate, location }) => {
-  const { allMdx, site, localSearchBlog, categoriesGroup } = data
+  const { allMdx, site, localSearchBlog } = data
   const siteTitle = site.siteMetadata.title
   const posts = allMdx.edges
-  console.log('[##] categories', categoriesGroup)
-  // console.log('[##] url', process.env.GATSBY_API_URL)
-
   return (
-    <Layout location={location} title={siteTitle}>
+    <div className={styles.root}>
       <SEO title="All posts" />
+      <Header location={location} title={siteTitle} />
+      <br />
       <div className={styles.container}>
         <SearchPosts
           posts={posts}
@@ -42,9 +53,10 @@ const IndexPage = ({ data, navigate, location }) => {
         <div className={styles.side}>
           <Bio />
           <Tags />
+          <Archives />
         </div>
       </div>
-    </Layout>
+    </div>
   )
 }
 
@@ -83,11 +95,6 @@ export const pageQuery = graphql`
             }
           }
         }
-      }
-    }
-    categoriesGroup: allMdx(limit: 2000) {
-      group(field: frontmatter___categories) {
-        fieldValue
       }
     }
   }

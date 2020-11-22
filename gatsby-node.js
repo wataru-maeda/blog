@@ -1,13 +1,14 @@
 const path = require(`path`)
-const _ = require("lodash")
+const _ = require('lodash')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const tagTemplate = path.resolve("src/templates/tags.js")
-  const categoryTemplate = path.resolve("src/templates/categories.js")
+  const tagTemplate = path.resolve('src/templates/tags.js')
+  const categoryTemplate = path.resolve('src/templates/categories.js')
+  const archivedTemplate = path.resolve('src/templates/archives.js')
 
   return graphql(
     `
@@ -23,23 +24,25 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                year: date(formatString: "YYYY")
+                month: date(formatString: "MM")
               }
             }
           }
         }
-        tagsGroup: allMdx(limit: 2000) {
+        tagsGroup: allMdx(limit: 1000) {
           group(field: frontmatter___tags) {
             fieldValue
           }
         }
-        categoriesGroup: allMdx(limit: 2000) {
+        categoriesGroup: allMdx(limit: 1000) {
           group(field: frontmatter___categories) {
             fieldValue
           }
         }
       }
-    `
-  ).then(result => {
+    `,
+  ).then((result) => {
     if (result.errors) {
       throw result.errors
     }
@@ -66,8 +69,8 @@ exports.createPages = ({ graphql, actions }) => {
     const tags = result.data.tagsGroup.group
     const categories = result.data.categoriesGroup.group
 
-    // Make tag pages
-    tags.forEach(tag => {
+    // create tag pages
+    tags.forEach((tag) => {
       createPage({
         path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
         component: tagTemplate,
@@ -76,12 +79,38 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-    categories.forEach(category => {
+
+    // create category page
+    categories.forEach((category) => {
       createPage({
         path: `/categories/${_.kebabCase(category.fieldValue)}/`,
         component: categoryTemplate,
         context: {
           category: category.fieldValue,
+        },
+      })
+    })
+
+    // create archive pages
+    // https://qiita.com/kyohei8/items/c112a49359e9ca360393
+    const yymms = posts.map(
+      ({ node: { frontmatter } }) => `${frontmatter.year}-${frontmatter.month}`,
+    )
+    const uniques = [...new Set(yymms)]
+    uniques.map((yymm) => {
+      const year = yymm.split('-')[0]
+      const month = yymm.split('-')[1]
+      const lastDayOfMonth = new Date(year, month, 0)
+      const start = new Date(`${year}-${month}-01T00:00:00.000Z`)
+      const end = new Date(
+        `${year}-${month}-${lastDayOfMonth.getDate()}T23:59:59.999Z`,
+      )
+      createPage({
+        path: `/archives/${year}/${month}/`,
+        component: archivedTemplate,
+        context: {
+          start,
+          end,
         },
       })
     })
