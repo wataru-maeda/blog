@@ -12,6 +12,9 @@ const colors = {
   // green
   green: '#aceb10',
 
+  // red
+  red: '#e35a10',
+
   // gradient
   black_to_gray: `
   linear-gradient(

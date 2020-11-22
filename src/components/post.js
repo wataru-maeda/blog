@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types'
 import Img from 'gatsby-image'
 import Tag from './tag'
 import { rhythm } from '../utils/typography'
-import { styler, breakpoints } from '../theme'
+import { styler } from '../theme'
 import Icon from './icon'
 import '../theme/app.css'
 
@@ -20,10 +20,11 @@ const styles = styler({
     marginBottom: rhythm(1),
     overflow: 'hidden',
     textAlign: 'center',
-    width: '48%',
-    [breakpoints.tablet]: {
-      width: '100%',
-    },
+    // width: '48%',
+    width: '100%',
+    // [breakpoints.tablet]: {
+    //   width: '100%',
+    // },
   },
   thumbnail: {
     width: '100%',
