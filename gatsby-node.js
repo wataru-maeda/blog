@@ -100,8 +100,11 @@ exports.createPages = ({ graphql, actions }) => {
     uniques.map((yymm) => {
       const year = yymm.split('-')[0]
       const month = yymm.split('-')[1]
-      const start = new Date(year, month - 1, 1)
-      const end = new Date(year, month, 0)
+      const lastDayOfMonth = new Date(year, month, 0)
+      const start = new Date(`${year}-${month}-01T00:00:00.000Z`)
+      const end = new Date(
+        `${year}-${month}-${lastDayOfMonth.getDate()}T23:59:59.999Z`,
+      )
       createPage({
         path: `/archives/${year}/${month}/`,
         component: archivedTemplate,
