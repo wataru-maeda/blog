@@ -37,6 +37,9 @@ const styles = styler({
     boxShadow: 'none',
     textDecoration: 'none',
   },
+  home: {
+    color: 'var(--snsLink)',
+  },
 })
 
 const Header = ({ location }) => ({ categoriesGroup: { group } }) => {
@@ -48,7 +51,7 @@ const Header = ({ location }) => ({ categoriesGroup: { group } }) => {
           className={styles.link}
           to={location.pathname === blogPath ? `/blog/` : `/`}
         >
-          <Icon name="home" />
+          <Icon name="home" className={styles.home} />
         </Link>
 
         {group.map(({ fieldValue }) => (

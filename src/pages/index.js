@@ -7,7 +7,7 @@ import Archives from '../components/archives'
 import SEO from '../components/seo'
 import SearchPosts from '../components/searchPosts'
 import { rhythm } from '../utils/typography'
-import { styler } from '../theme'
+import { styler, breakpoints } from '../theme'
 
 const styles = styler({
   root: {
@@ -28,6 +28,9 @@ const styles = styler({
     flexDirection: 'column',
     alignItems: 'center',
     width: rhythm(15),
+    [breakpoints.desktop]: {
+      display: 'none',
+    },
   },
 })
 
