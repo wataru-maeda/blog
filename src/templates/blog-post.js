@@ -2,11 +2,20 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { PropTypes } from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-
 import Bio from '../components/bio'
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
+import { styler } from '../theme'
+
+const styles = styler({
+  root: {
+    color: 'var(--textNormal)',
+    background: 'var(--bg)',
+    backgroundImage: 'var(--bg)',
+    transition: 'color 0.2s ease-out, background 0.2s ease-out',
+    minHeight: '100vh',
+  },
+})
 
 // ------------------------------------
 // Helpers
@@ -30,9 +39,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   // const tableOfContents = data.mdx.tableOfContents.items
   const { previous, next } = pageContext
   const imageSource = getImageSource(post)
+  console.log('[##] site title', siteTitle)
+  console.log('[##] location', location)
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <div className={styles.root}>
       <SEO
         image={imageSource}
         title={post.frontmatter.title}
@@ -81,7 +92,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           )}
         </li>
       </ul>
-    </Layout>
+    </div>
   )
 }
 

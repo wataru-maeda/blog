@@ -1,28 +1,38 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-// import Bio from "../components/bio"
-import Layout from '../components/layout'
+import Bio from '../components/bio'
 import SEO from '../components/seo'
-// import Button from '../components/button'
 import SearchPosts from '../components/searchPosts'
+import { styler } from '../theme'
+
+const styles = styler({
+  root: {
+    color: 'var(--textNormal)',
+    background: 'var(--bg)',
+    backgroundImage: 'var(--bg)',
+    transition: 'color 0.2s ease-out, background 0.2s ease-out',
+    minHeight: '100vh',
+  },
+})
 
 const Blog = ({ data, navigate, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMdx.edges
   const { localSearchBlog } = data
+  console.log('[##] site title', siteTitle)
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <div className={styles.root}>
       <SEO title="All posts" />
-      {/* <Bio /> */}
+      <Bio />
       <SearchPosts
         posts={posts}
         localSearchBlog={localSearchBlog}
         navigate={navigate}
         location={location}
       />
-    </Layout>
+    </div>
   )
 }
 
