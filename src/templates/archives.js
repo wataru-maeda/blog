@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+
 const Archives = ({ pageContext, data }) => {
   console.log('[##] pageContext', pageContext)
   console.log('[##] data', data)

@@ -37,8 +37,7 @@ const styles = styler({
 const getArchives = (edges) => {
   const grouped = {}
   const archives = edges.map(
-    ({ node: { frontmatter } }) =>
-      `${frontmatter.year}年${frontmatter.month}月`,
+    ({ node: { frontmatter } }) => `${frontmatter.year}-${frontmatter.month}`,
   )
   archives.forEach((x) => {
     grouped[x] = (grouped[x] || 0) + 1
@@ -52,11 +51,16 @@ const Archives = ({ allMdx: { edges } }) => {
     <div className={styles.root}>
       <h4 className={styles.header}>アーカイブ</h4>
       <div className={styles.archiveContainer}>
-        {Object.keys(grouped).map((key) => (
-          <Link to="/" className={styles.link}>
-            <p>{`${key}(${grouped[key]})`}</p>
-          </Link>
-        ))}
+        {Object.keys(grouped).map((key) => {
+          const yymm = key.split('-')
+          const year = yymm[0]
+          const month = yymm[1]
+          return (
+            <Link to={`/archives/${year}/${month}`} className={styles.link}>
+              <p>{`${year}年${month}(${grouped[key]})`}</p>
+            </Link>
+          )
+        })}
       </div>
     </div>
   )
