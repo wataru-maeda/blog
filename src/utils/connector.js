@@ -2,6 +2,7 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { actions as appActions } from '../modules/app.module'
 import { actions as searchActions } from '../modules/search.module'
 
 class Connector extends Component {
@@ -15,6 +16,7 @@ class Connector extends Component {
 const mapStateToProps = (state) => ({ state })
 const mapDispatchToProps = (dispatch) => {
   const actionList = [
+    { label: 'app', value: appActions },
     { label: 'search', value: searchActions },
     // add more actions here
   ]

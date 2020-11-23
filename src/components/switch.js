@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { colors } from '../theme'
 import '../theme/app.css'
+import Connector from '../utils/connector'
 
 // ------------------------------------
 // Styles
@@ -45,33 +46,30 @@ const darkTheme = {
 // Classes
 // ------------------------------------
 
-const Switch = () => {
-  // ------------------------------------
-  // State
-  // ------------------------------------
-  const [isOn, setIsOn] = useState(false)
-
+const Switch = ({ actions, theme }) => {
   // ------------------------------------
   // Actions
   // ------------------------------------
   const toggleSwitch = () => {
-    const theme = isOn ? darkTheme : lightTheme
-    Object.keys(theme).forEach((key) => {
+    const isDark = theme === 'light'
+    const currentTheme = isDark ? darkTheme : lightTheme
+    Object.keys(currentTheme).forEach((key) => {
       const cssKey = `--${key}`
-      const cssVal = theme[key]
+      const cssVal = currentTheme[key]
       document.body.style.setProperty(cssKey, cssVal)
     })
-    setIsOn(!isOn)
+    actions.setTheme(isDark ? 'dark' : 'light')
   }
 
   // ------------------------------------
   // Subscription
   // ------------------------------------
   useEffect(() => {
-    const theme = { ...colors, ...darkTheme }
-    Object.keys(theme).forEach((key) => {
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme
+    const all = { ...colors, ...currentTheme }
+    Object.keys(all).forEach((key) => {
       const cssKey = `--${key}`
-      const cssVal = theme[key]
+      const cssVal = all[key]
       document.body.style.setProperty(cssKey, cssVal)
     })
   }, [])
@@ -82,7 +80,7 @@ const Switch = () => {
     <button
       type="button"
       className="switch"
-      data-isOn={isOn}
+      data-isOn={theme === 'light'}
       onClick={toggleSwitch}
     >
       <motion.div
@@ -100,10 +98,21 @@ const Switch = () => {
           alignItems: 'center',
         }}
       >
-        <span style={{ fontSize: '1rem' }}>{isOn ? '🌞' : '🌛'}</span>
+        <span style={{ fontSize: '1rem' }}>
+          {theme === 'light' ? '🌞' : '🌛'}
+        </span>
       </motion.div>
     </button>
   )
 }
 
-export default Switch
+export default (props) => (
+  <Connector>
+    {({
+      actions,
+      state: {
+        app: { theme },
+      },
+    }) => <Switch actions={actions.app} theme={theme} {...props} />}
+  </Connector>
+)
