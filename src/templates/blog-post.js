@@ -1,12 +1,14 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import { PropTypes } from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { Disqus } from 'gatsby-plugin-disqus'
 import Header from '../components/header'
 import Bio from '../components/bio'
 import Tags from '../components/tags'
 import Archives from '../components/archives'
 import SEO from '../components/seo'
+import TOC from '../components/toc'
 import { styler, breakpoints } from '../theme'
 import { rhythm, scale } from '../utils/typography'
 
@@ -79,11 +81,10 @@ const getImageSource = (post) => {
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
-  // const tableOfContents = data.mdx.tableOfContents.items
-  const { previous, next } = pageContext
+  const tableOfContents = data.mdx.tableOfContents.items
   const imageSource = getImageSource(post)
-  console.log('[##] site title', siteTitle)
-  console.log('[##] location', location)
+  console.log('[##] post', post)
+  console.log('[##] pageContext', pageContext)
 
   return (
     <div className={styles.root}>
@@ -103,37 +104,25 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <div className={styles.post}>
             <MDXRenderer>{post.body}</MDXRenderer>
           </div>
+          <Disqus
+            config={{
+              /* Replace PAGE_URL with your post's canonical URL variable */
+              url: `${__PATH_PREFIX__}/${siteTitle}/`,
+              /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+              identifier: post.id,
+              /* Replace PAGE_TITLE with the title of the page */
+              title: post.frontmatter.title,
+            }}
+          />
         </div>
         <div className={styles.side}>
           <Bio />
+          <TOC tableOfContents={tableOfContents} />
           <Tags />
           <Archives />
         </div>
       </div>
-      <ul
-        style={{
-          display: `flex`,
-          flexWrap: `wrap`,
-          justifyContent: `space-between`,
-          listStyle: `none`,
-          padding: 0,
-        }}
-      >
-        <li>
-          {previous && (
-            <Link to={`/blog${previous.fields.slug}`} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          )}
-        </li>
-        <li>
-          {next && (
-            <Link to={`/blog${next.fields.slug}`} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          )}
-        </li>
-      </ul>
+      <br />
     </div>
   )
 }
