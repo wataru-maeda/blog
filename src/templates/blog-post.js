@@ -24,9 +24,16 @@ const styles = styler({
     display: 'flex',
     padding: `0 ${rhythm(3)}`,
   },
+  titleContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
   title: {
     display: 'inline-block',
-    color: 'var(--textNormal)',
+    color: 'var(--textLink)',
     paddingBottom: rhythm(0.5),
   },
   post: {
@@ -88,18 +95,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <Header location={location} title={siteTitle} />
       <br />
       <div className={styles.main}>
-        <div className={styles.post}>
-          <br />
-          <h1 className={styles.title}>{post.frontmatter.title}</h1>
-          <br />
-          <br />
-          <p className={styles.postDate}>{post.frontmatter.date}</p>
-          <MDXRenderer>{post.body}</MDXRenderer>
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
-          />
+        <div>
+          <div className={styles.titleContainer}>
+            <h1 className={styles.title}>{post.frontmatter.title}</h1>
+            <p className={styles.postDate}>{post.frontmatter.date}</p>
+          </div>
+          <div className={styles.post}>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </div>
         </div>
         <div className={styles.side}>
           <Bio />
