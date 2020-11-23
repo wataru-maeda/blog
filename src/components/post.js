@@ -107,7 +107,11 @@ const Post = ({
           {category}
         </Link>
       )}
-      {fluid && <Img fluid={fluid} className={styles.thumbnail} alt={title} />}
+      {fluid && (
+        <Link to={`${slug}`}>
+          <Img fluid={fluid} className={styles.thumbnail} alt={title} />
+        </Link>
+      )}
       <p
         className={styles.p}
         dangerouslySetInnerHTML={{

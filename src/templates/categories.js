@@ -51,7 +51,7 @@ const Categories = ({ pageContext, data, navigate, location }) => {
   const { site, localSearchBlog, allMdx } = data
   const { edges, totalCount } = allMdx
   const siteTitle = site.siteMetadata.title
-  const pageTitle = `${category.toUpperCase()} の記事一覧 (${totalCount}件)`
+  const pageTitle = `カテゴリ「${category.toUpperCase()}」の記事一覧 (${totalCount}件)`
   return (
     <div className={styles.root}>
       <SEO title={pageTitle} />
