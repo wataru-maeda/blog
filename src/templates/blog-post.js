@@ -2,18 +2,54 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { PropTypes } from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import Header from '../components/header'
 import Bio from '../components/bio'
+import Tags from '../components/tags'
+import Archives from '../components/archives'
 import SEO from '../components/seo'
+import { styler, breakpoints } from '../theme'
 import { rhythm, scale } from '../utils/typography'
-import { styler } from '../theme'
 
 const styles = styler({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
     color: 'var(--textNormal)',
     background: 'var(--bg)',
     backgroundImage: 'var(--bg)',
     transition: 'color 0.2s ease-out, background 0.2s ease-out',
     minHeight: '100vh',
+  },
+  main: {
+    display: 'flex',
+    padding: `0 ${rhythm(3)}`,
+  },
+  title: {
+    display: 'inline-block',
+    color: 'var(--textNormal)',
+    paddingBottom: rhythm(0.5),
+  },
+  post: {
+    width: '100%',
+    backgroundImage: 'var(--post)',
+    background: 'var(--post)',
+    borderRadius: rhythm(0.3),
+    padding: rhythm(0.6),
+  },
+  postDate: {
+    ...scale(-1 / 5),
+    display: `block`,
+    marginBottom: rhythm(1),
+    marginTop: rhythm(-1),
+  },
+  side: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: rhythm(15),
+    [breakpoints.laptop]: {
+      display: 'none',
+    },
   },
 })
 
@@ -49,25 +85,28 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <h1>{post.frontmatter.title}</h1>
-      <p
-        style={{
-          ...scale(-1 / 5),
-          display: `block`,
-          marginBottom: rhythm(1),
-          marginTop: rhythm(-1),
-        }}
-      >
-        {post.frontmatter.date}
-      </p>
-      <MDXRenderer>{post.body}</MDXRenderer>
-      <hr
-        style={{
-          marginBottom: rhythm(1),
-        }}
-      />
-      <Bio />
-
+      <Header location={location} title={siteTitle} />
+      <br />
+      <div className={styles.main}>
+        <div className={styles.post}>
+          <br />
+          <h1 className={styles.title}>{post.frontmatter.title}</h1>
+          <br />
+          <br />
+          <p className={styles.postDate}>{post.frontmatter.date}</p>
+          <MDXRenderer>{post.body}</MDXRenderer>
+          <hr
+            style={{
+              marginBottom: rhythm(1),
+            }}
+          />
+        </div>
+        <div className={styles.side}>
+          <Bio />
+          <Tags />
+          <Archives />
+        </div>
+      </div>
       <ul
         style={{
           display: `flex`,
