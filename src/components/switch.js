@@ -16,6 +16,10 @@ const lightTheme = {
   shadow: colors.shadow,
   hr: `hsla(0, 0%, 100%, 0.2)`,
   snsLink: colors.gray_dark,
+  h1: colors.blue,
+  h2: colors.gray_heavy,
+  h3: colors.gray,
+  blockquote: colors.gray,
   tagBg: colors.gray_light,
   backgroundColor: 'var(--bg)',
 }
@@ -27,8 +31,12 @@ const darkTheme = {
   textNormal: colors.gray_light,
   textLink: colors.blue_light,
   shadow: 'transparent',
-  hr: 'hsla(0, 0%, 0%, 0.2)',
   snsLink: 'white',
+  hr: 'hsla(0, 0%, 0%, 0.2)',
+  h1: colors.gray_light,
+  h2: 'white',
+  h3: colors.gray,
+  blockquote: colors.gray,
   tagBg: colors.gray_dark,
   backgroundColor: 'var(--bg)',
 }
@@ -92,7 +100,7 @@ const Switch = () => {
           alignItems: 'center',
         }}
       >
-        <span style={{ fontSize: 20 }}>{isOn ? '🌞' : '🌛'}</span>
+        <span style={{ fontSize: '1rem' }}>{isOn ? '🌞' : '🌛'}</span>
       </motion.div>
     </button>
   )

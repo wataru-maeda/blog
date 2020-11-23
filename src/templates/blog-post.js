@@ -1,19 +1,64 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import { PropTypes } from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { Disqus } from 'gatsby-plugin-disqus'
+import Header from '../components/header'
 import Bio from '../components/bio'
+import Tags from '../components/tags'
+import Archives from '../components/archives'
 import SEO from '../components/seo'
+import TOC from '../components/toc'
+import { styler, breakpoints } from '../theme'
 import { rhythm, scale } from '../utils/typography'
-import { styler } from '../theme'
 
 const styles = styler({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
     color: 'var(--textNormal)',
     background: 'var(--bg)',
     backgroundImage: 'var(--bg)',
     transition: 'color 0.2s ease-out, background 0.2s ease-out',
     minHeight: '100vh',
+  },
+  main: {
+    display: 'flex',
+    padding: `0 ${rhythm(3)}`,
+  },
+  titleContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
+  title: {
+    display: 'inline-block',
+    color: 'var(--textLink)',
+    paddingBottom: rhythm(0.5),
+  },
+  post: {
+    width: '100%',
+    backgroundImage: 'var(--post)',
+    background: 'var(--post)',
+    borderRadius: rhythm(0.3),
+    padding: rhythm(0.6),
+  },
+  postDate: {
+    ...scale(-1 / 5),
+    display: `block`,
+    marginBottom: rhythm(1),
+    marginTop: rhythm(-1),
+  },
+  side: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: rhythm(15),
+    [breakpoints.laptop]: {
+      display: 'none',
+    },
   },
 })
 
@@ -36,11 +81,10 @@ const getImageSource = (post) => {
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
-  // const tableOfContents = data.mdx.tableOfContents.items
-  const { previous, next } = pageContext
+  const tableOfContents = data.mdx.tableOfContents.items
   const imageSource = getImageSource(post)
-  console.log('[##] site title', siteTitle)
-  console.log('[##] location', location)
+  console.log('[##] post', post)
+  console.log('[##] pageContext', pageContext)
 
   return (
     <div className={styles.root}>
@@ -49,49 +93,36 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <h1>{post.frontmatter.title}</h1>
-      <p
-        style={{
-          ...scale(-1 / 5),
-          display: `block`,
-          marginBottom: rhythm(1),
-          marginTop: rhythm(-1),
-        }}
-      >
-        {post.frontmatter.date}
-      </p>
-      <MDXRenderer>{post.body}</MDXRenderer>
-      <hr
-        style={{
-          marginBottom: rhythm(1),
-        }}
-      />
-      <Bio />
-
-      <ul
-        style={{
-          display: `flex`,
-          flexWrap: `wrap`,
-          justifyContent: `space-between`,
-          listStyle: `none`,
-          padding: 0,
-        }}
-      >
-        <li>
-          {previous && (
-            <Link to={`/blog${previous.fields.slug}`} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          )}
-        </li>
-        <li>
-          {next && (
-            <Link to={`/blog${next.fields.slug}`} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          )}
-        </li>
-      </ul>
+      <Header location={location} title={siteTitle} />
+      <br />
+      <div className={styles.main}>
+        <div>
+          <div className={styles.titleContainer}>
+            <h1 className={styles.title}>{post.frontmatter.title}</h1>
+            <p className={styles.postDate}>{post.frontmatter.date}</p>
+          </div>
+          <div className={styles.post}>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </div>
+          <Disqus
+            config={{
+              /* Replace PAGE_URL with your post's canonical URL variable */
+              url: `${__PATH_PREFIX__}/${siteTitle}/`,
+              /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+              identifier: post.id,
+              /* Replace PAGE_TITLE with the title of the page */
+              title: post.frontmatter.title,
+            }}
+          />
+        </div>
+        <div className={styles.side}>
+          <Bio />
+          <TOC tableOfContents={tableOfContents} />
+          <Tags />
+          <Archives />
+        </div>
+      </div>
+      <br />
     </div>
   )
 }

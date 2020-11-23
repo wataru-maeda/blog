@@ -15,6 +15,20 @@ JapaneseTypography.overrideThemeStyles = () => {
     'a.anchor svg[aria-hidden="true"]': {
       stroke: 'var(--textLink)',
     },
+    h2: {
+      display: 'inline-block',
+      borderLeft: '0.4rem solid var(--textLink)',
+      color: 'var(--h2)',
+      padding: '1rem !important',
+      background: 'rgba(255, 255, 255, .1)',
+      width: '100%',
+    },
+    h3: {
+      color: 'var(--h3)',
+    },
+    blockquote: {
+      color: 'var(--blockquote)',
+    },
     hr: {
       background: 'var(--hr)',
     },
