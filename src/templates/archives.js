@@ -29,6 +29,7 @@ const styles = styler({
     color: 'var(--textNormal)',
     paddingBottom: rhythm(0.5),
     borderBottom: `3px solid ${colors.red}`,
+    fontSize: rhythm(0.9),
   },
   posts: {
     width: '100%',
@@ -70,17 +71,18 @@ const Archives = ({ pageContext, navigate, location, data }) => {
   const posts = filterPosts(pageContext, data)
   const { site, localSearchBlog } = data
   const siteTitle = site.siteMetadata.title
+  const pageTitle = `${startDate.getFullYear()}年${
+    startDate.getMonth() + 1
+  }月の記事 (${posts.length}件)`
   return (
     <div className={styles.root}>
-      <SEO title="All posts" />
+      <SEO title={pageTitle} />
       <Header location={location} title={siteTitle} />
       <br />
       <div className={styles.main}>
         <div className={styles.posts}>
           <br />
-          <h3 className={styles.title}>{`${startDate.getFullYear()}年${
-            startDate.getMonth() + 1
-          }月の記事 (${posts.length}件)`}</h3>
+          <h1 className={styles.title}>{pageTitle}</h1>
           <br />
           <br />
           <SearchPosts

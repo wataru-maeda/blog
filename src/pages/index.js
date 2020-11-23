@@ -7,7 +7,7 @@ import Archives from '../components/archives'
 import SEO from '../components/seo'
 import SearchPosts from '../components/searchPosts'
 import { rhythm } from '../utils/typography'
-import { styler, breakpoints } from '../theme'
+import { styler, colors, breakpoints } from '../theme'
 
 const styles = styler({
   root: {
@@ -19,9 +19,20 @@ const styles = styler({
     transition: 'color 0.2s ease-out, background 0.2s ease-out',
     minHeight: '100vh',
   },
-  container: {
+  main: {
     display: 'flex',
     padding: `0 ${rhythm(3)}`,
+  },
+  title: {
+    display: 'inline-block',
+    color: 'var(--textNormal)',
+    paddingBottom: rhythm(0.5),
+    borderBottom: `3px solid ${colors.red}`,
+    fontSize: rhythm(0.9),
+  },
+  posts: {
+    width: '100%',
+    textAlign: 'center',
   },
   side: {
     display: 'flex',
@@ -37,19 +48,26 @@ const styles = styler({
 const IndexPage = ({ data, navigate, location }) => {
   const { allMdx, site, localSearchBlog } = data
   const siteTitle = site.siteMetadata.title
-  const posts = allMdx.edges
+  const { edges, totalCount } = allMdx
+  const pageTitle = `すべての記事 (${totalCount}件)`
   return (
     <div className={styles.root}>
-      <SEO title="All posts" />
+      <SEO title={pageTitle} />
       <Header location={location} title={siteTitle} />
       <br />
-      <div className={styles.container}>
-        <SearchPosts
-          posts={posts}
-          localSearchBlog={localSearchBlog}
-          navigate={navigate}
-          location={location}
-        />
+      <div className={styles.main}>
+        <div className={styles.posts}>
+          <br />
+          <h1 className={styles.title}>{pageTitle}</h1>
+          <br />
+          <br />
+          <SearchPosts
+            posts={edges}
+            localSearchBlog={localSearchBlog}
+            navigate={navigate}
+            location={location}
+          />
+        </div>
         <div className={styles.side}>
           <Bio />
           <Tags />
@@ -74,6 +92,7 @@ export const pageQuery = graphql`
       store
     }
     allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
       edges {
         node {
           excerpt
