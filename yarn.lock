@@ -5840,6 +5840,11 @@ direction@^0.1.5:
   resolved "https://registry.yarnpkg.com/direction/-/direction-0.1.5.tgz#ce5d797f97e26f8be7beff53f7dc40e1c1a9ec4c"
   integrity sha1-zl15f5fib4vnvv9T99xA4cGp7Ew=
 
+disqus-react@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/disqus-react/-/disqus-react-1.0.10.tgz#75f1553856157d08fa76d8339d53d783ec1e4a62"
+  integrity sha512-TFd+pSl9m9QpqGcNAmewH/V795I9ObJMcEbLCIyPBy1VvUUl8DUoP+OiWhx24UjRygfV8y6saZVTBJRNYGJvkQ==
+
 dnd-core@^7.7.0:
   version "7.7.0"
   resolved "https://registry.yarnpkg.com/dnd-core/-/dnd-core-7.7.0.tgz#3166aefc8c5b85ca4ade4ae836712a3108975fab"
@@ -7606,11 +7611,6 @@ gatsby-plugin-dark-mode@^1.1.2:
   integrity sha512-kq/7/KSIgyYxolSqLxXfmcC/iBU98XpRGcIOaa3bjjl8Tb0WDYwfa45zABx1XNjB0YecWdgniss+kqmeAu04GA==
   dependencies:
     prop-types "^15.5.7"
-
-gatsby-plugin-disqus@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-disqus/-/gatsby-plugin-disqus-1.2.2.tgz#d10e72c2ac0f7205abd7dda2e8cb4ecc0743a824"
-  integrity sha512-RWiU8Jtg94kVphjBnxqnF+0txyJ3eZN/9vw/VlMgz0mor1FwULkiiiOyNXAJxbX6tFqYmypnmfa+edQWX/rMpQ==
 
 gatsby-plugin-feed-mdx@^1.0.0:
   version "1.0.1"

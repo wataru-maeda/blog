@@ -1,8 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { PropTypes } from 'prop-types'
+import { useLocation } from '@reach/router'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { Disqus } from 'gatsby-plugin-disqus'
+import { DiscussionEmbed } from 'disqus-react'
 import Header from '../components/header'
 import Bio from '../components/bio'
 import Tags from '../components/tags'
@@ -11,6 +12,10 @@ import SEO from '../components/seo'
 import TOC from '../components/toc'
 import { styler, breakpoints } from '../theme'
 import { rhythm, scale } from '../utils/typography'
+
+// ------------------------------------
+// Styles
+// ------------------------------------
 
 const styles = styler({
   root: {
@@ -75,16 +80,22 @@ const getImageSource = (post) => {
 }
 
 // ------------------------------------
-// Classes
+// Templates
 // ------------------------------------
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const tableOfContents = data.mdx.tableOfContents.items
   const imageSource = getImageSource(post)
-  console.log('[##] post', post)
-  console.log('[##] pageContext', pageContext)
+
+  // disqus
+  const slug = useLocation()
+  const { title } = post.frontmatter
+  const disqusShortname = process.env.GATSBY_DISQUS_SHORT_NAME
+  const disqusConfig = {
+    config: { identifier: slug, title },
+  }
 
   return (
     <div className={styles.root}>
@@ -104,16 +115,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <div className={styles.post}>
             <MDXRenderer>{post.body}</MDXRenderer>
           </div>
-          <Disqus
-            config={{
-              /* Replace PAGE_URL with your post's canonical URL variable */
-              url: `${__PATH_PREFIX__}/${siteTitle}/`,
-              /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
-              identifier: post.id,
-              /* Replace PAGE_TITLE with the title of the page */
-              title: post.frontmatter.title,
-            }}
-          />
+          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
         </div>
         <div className={styles.side}>
           <Bio />
