@@ -18,7 +18,7 @@ const styles = styler({
     marginRight: rhythm(1 / 4),
   },
   input: {
-    color: colors.gray_light,
+    color: 'var(--textNormal)',
     background: 'transparent',
     border: 'none',
   },

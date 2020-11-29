@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 import Switch from './switch'
 import Search from './search'
 import { rhythm, scale } from '../utils/typography'
-import { styler } from '../theme'
+import { styler, colors } from '../theme'
 import Icon from './icon'
 
 const styles = styler({
@@ -37,9 +37,15 @@ const styles = styler({
     color: 'var(--snsLink) !important',
     boxShadow: 'none',
     textDecoration: 'none',
+    '&:hover': {
+      color: `${colors.blue_light} !important`,
+    },
   },
   home: {
     color: 'var(--snsLink)',
+    '&:hover': {
+      color: `${colors.blue_light} !important`,
+    },
   },
   switch: {
     marginBottom: '20 !important',
