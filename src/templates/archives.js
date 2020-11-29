@@ -40,7 +40,7 @@ const styles = styler({
     flexDirection: 'column',
     alignItems: 'center',
     width: rhythm(15),
-    [breakpoints.desktop]: {
+    [breakpoints.laptop]: {
       display: 'none',
     },
   },

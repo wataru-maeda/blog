@@ -9,7 +9,7 @@ import Connector from '../utils/connector'
 // ------------------------------------
 
 const lightTheme = {
-  bg: colors.gray_white,
+  bg: colors.gray_light,
   headerBg: 'white',
   post: 'white',
   textNormal: colors.gray_dark,
@@ -46,7 +46,7 @@ const darkTheme = {
 // Classes
 // ------------------------------------
 
-const Switch = ({ actions, theme }) => {
+const Switch = ({ actions, theme, className }) => {
   // ------------------------------------
   // Actions
   // ------------------------------------
@@ -79,9 +79,10 @@ const Switch = ({ actions, theme }) => {
   return (
     <button
       type="button"
-      className="switch"
+      className={`switch ${className}`}
       data-isOn={theme === 'light'}
       onClick={toggleSwitch}
+      style={{ marginBottom: '0.3rem' }}
     >
       <motion.div
         layout

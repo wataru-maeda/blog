@@ -10,7 +10,7 @@ const styles = styler({
   root: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     background: 'var(--headerBg)',
     padding: `0 ${rhythm(3)}}`,
     width: '100%',
@@ -41,6 +41,10 @@ const styles = styler({
   home: {
     color: 'var(--snsLink)',
   },
+  switch: {
+    marginBottom: '20 !important',
+    background: 'red',
+  },
 })
 
 const Header = ({ location }) => ({ categoriesGroup: { group } }) => {
@@ -67,7 +71,7 @@ const Header = ({ location }) => ({ categoriesGroup: { group } }) => {
       <div className={styles.container}>
         <Search />
         <span style={{ width: rhythm(1) }} />
-        <Switch />
+        <Switch className={styles.switch} />
       </div>
     </div>
   )
