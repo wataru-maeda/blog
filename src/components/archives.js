@@ -17,6 +17,7 @@ const styles = styler({
     marginLeft: rhythm(2),
     marginTop: rhythm(1),
     padding: rhythm(0.6),
+    boxShadow: 'var(--shadow)',
   },
   archiveContainer: {
     display: 'flex',

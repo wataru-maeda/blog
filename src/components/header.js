@@ -8,16 +8,13 @@ import Icon from './icon'
 
 const styles = styler({
   root: {
-    position: 'sticky',
-    top: 0,
-    left: 0,
-    right: 0,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     background: 'var(--headerBg)',
     padding: `0 ${rhythm(3)}}`,
     width: '100%',
+    boxShadow: 'var(--shadow)',
   },
   container: {
     display: 'flex',

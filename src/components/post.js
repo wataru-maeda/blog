@@ -21,6 +21,7 @@ const styles = styler({
     overflow: 'hidden',
     textAlign: 'center',
     width: '100%',
+    boxShadow: 'var(--shadow)',
     [breakpoints.desktop]: {
       width: '48%',
     },

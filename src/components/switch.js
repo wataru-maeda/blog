@@ -9,7 +9,7 @@ import Connector from '../utils/connector'
 // ------------------------------------
 
 const lightTheme = {
-  bg: colors.gray_light,
+  bg: colors.gray_white,
   headerBg: 'white',
   post: 'white',
   textNormal: colors.gray_dark,

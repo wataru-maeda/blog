@@ -14,10 +14,10 @@ const styles = styler({
     display: 'flex',
     flexDirection: 'column',
     color: 'var(--textNormal)',
-    background: 'var(--bg)',
-    backgroundImage: 'var(--bg)',
     transition: 'color 0.2s ease-out, background 0.2s ease-out',
     minHeight: '100vh',
+    backgroundImage: colors.gray_to_gray,
+    background: 'var(--bg)',
   },
   main: {
     display: 'flex',
@@ -28,7 +28,7 @@ const styles = styler({
     color: 'var(--textNormal)',
     paddingBottom: rhythm(0.5),
     borderBottom: `3px solid ${colors.red}`,
-    fontSize: rhythm(0.9),
+    fontSize: rhythm(0.7),
   },
   posts: {
     width: '100%',
@@ -57,9 +57,7 @@ const IndexPage = ({ data, navigate, location }) => {
       <br />
       <div className={styles.main}>
         <div className={styles.posts}>
-          <br />
           <h1 className={styles.title}>{pageTitle}</h1>
-          <br />
           <br />
           <SearchPosts
             posts={edges}

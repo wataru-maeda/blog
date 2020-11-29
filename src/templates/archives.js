@@ -29,7 +29,7 @@ const styles = styler({
     color: 'var(--textNormal)',
     paddingBottom: rhythm(0.5),
     borderBottom: `3px solid ${colors.red}`,
-    fontSize: rhythm(0.9),
+    fontSize: rhythm(0.7),
   },
   posts: {
     width: '100%',
@@ -81,9 +81,7 @@ const Archives = ({ pageContext, navigate, location, data }) => {
       <br />
       <div className={styles.main}>
         <div className={styles.posts}>
-          <br />
           <h1 className={styles.title}>{pageTitle}</h1>
-          <br />
           <br />
           <SearchPosts
             posts={posts}

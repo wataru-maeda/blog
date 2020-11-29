@@ -41,7 +41,12 @@ const styles = styler({
   title: {
     display: 'inline-block',
     color: 'var(--textLink)',
-    paddingBottom: rhythm(0.5),
+    fontSize: rhythm(0.7),
+  },
+  blog: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
   },
   post: {
     width: '100%',
@@ -107,15 +112,18 @@ const BlogPostTemplate = ({ data, location }) => {
       <Header location={location} title={siteTitle} />
       <br />
       <div className={styles.main}>
-        <div>
+        <div className={styles.blog}>
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>{post.frontmatter.title}</h1>
             <p className={styles.postDate}>{post.frontmatter.date}</p>
           </div>
           <div className={styles.post}>
             <MDXRenderer>{post.body}</MDXRenderer>
+            <DiscussionEmbed
+              shortname={disqusShortname}
+              config={disqusConfig}
+            />
           </div>
-          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
         </div>
         <div className={styles.side}>
           <Bio />
