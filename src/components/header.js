@@ -34,7 +34,7 @@ const styles = styler({
   category: {
     fontSize: '1.2rem',
     marginLeft: `${rhythm(2 / 3)} !important`,
-    color: 'var(--snsLink) !important',
+    color: 'white !important',
     boxShadow: 'none',
     textDecoration: 'none',
     '&:hover': {
@@ -42,7 +42,7 @@ const styles = styler({
     },
   },
   home: {
-    color: 'var(--snsLink)',
+    color: 'white',
     '&:hover': {
       color: `${colors.blue_light} !important`,
     },

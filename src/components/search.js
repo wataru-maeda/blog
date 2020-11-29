@@ -9,7 +9,7 @@ const styles = styler({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottom: `${rhythm(1 / 7)} solid ${colors.green}`,
+    borderBottom: `${rhythm(1 / 6)} solid ${colors.green}`,
     marginBottom: 0,
   },
   search: {
