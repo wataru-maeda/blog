@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `KISS ブログ`,
+    title: `watalog`,
     author: `Wataru Maeda`,
-    description: `シンプルにわかりやすく書いたテックブログ`,
-    siteUrl: `https://kiss-blog.netlify.app/`,
+    description: `モバイル・ウェブ開発テックブログ`,
+    siteUrl: `https://watalog.netlify.app/`,
     social: {
       twitter: `wmaeda_ca`,
       facebook: `100011319736559`,
@@ -131,9 +131,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `KISS ブログ`,
-        short_name: `KISS`,
-        start_url: `/blog`,
+        name: `watalog`,
+        short_name: `watalog`,
+        start_url: `/`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },

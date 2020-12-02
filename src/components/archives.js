@@ -16,6 +16,7 @@ const styles = styler({
     width: rhythm(13),
     marginLeft: rhythm(2),
     marginTop: rhythm(1),
+    marginBottom: rhythm(1),
     padding: rhythm(0.6),
     boxShadow: 'var(--shadow)',
   },

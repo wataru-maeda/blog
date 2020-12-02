@@ -2,4 +2,4 @@
 
 Configure blog based on [gatsby-personal-starter-blog](https://github.com/thomaswang/gatsby-personal-starter-blog)
 
--[Blog](https://kiss-blog.netlify.app)
+-[Blog](https://watalog.netlify.app/)

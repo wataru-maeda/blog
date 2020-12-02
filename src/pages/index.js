@@ -6,6 +6,7 @@ import Tags from '../components/tags'
 import Archives from '../components/archives'
 import SEO from '../components/seo'
 import SearchPosts from '../components/searchPosts'
+import Footer from '../components/footer'
 import { rhythm } from '../utils/typography'
 import { styler, colors, breakpoints } from '../theme'
 
@@ -72,6 +73,7 @@ const IndexPage = ({ data, navigate, location }) => {
           <Archives />
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

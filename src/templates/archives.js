@@ -9,6 +9,7 @@ import SEO from '../components/seo'
 import SearchPosts from '../components/searchPosts'
 import { rhythm } from '../utils/typography'
 import { styler, colors, breakpoints } from '../theme'
+import Footer from '../components/footer'
 
 const styles = styler({
   root: {
@@ -96,6 +97,7 @@ const Archives = ({ pageContext, navigate, location, data }) => {
           <ArchivesSection />
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

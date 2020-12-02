@@ -12,6 +12,7 @@ import SEO from '../components/seo'
 import TOC from '../components/toc'
 import { styler, breakpoints } from '../theme'
 import { rhythm, scale } from '../utils/typography'
+import Footer from '../components/footer'
 
 // ------------------------------------
 // Styles
@@ -132,7 +133,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <Archives />
         </div>
       </div>
-      <br />
+      <Footer />
     </div>
   )
 }

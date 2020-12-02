@@ -11,6 +11,7 @@ import Connector from '../utils/connector'
 const lightTheme = {
   bg: colors.gray_light,
   headerBg: colors.gray_heavy,
+  footerBg: colors.gray_heavy,
   post: 'white',
   textNormal: colors.gray_dark,
   textLink: colors.blue,
@@ -28,6 +29,7 @@ const lightTheme = {
 const darkTheme = {
   bg: colors.gray_heavy,
   headerBg: 'transparent',
+  footerBg: 'transparent',
   post: colors.black_to_gray,
   textNormal: colors.gray_light,
   textLink: colors.blue_light,
