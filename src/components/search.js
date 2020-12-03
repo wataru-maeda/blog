@@ -2,7 +2,7 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import Connector from '../utils/connector'
 import { rhythm } from '../utils/typography'
-import { colors, styler } from '../theme'
+import { colors, styler, breakpoints } from '../theme'
 
 const styles = styler({
   root: {
@@ -11,6 +11,9 @@ const styles = styler({
     alignItems: 'center',
     borderBottom: `${rhythm(1 / 6)} solid ${colors.green}`,
     marginBottom: 0,
+    [breakpoints.phone]: {
+      display: 'none',
+    },
   },
   search: {
     width: 20,

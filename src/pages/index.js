@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Header from '../components/header'
+import SideMenu from '../components/sideMenu'
 import Bio from '../components/bio'
 import Tags from '../components/tags'
 import Archives from '../components/archives'
@@ -22,7 +23,13 @@ const styles = styler({
   },
   main: {
     display: 'flex',
-    padding: `0 ${rhythm(3)}`,
+    padding: `0 5rem`,
+    [breakpoints.tablet]: {
+      padding: `0 40px`,
+    },
+    [breakpoints.phone]: {
+      padding: `0 20px`,
+    },
   },
   title: {
     display: 'inline-block',
@@ -54,26 +61,29 @@ const IndexPage = ({ data, navigate, location }) => {
   return (
     <div className={styles.root}>
       <SEO title={pageTitle} />
-      <Header location={location} title={siteTitle} />
-      <br />
-      <div className={styles.main}>
-        <div className={styles.posts}>
-          <h1 className={styles.title}>{pageTitle}</h1>
-          <br />
-          <SearchPosts
-            posts={edges}
-            localSearchBlog={localSearchBlog}
-            navigate={navigate}
-            location={location}
-          />
+      <SideMenu />
+      <span id="outer-container">
+        <Header location={location} title={siteTitle} />
+        <br />
+        <div id="page-wrap" className={styles.main}>
+          <div className={styles.posts}>
+            <h1 className={styles.title}>{pageTitle}</h1>
+            <br />
+            <SearchPosts
+              posts={edges}
+              localSearchBlog={localSearchBlog}
+              navigate={navigate}
+              location={location}
+            />
+          </div>
+          <div className={styles.side}>
+            <Bio />
+            <Tags />
+            <Archives />
+          </div>
         </div>
-        <div className={styles.side}>
-          <Bio />
-          <Tags />
-          <Archives />
-        </div>
-      </div>
-      <Footer />
+        <Footer />
+      </span>
     </div>
   )
 }

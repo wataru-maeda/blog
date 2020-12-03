@@ -3,12 +3,14 @@
 // ------------------------------------
 
 const SET_THEME_TYPE = 'SET_THEME_TYPE'
+const SET_SIDE_MENU_OPEN = 'SET_SIDE_MENU_OPEN'
 
 const hours = new Date().getHours()
 const isDayTime = hours > 6 && hours < 20
 
 const initialState = {
   theme: isDayTime ? 'light' : 'dark',
+  isOpen: false,
 }
 
 // ------------------------------------
@@ -22,8 +24,15 @@ const setTheme = (theme) => (dispatch) => {
   })
 }
 
+const setSideMenuOpen = (isOpen) => (dispatch) =>
+  dispatch({
+    type: SET_SIDE_MENU_OPEN,
+    isOpen,
+  })
+
 export const actions = {
   setTheme,
+  setSideMenuOpen,
 }
 
 // ------------------------------------
@@ -34,6 +43,10 @@ const ACTION_HANDLERS = {
   [SET_THEME_TYPE]: (state, { theme }) => ({
     ...state,
     theme,
+  }),
+  [SET_SIDE_MENU_OPEN]: (state, { isOpen }) => ({
+    ...state,
+    isOpen,
   }),
 }
 

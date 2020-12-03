@@ -7,6 +7,7 @@ import {
   faHashtag,
   faHome,
   faAngleRight,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faGithub,
@@ -23,6 +24,7 @@ const icons = {
   hashtag: faHashtag,
   home: faHome,
   right: faAngleRight,
+  bars: faBars,
 }
 
 const Icon = ({ name, className, style }) => (
