@@ -2,9 +2,10 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import { stack as Elastic } from 'react-burger-menu'
 // import { styler, images, colors } from '../theme'
+import { rem } from '../theme'
 import Connector from '../utils/connector'
 
-const menuStyles = {
+const menuStyles = rem({
   bmBurgerButton: {
     position: 'fixed',
     width: '36px',
@@ -38,7 +39,7 @@ const menuStyles = {
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)',
   },
-}
+})
 
 const SideMenu = ({ actions, isOpen }) => {
   // rendering
