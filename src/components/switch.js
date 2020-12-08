@@ -24,6 +24,7 @@ const lightTheme = {
   blockquote: colors.gray,
   tagBg: colors.gray_light,
   backgroundColor: 'var(--bg)',
+  sideMenuBackground: colors.gray_light,
 }
 
 const darkTheme = {
@@ -42,6 +43,7 @@ const darkTheme = {
   blockquote: colors.gray,
   tagBg: colors.gray_dark,
   backgroundColor: 'var(--bg)',
+  sideMenuBackground: colors.gray_heavy,
 }
 
 // ------------------------------------

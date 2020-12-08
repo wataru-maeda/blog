@@ -12,11 +12,11 @@ const styles = styler({
     alignItems: 'center',
     backgroundImage: 'var(--post)',
     background: 'var(--post)',
-    borderRadius: rhythm(0.3),
-    width: rhythm(13),
-    marginLeft: rhythm(2),
-    marginTop: rhythm(1),
-    padding: rhythm(0.6),
+    borderRadius: 8,
+    width: 320,
+    marginLeft: 60,
+    marginTop: 30,
+    padding: '10px 20px',
     boxShadow: 'var(--shadow)',
   },
   tagContainer: {
@@ -31,8 +31,8 @@ const styles = styler({
   },
 })
 
-const Tags = ({ tags: { group } }) => (
-  <div className={styles.root}>
+const Tags = ({ className }) => ({ tags: { group } }) => (
+  <div className={`${styles.root} ${className}`}>
     <h4 className={styles.header}>タグ一覧</h4>
     <div className={styles.tagContainer}>
       {group.map(({ fieldValue }) => (
@@ -52,4 +52,4 @@ const tagsQuery = graphql`
   }
 `
 
-export default () => <StaticQuery query={tagsQuery} render={Tags} />
+export default (props) => <StaticQuery query={tagsQuery} render={Tags(props)} />

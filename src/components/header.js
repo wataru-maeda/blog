@@ -35,6 +35,9 @@ const styles = styler({
   h1: {
     ...scale(1 / 2),
     margin: 0,
+    [breakpoints.phone]: {
+      display: 'none',
+    },
   },
   link: {
     fontSize: '1.2rem',

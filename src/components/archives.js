@@ -12,12 +12,11 @@ const styles = styler({
     alignItems: 'center',
     backgroundImage: 'var(--post)',
     background: 'var(--post)',
-    borderRadius: rhythm(0.3),
-    width: rhythm(13),
-    marginLeft: rhythm(2),
-    marginTop: rhythm(1),
-    marginBottom: rhythm(1),
-    padding: rhythm(0.6),
+    borderRadius: 8,
+    width: 320,
+    marginLeft: 60,
+    marginTop: 30,
+    padding: '10px 20px',
     boxShadow: 'var(--shadow)',
   },
   archiveContainer: {
@@ -47,10 +46,10 @@ const getArchives = (edges) => {
   return grouped
 }
 
-const Archives = ({ allMdx: { edges } }) => {
+const Archives = ({ className }) => ({ allMdx: { edges } }) => {
   const grouped = getArchives(edges)
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${className}`}>
       <h4 className={styles.header}>アーカイブ</h4>
       <div className={styles.archiveContainer}>
         {Object.keys(grouped).map((key) => {
@@ -83,4 +82,6 @@ const archiveQuery = graphql`
   }
 `
 
-export default () => <StaticQuery query={archiveQuery} render={Archives} />
+export default (props) => (
+  <StaticQuery query={archiveQuery} render={Archives(props)} />
+)

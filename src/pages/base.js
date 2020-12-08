@@ -24,6 +24,7 @@ const styles = styler({
   main: {
     display: 'flex',
     padding: `0 5rem`,
+    minHeight: 'calc(100vh - 110px)',
     [breakpoints.tablet]: {
       padding: `0 40px`,
     },
