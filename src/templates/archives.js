@@ -1,51 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Header from '../components/header'
-import Bio from '../components/bio'
-import Tags from '../components/tags'
-import ArchivesSection from '../components/archives'
-import SEO from '../components/seo'
-import SearchPosts from '../components/searchPosts'
-import { rhythm } from '../utils/typography'
-import { styler, colors, breakpoints } from '../theme'
-import Footer from '../components/footer'
-
-const styles = styler({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    color: 'var(--textNormal)',
-    background: 'var(--bg)',
-    backgroundImage: 'var(--bg)',
-    transition: 'color 0.2s ease-out, background 0.2s ease-out',
-    minHeight: '100vh',
-  },
-  main: {
-    display: 'flex',
-    padding: `0 ${rhythm(3)}`,
-  },
-  title: {
-    display: 'inline-block',
-    color: 'var(--textNormal)',
-    paddingBottom: rhythm(0.5),
-    borderBottom: `3px solid ${colors.red}`,
-    fontSize: rhythm(0.7),
-  },
-  posts: {
-    width: '100%',
-    textAlign: 'center',
-  },
-  side: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: rhythm(15),
-    [breakpoints.laptop]: {
-      display: 'none',
-    },
-  },
-})
+import Base from '../pages/base'
 
 // ------------------------------------
 // Helpers
@@ -76,29 +32,14 @@ const Archives = ({ pageContext, navigate, location, data }) => {
     startDate.getMonth() + 1
   }月の記事 (${posts.length}件)`
   return (
-    <div className={styles.root}>
-      <SEO title={pageTitle} />
-      <Header location={location} title={siteTitle} />
-      <br />
-      <div className={styles.main}>
-        <div className={styles.posts}>
-          <h1 className={styles.title}>{pageTitle}</h1>
-          <br />
-          <SearchPosts
-            posts={posts}
-            localSearchBlog={localSearchBlog}
-            navigate={navigate}
-            location={location}
-          />
-        </div>
-        <div className={styles.side}>
-          <Bio />
-          <Tags />
-          <ArchivesSection />
-        </div>
-      </div>
-      <Footer />
-    </div>
+    <Base
+      siteTitle={siteTitle}
+      pageTitle={pageTitle}
+      posts={posts}
+      localSearchBlog={localSearchBlog}
+      navigate={navigate}
+      location={location}
+    />
   )
 }
 
