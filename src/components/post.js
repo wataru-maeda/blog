@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types'
 import Img from 'gatsby-image'
 import Tag from './tag'
 import { rhythm } from '../utils/typography'
-import { styler, breakpoints } from '../theme'
+import { styler } from '../theme'
 import Icon from './icon'
 import '../theme/app.css'
 
@@ -21,12 +21,7 @@ const styles = styler({
     overflow: 'hidden',
     textAlign: 'center',
     width: '100%',
-    [breakpoints.desktop]: {
-      width: '48%',
-    },
-    [breakpoints.tablet]: {
-      width: '100%',
-    },
+    boxShadow: 'var(--shadow)',
   },
   thumbnail: {
     width: '100%',
@@ -107,7 +102,11 @@ const Post = ({
           {category}
         </Link>
       )}
-      {fluid && <Img fluid={fluid} className={styles.thumbnail} alt={title} />}
+      {fluid && (
+        <Link to={`${slug}`}>
+          <Img fluid={fluid} className={styles.thumbnail} alt={title} />
+        </Link>
+      )}
       <p
         className={styles.p}
         dangerouslySetInnerHTML={{

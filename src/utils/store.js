@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
+import app from '../modules/app.module'
 import search from '../modules/search.module'
 
 const analytics = () => (next) => (action) => {
@@ -16,6 +17,7 @@ const analytics = () => (next) => (action) => {
 // Redux store config
 const configureStore = (initialState = {}) => {
   const reducers = combineReducers({
+    app,
     search,
   })
 

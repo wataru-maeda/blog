@@ -4,6 +4,7 @@ const colors = {
   gray_dark: '#282a37',
   gray: '#7a7c84',
   gray_light: '#d5d6db',
+  gray_white: '#f5f6f7',
 
   // blue
   blue: '#0372eb',
@@ -16,6 +17,13 @@ const colors = {
   red: '#e35a10',
 
   // gradient
+  gray_to_gray: `
+  linear-gradient(
+    0deg,
+    rgba(34,193,195,1) 0%,
+    rgba(253,187,45,1) 100%
+  )`,
+
   black_to_gray: `
   linear-gradient(
     0deg,
@@ -33,10 +41,7 @@ const colors = {
   shadow: `
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12)
+    0 12.5px 10px rgba(0, 0, 0, 0.06)
   `,
 }
 

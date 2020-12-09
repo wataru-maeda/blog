@@ -14,10 +14,12 @@ const styles = styler({
     alignItems: 'center',
     backgroundImage: 'var(--post)',
     background: 'var(--post)',
-    borderRadius: rhythm(0.3),
-    width: rhythm(13),
-    marginLeft: rhythm(2),
-    padding: rhythm(0.6),
+    borderRadius: 8,
+    width: 320,
+    marginLeft: 60,
+    marginTop: 30,
+    padding: '10px 20px',
+    boxShadow: 'var(--shadow)',
   },
   profile: {
     width: 120,
@@ -93,7 +95,7 @@ const Bio = (data) => {
 
 const bioQuery = graphql`
   query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+    avatar: file(absolutePath: { regex: "/profile.jpg/" }) {
       childImageSharp {
         fixed(width: 60, height: 60) {
           ...GatsbyImageSharpFixed

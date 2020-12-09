@@ -1,32 +1,23 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
+import Base from '../pages/base'
 
-// Components
-import { Link, graphql } from 'gatsby'
-
-const Categories = ({ pageContext, data }) => {
+const Categories = ({ pageContext, data, navigate, location }) => {
   const { category } = pageContext
-  const { edges, totalCount } = data.allMdx
-  const categoryHeader = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
-  } tagged with "${category}"`
-
+  const { site, localSearchBlog, allMdx } = data
+  const { edges, totalCount } = allMdx
+  const siteTitle = site.siteMetadata.title
+  const pageTitle = `カテゴリ「${category.toUpperCase()}」の記事一覧 (${totalCount}件)`
   return (
-    <div>
-      <h1>{categoryHeader}</h1>
-      <ul>
-        {edges.map(({ node }) => {
-          const { slug } = node.fields
-          const { title } = node.frontmatter
-          return (
-            <li key={slug}>
-              <Link to={`/blog${slug}`}>{title}</Link>
-            </li>
-          )
-        })}
-      </ul>
-      <Link to="/categories">All categories</Link>
-    </div>
+    <Base
+      siteTitle={siteTitle}
+      pageTitle={pageTitle}
+      posts={edges}
+      localSearchBlog={localSearchBlog}
+      navigate={navigate}
+      location={location}
+    />
   )
 }
 
@@ -44,6 +35,15 @@ export default Categories
 
 export const pageQuery = graphql`
   query($category: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    localSearchBlog {
+      index
+      store
+    }
     allMdx(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
@@ -56,7 +56,19 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            postDate: date
             title
+            description
+            tags
+            categories
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

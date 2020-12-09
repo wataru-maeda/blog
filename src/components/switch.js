@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { colors } from '../theme'
 import '../theme/app.css'
+import Connector from '../utils/connector'
 
 // ------------------------------------
 // Styles
@@ -9,7 +10,8 @@ import '../theme/app.css'
 
 const lightTheme = {
   bg: colors.gray_light,
-  headerBg: 'white',
+  headerBg: colors.gray_heavy,
+  footerBg: colors.gray_heavy,
   post: 'white',
   textNormal: colors.gray_dark,
   textLink: colors.blue,
@@ -22,11 +24,13 @@ const lightTheme = {
   blockquote: colors.gray,
   tagBg: colors.gray_light,
   backgroundColor: 'var(--bg)',
+  sideMenuBackground: colors.gray_light,
 }
 
 const darkTheme = {
   bg: colors.gray_heavy,
   headerBg: 'transparent',
+  footerBg: 'transparent',
   post: colors.black_to_gray,
   textNormal: colors.gray_light,
   textLink: colors.blue_light,
@@ -39,39 +43,37 @@ const darkTheme = {
   blockquote: colors.gray,
   tagBg: colors.gray_dark,
   backgroundColor: 'var(--bg)',
+  sideMenuBackground: colors.gray_heavy,
 }
 
 // ------------------------------------
 // Classes
 // ------------------------------------
 
-const Switch = () => {
-  // ------------------------------------
-  // State
-  // ------------------------------------
-  const [isOn, setIsOn] = useState(false)
-
+const Switch = ({ actions, theme, className }) => {
   // ------------------------------------
   // Actions
   // ------------------------------------
   const toggleSwitch = () => {
-    const theme = isOn ? darkTheme : lightTheme
-    Object.keys(theme).forEach((key) => {
+    const isDark = theme === 'light'
+    const currentTheme = isDark ? darkTheme : lightTheme
+    Object.keys(currentTheme).forEach((key) => {
       const cssKey = `--${key}`
-      const cssVal = theme[key]
+      const cssVal = currentTheme[key]
       document.body.style.setProperty(cssKey, cssVal)
     })
-    setIsOn(!isOn)
+    actions.setTheme(isDark ? 'dark' : 'light')
   }
 
   // ------------------------------------
   // Subscription
   // ------------------------------------
   useEffect(() => {
-    const theme = { ...colors, ...darkTheme }
-    Object.keys(theme).forEach((key) => {
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme
+    const all = { ...colors, ...currentTheme }
+    Object.keys(all).forEach((key) => {
       const cssKey = `--${key}`
-      const cssVal = theme[key]
+      const cssVal = all[key]
       document.body.style.setProperty(cssKey, cssVal)
     })
   }, [])
@@ -81,9 +83,10 @@ const Switch = () => {
   return (
     <button
       type="button"
-      className="switch"
-      data-isOn={isOn}
+      className={`switch ${className}`}
+      data-isOn={theme === 'light'}
       onClick={toggleSwitch}
+      style={{ marginBottom: '0.3rem' }}
     >
       <motion.div
         layout
@@ -100,10 +103,21 @@ const Switch = () => {
           alignItems: 'center',
         }}
       >
-        <span style={{ fontSize: '1rem' }}>{isOn ? '🌞' : '🌛'}</span>
+        <span style={{ fontSize: '1rem' }}>
+          {theme === 'light' ? '🌞' : '🌛'}
+        </span>
       </motion.div>
     </button>
   )
 }
 
-export default Switch
+export default (props) => (
+  <Connector>
+    {({
+      actions,
+      state: {
+        app: { theme },
+      },
+    }) => <Switch actions={actions.app} theme={theme} {...props} />}
+  </Connector>
+)

@@ -1,8 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { PropTypes } from 'prop-types'
+import { useLocation } from '@reach/router'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { Disqus } from 'gatsby-plugin-disqus'
+import { DiscussionEmbed } from 'disqus-react'
 import Header from '../components/header'
 import Bio from '../components/bio'
 import Tags from '../components/tags'
@@ -11,6 +12,11 @@ import SEO from '../components/seo'
 import TOC from '../components/toc'
 import { styler, breakpoints } from '../theme'
 import { rhythm, scale } from '../utils/typography'
+import Footer from '../components/footer'
+
+// ------------------------------------
+// Styles
+// ------------------------------------
 
 const styles = styler({
   root: {
@@ -36,7 +42,12 @@ const styles = styler({
   title: {
     display: 'inline-block',
     color: 'var(--textLink)',
-    paddingBottom: rhythm(0.5),
+    fontSize: rhythm(0.7),
+  },
+  blog: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
   },
   post: {
     width: '100%',
@@ -75,16 +86,22 @@ const getImageSource = (post) => {
 }
 
 // ------------------------------------
-// Classes
+// Templates
 // ------------------------------------
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const tableOfContents = data.mdx.tableOfContents.items
   const imageSource = getImageSource(post)
-  console.log('[##] post', post)
-  console.log('[##] pageContext', pageContext)
+
+  // disqus
+  const slug = useLocation()
+  const { title } = post.frontmatter
+  const disqusShortname = process.env.GATSBY_DISQUS_SHORT_NAME
+  const disqusConfig = {
+    config: { identifier: slug, title },
+  }
 
   return (
     <div className={styles.root}>
@@ -96,24 +113,18 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <Header location={location} title={siteTitle} />
       <br />
       <div className={styles.main}>
-        <div>
+        <div className={styles.blog}>
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>{post.frontmatter.title}</h1>
             <p className={styles.postDate}>{post.frontmatter.date}</p>
           </div>
           <div className={styles.post}>
             <MDXRenderer>{post.body}</MDXRenderer>
+            <DiscussionEmbed
+              shortname={disqusShortname}
+              config={disqusConfig}
+            />
           </div>
-          <Disqus
-            config={{
-              /* Replace PAGE_URL with your post's canonical URL variable */
-              url: `${__PATH_PREFIX__}/${siteTitle}/`,
-              /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
-              identifier: post.id,
-              /* Replace PAGE_TITLE with the title of the page */
-              title: post.frontmatter.title,
-            }}
-          />
         </div>
         <div className={styles.side}>
           <Bio />
@@ -122,7 +133,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <Archives />
         </div>
       </div>
-      <br />
+      <Footer />
     </div>
   )
 }
