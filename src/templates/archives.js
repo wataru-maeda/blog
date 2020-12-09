@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Base from '../pages/base'
+import Base from '../views/base'
 
 // ------------------------------------
 // Helpers

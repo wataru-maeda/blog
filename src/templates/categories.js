@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import Base from '../pages/base'
+import Base from '../views/base'
 
 const Categories = ({ pageContext, data, navigate, location }) => {
   const { category } = pageContext

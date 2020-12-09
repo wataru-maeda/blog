@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Base from './base'
+import Base from '../views/base'
 
 const IndexPage = ({ data, navigate, location }) => {
   const { allMdx, site, localSearchBlog } = data
