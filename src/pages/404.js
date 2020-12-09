@@ -14,18 +14,13 @@ const styles = styler({
   },
 })
 
-const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  console.log('[##] site title', siteTitle)
-  console.log('[##] location', location)
-  return (
-    <div className={styles.root}>
-      <SEO title="404: Not Found" />
-      <h1>Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </div>
-  )
-}
+const NotFoundPage = () => (
+  <div className={styles.root}>
+    <SEO title="404: Not Found" />
+    <h1>Not Found</h1>
+    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+  </div>
+)
 
 NotFoundPage.propTypes = {
   props: PropTypes.shape({}),

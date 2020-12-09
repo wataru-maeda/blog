@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Base from '../pages/base'
+import Base from '../views/base'
 
 // ------------------------------------
 // Helpers
@@ -20,7 +20,7 @@ const filterPosts = (postContext, data) => {
 }
 
 // ------------------------------------
-// Component
+// Template
 // ------------------------------------
 
 const Archives = ({ pageContext, navigate, location, data }) => {

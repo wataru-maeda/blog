@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Base from '../pages/base'
+import Base from '../views/base'
+
+// ------------------------------------
+// Template
+// ------------------------------------
 
 const Tags = ({ pageContext, data, navigate, location }) => {
   const { tag } = pageContext
@@ -32,6 +36,10 @@ Tags.defaultProps = {
 }
 
 export default Tags
+
+// ------------------------------------
+// Query
+// ------------------------------------
 
 export const pageQuery = graphql`
   query($tag: String) {
