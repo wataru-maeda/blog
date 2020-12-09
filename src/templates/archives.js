@@ -20,7 +20,7 @@ const filterPosts = (postContext, data) => {
 }
 
 // ------------------------------------
-// Component
+// Template
 // ------------------------------------
 
 const Archives = ({ pageContext, navigate, location, data }) => {

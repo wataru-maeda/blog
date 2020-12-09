@@ -2,6 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Base from '../views/base'
 
+// ------------------------------------
+// Page
+// ------------------------------------
+
 const IndexPage = ({ data, navigate, location }) => {
   const { allMdx, site, localSearchBlog } = data
   const siteTitle = site.siteMetadata.title
@@ -20,6 +24,10 @@ const IndexPage = ({ data, navigate, location }) => {
 }
 
 export default IndexPage
+
+// ------------------------------------
+// Query
+// ------------------------------------
 
 export const pageQuery = graphql`
   query {

@@ -3,6 +3,10 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Base from '../views/base'
 
+// ------------------------------------
+// Template
+// ------------------------------------
+
 const Categories = ({ pageContext, data, navigate, location }) => {
   const { category } = pageContext
   const { site, localSearchBlog, allMdx } = data
@@ -32,6 +36,10 @@ Categories.defaultProps = {
 }
 
 export default Categories
+
+// ------------------------------------
+// Query
+// ------------------------------------
 
 export const pageQuery = graphql`
   query($category: String) {
