@@ -2,8 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `watalog`,
     author: `Wataru Maeda`,
-    description: `モバイル・ウェブ開発テックブログ`,
-    siteUrl: `https://watalog.netlify.app/`,
+    description: `ソフトウェアの開発情報を中心に、海外生活、旅行など体験したことをまとめて、みなさんのお役に立てる情報を配信。`,
+    siteUrl: `https://watarumaedablog.com/`,
     social: {
       twitter: `wmaeda_ca`,
       facebook: `100011319736559`,
