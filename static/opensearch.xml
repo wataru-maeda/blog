@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-  <ShortName>Gatsby Personal Starter Blog</ShortName>
-  <Description>Gatsby Personal Starter Blog</Description>
-  <Url type="text/html" method="get" template="https://gatsby-personal-starter-blog-search.netlify.app/blog/?search={searchTerms}"/>
+  <ShortName>watalog</ShortName>
+  <Description>ソフトウェアの開発情報を中心に、海外生活、旅行など体験したことを纏めて配信するブログサイトです。</Description>
+  <Url type="text/html" method="get" template="https://watarumaedablog.com/?search={searchTerms}"/>
 </OpenSearchDescription>
