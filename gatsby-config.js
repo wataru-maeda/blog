@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `watalog`,
     author: `Wataru Maeda`,
-    description: `ソフトウェアの開発情報を中心に、海外生活、旅行など体験したことをまとめて、みなさんのお役に立てる情報を配信。`,
+    description: `ソフトウェアの開発情報を中心に、海外生活、旅行など体験したことを纏めて配信するブログサイトです。`,
     siteUrl: `https://watarumaedablog.com/`,
     social: {
       twitter: `wmaeda_ca`,
