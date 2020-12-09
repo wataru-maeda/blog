@@ -58,7 +58,7 @@ const Bio = (data) => {
       />
       <h4 className={styles.name}>Wataru</h4>
       <p style={{ textAlign: 'center' }}>
-        iOS開発5年、ここ2年はReactばかり触ってます。隙間時間にweb-app、mobile-app開発してます。バンクーバー在住。現地のソフトウェア開発会社に勤務。
+        バンクーバー在住4年目のプログラマー。新しいサービス、技術を試し、そのアウトプットの場としてブログを開設しました。iOSアプリ開発が趣味で仕事です。
       </p>
       <div className={styles.snsContainer}>
         {Object.keys(social).map((key) => {
