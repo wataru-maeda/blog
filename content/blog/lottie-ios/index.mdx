@@ -2,10 +2,12 @@
 title: Lottieを使ってアニメーションを実装してみる
 date: '2020-12-12T23:46:37.121Z'
 description: 今回Lottieというライブラリを使い、リッチアニメーションを実装してみるわけなのですが、Lottieとは何か、どう言う仕組みで動いているのか、他のアニメーションライブラリではなくなぜLottieなのか等々を纏めていきたいと思います。早速見ていきましょう。
-tags: ['swift', 'library']
+tags: ['Animation', 'Library', 'Swift']
 categories: ['Programming']
 thumbnail: './lottie.png'
 ---
+
+![Lottie](./lottie.png "Lottie")
 
 こんにちは、バンクーバー在住のソフトウェアデベロッパー wataru です。
 
@@ -40,6 +42,8 @@ pod 'lottie-ios'
 
 実装前に、Lottie ファイルを落としてこないといけませんね。[LottieFiles](https://lottiefiles.com/)で無料のものを落としてきてください。僕は[こちら](https://lottiefiles.com/41256-skateboarding)のスケボー兄さんを使用させてもらいます。
 
+![lottie-file-skateboarding](./lottie-file-skateboarding.gif "Lottie-file-skateboarding")
+
 ダウンロードした Lottie ファイルをプロジェクトに取り込み、数行のコードを書けば完了です
 
 ```swift
@@ -62,6 +66,8 @@ class ViewController: UIViewController {
 ```
 
 実行するとしてシミュレーター上でアニメーションを確認できました。
+
+![lottie-file-skateboarding-simulator](./lottie-ios-simulator.gif "lottie-file-skateboarding-simulator")
 
 ## Lottie の問題点
 
