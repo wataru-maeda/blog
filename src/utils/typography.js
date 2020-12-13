@@ -32,6 +32,9 @@ JapaneseTypography.overrideThemeStyles = () => {
     hr: {
       background: 'var(--hr)',
     },
+    pre: {
+      background: 'red',
+    },
   }
 }
 
