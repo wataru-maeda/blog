@@ -1,9 +1,3 @@
-import sun from '../../content/assets/sun.svg'
-import moon from '../../content/assets/moon.svg'
-
-const images = {
-  sun,
-  moon,
-}
+const images = {}
 
 export default images

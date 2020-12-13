@@ -88,7 +88,7 @@ const styles = styler({
 })
 
 // ------------------------------------
-// Components
+// View
 // ------------------------------------
 
 const Header = ({ location, actions, isOpen }) => ({

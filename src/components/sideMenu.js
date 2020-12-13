@@ -116,7 +116,7 @@ const SideMenu = ({ actions, isOpen }) => ({ categoriesGroup: { group } }) => {
     >
       <div className={styles.root}>
         <h4 className={styles.header}>カテゴリ一覧</h4>
-        <Button label="Home" onClick={() => null} />
+        <Button label="全て" onClick={() => null} />
         {Array.isArray(group) &&
           group.map(({ fieldValue }) => (
             <Button label={fieldValue} onClick={() => null} />
