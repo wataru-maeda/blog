@@ -111,3 +111,24 @@
   opacity: 1;
   transform: scale(1, 1);
 }
+
+/* code block */
+
+.grvsc-container {
+  width: calc(100vw - 580px);
+  overflow-x: auto;
+}
+
+@media only screen and (max-width: 992px) {
+  .grvsc-container {
+    width: calc(100vw - 200px);
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .grvsc-container {
+    width: calc(100vw - 80px);
+    overflow-x: auto;
+  }
+}

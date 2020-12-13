@@ -43,7 +43,7 @@ const styles = styler({
   },
   p: {
     color: 'var(--textNormal)',
-    margin: `0 ${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
+    margin: `${rhythm(1 / 2)} ${rhythm(1 / 4)}`,
   },
   tagsContainer: {
     display: 'flex',
