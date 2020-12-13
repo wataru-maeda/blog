@@ -11,7 +11,7 @@ thumbnail: './lottie.png'
 
 さて、今回 Lottie というライブラリを使い、リッチアニメーションを実装してみるわけなのですが、Lottie とは何か、どう言う仕組みで動いているのか、他のアニメーションライブラリではなくなぜ Lottie なのか等々を纏めていきたいと思います。早速見ていきましょう。
 
-### Lottie とは
+## Lottie とは
 
 Airbnb が開発した、リッチアニメーションを簡単に実装できるアニメーションライブラリです。
 
@@ -19,13 +19,13 @@ Lottie 自体にアニメーションを付与する機能はなく、[Adobe Aft
 
 要は動画でいうとこのビデオプレイヤー的な役割をするライブラリです。ビデオプレイヤー(Lottie)に好きな動画(Lottie ファイル)を読み込ませることにより、様々なリッチアニメーションを実現することができます。
 
-### なぜ Lottie を選んだのか
+## なぜ Lottie を選んだのか
 
 Github 上のスター数は 2 万を超えています([こちら](https://github.com/airbnb/lottie-ios))。これだけで十分ライブラリの信憑性はあるのですが、ライブラリの導入のしやすさ、パフォーマンスチューニング、細やかな機能設定、それに複数のプラットフォーム(iOS, Android, React Native, Web...etc)で使える点等々で使用を決めました。ドキュメントは丁寧に纏められているのですが、サンプルが少ないのが少し残念でした。
 
 - [公式ドキュメント](http://airbnb.io/lottie/#/ios)
 
-### インストール
+## インストール
 
 まず、
 公式ドキュメントのライブラリ[導入編](http://airbnb.io/lottie/#/ios?id=installing-lottie)を見てみましょう。ライブラリマネーシャーでおなじみ、cocoapods を使用します。
@@ -36,18 +36,17 @@ Pod ファイルに以下一文を追加して、`pod install`するだけです
 pod 'lottie-ios'
 ```
 
-### 実装
+## 実装
 
 実装前に、Lottie ファイルを落としてこないといけませんね。[LottieFiles](https://lottiefiles.com/)で無料のものを落としてきてください。僕は[こちら](https://lottiefiles.com/41256-skateboarding)のスケボー兄さんを使用させてもらいます。
 
 ダウンロードした Lottie ファイルをプロジェクトに取り込み、数行のコードを書けば完了です
 
-```
+```swift
 import UIKit
 import Lottie
 
 class ViewController: UIViewController {
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -64,7 +63,7 @@ class ViewController: UIViewController {
 
 実行するとしてシミュレーター上でアニメーションを確認できました。
 
-### Lottie の問題点
+## Lottie の問題点
 
 のちに詳しく書きますが、Adobe After Effects のライセンスが有償なので、
 
@@ -76,4 +75,4 @@ Lottie はリッチアニメーションを簡単に実装することができ�
 
 Lottie は Airbnb のアニメーションライブラリで、非常に簡単にリッチなアニメーションを実現できるのが特徴です。今回は
 
-### 目的
+## 目的
