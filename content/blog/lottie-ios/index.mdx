@@ -48,8 +48,9 @@ pod 'lottie-ios'
 
 ダウンロードした Lottie ファイルをプロジェクトに取り込み、数行のコードを書けば完了です
 
-```swift
+```swift {numberLines}
 import UIKit
+// highlight-next-line
 import Lottie
 
 class ViewController: UIViewController {
@@ -57,12 +58,14 @@ class ViewController: UIViewController {
     super.viewDidLoad()
 
     // play lottie file
+    // highlight-start
     let animationView = AnimationView(name: "41256-skateboarding")
     animationView.frame = view.bounds
     animationView.loopMode = .loop
     animationView.contentMode = .scaleAspectFit
     view.addSubview(animationView)
     animationView.play()
+    // highlight-end
   }
 }
 ```
@@ -88,7 +91,7 @@ Lottieアニメーションは複数のアニメーションレイヤーから�
 
 ドキュメントにある通り、どのレイヤーにサブビューを追加するかを決めないといけません。今回は顔を置き換えるということで、レイヤー **"head"** にサブビューを追加します。
 
-```swift
+```swift {numberLines}
 import UIKit
 import Lottie
 
@@ -105,6 +108,7 @@ class ViewController: UIViewController {
     view.addSubview(animationView)
     
     // add label to replace face
+    // highlight-start
     let path = AnimationKeypath(keypath: "head")
     let faceSubview = AnimationSubview()
     let faceLabel = UILabel()
@@ -117,6 +121,7 @@ class ViewController: UIViewController {
     faceLabel.font = UIFont.boldSystemFont(ofSize: 60)
     faceSubview.addSubview(faceLabel)
     animationView.addSubview(faceSubview, forLayerAt: path)
+    // highlight-end
     
     animationView.play()
   }

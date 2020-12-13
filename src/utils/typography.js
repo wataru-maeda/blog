@@ -32,8 +32,9 @@ JapaneseTypography.overrideThemeStyles = () => {
     hr: {
       background: 'var(--hr)',
     },
-    pre: {
-      background: 'red',
+    'span.grvsc-source': {
+      display: 'flex',
+      flexWrap: 'wrap',
     },
   }
 }
