@@ -58,7 +58,7 @@ const Bio = (data) => {
       />
       <h4 className={styles.name}>Wataru</h4>
       <p style={{ textAlign: 'center' }}>
-        バンクーバー在住4年目のプログラマー。新しいサービス、技術を試し、そのアウトプットの場としてブログを開設しました。iOSアプリ開発が趣味で仕事です。
+        バンクーバー在住4年目のプログラマー。将来自身のサービスを作るため、現地のソフトウェア会社でフルスタックデベロッパーとして勤務。永住権申請中。
       </p>
       <div className={styles.snsContainer}>
         {Object.keys(social).map((key) => {

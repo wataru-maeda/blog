@@ -1,7 +1,7 @@
 ---
-title: Lottieを使ってアニメーションを実装してみる
+title: 【Swift】Lottieを使ってアニメーションを実装してみる
 date: '2020-12-12T23:46:37.121Z'
-description: 今回Lottieというライブラリを使い、リッチアニメーションを実装してみるわけなのですが、Lottieとは何か、どう言う仕組みで動いているのか、他のアニメーションライブラリではなくなぜLottieなのか等々を纏めていきたいと思います。早速見ていきましょう。
+description: Lottieというライブラリを使い、リッチアニメーションを実装してみます。アニメーションに動的要素を追加したり、そもそもLottieとは何か、どう言う仕組みで動いているのか、他のアニメーションライブラリではなくなぜLottieなのか等々を纏めていきたいと思います。
 tags: ['Animation', 'Library', 'Swift']
 categories: ['Programming']
 thumbnail: './lottie.png'
@@ -32,7 +32,7 @@ Github 上のスター数は 2 万を超えています([こちら](https://gith
 まず、
 公式ドキュメントのライブラリ[導入編](http://airbnb.io/lottie/#/ios?id=installing-lottie)を見てみましょう。ライブラリマネーシャーでおなじみ、cocoapods を使用します。
 
-Pod ファイルに以下一文を追加して、`pod install`するだけです。以上で導入完了。
+Pod ファイルに以下一文を追加して、*pod install* するだけです。以上で導入完了。
 
 ```
 pod 'lottie-ios'
@@ -40,7 +40,9 @@ pod 'lottie-ios'
 
 ## 実装
 
-実装前に、Lottie ファイルを落としてこないといけませんね。[LottieFiles](https://lottiefiles.com/)で無料のものを落としてきてください。僕は[こちら](https://lottiefiles.com/41256-skateboarding)のスケボー兄さんを使用させてもらいます。
+好きなLottie ファイルを[Lottie Files](https://lottiefiles.com/)でから落としてきてください。
+
+僕は[こちら](https://lottiefiles.com/41256-skateboarding)のスケボー兄さんを使用させてもらいます。
 
 ![lottie-file-skateboarding](./lottie-file-skateboarding.gif "Lottie-file-skateboarding")
 
@@ -69,16 +71,88 @@ class ViewController: UIViewController {
 
 ![lottie-file-skateboarding-simulator](./lottie-ios-simulator.gif "lottie-file-skateboarding-simulator")
 
-## Lottie の問題点
+## アニメーションレイヤーにサブビューを追加する
 
-のちに詳しく書きますが、Adobe After Effects のライセンスが有償なので、
+Lottieの凄いところは、ただアニメーションを再生するだけでなく、指定のアニメーションレイヤーにサブビューも追加できると言うところです。[ドキュメント](http://airbnb.io/lottie/#/ios?id=adding-subviews)
 
-モバイルアプリのクオリティーを決める上で欠かせないのがアニメーションで、
+Lottieアニメーションは複数のアニメーションレイヤーからなり、それぞれのレイヤーが動くことで、リッチアニメーションを実現しています。そのレイヤーにサブビューを追加することで、サブビューをレイヤーの一部としてをアニメーションさせてることができます。
 
-Lottie はリッチアニメーションを簡単に実装することができるライブラリです。
+[Lottie Editor](https://lottiefiles.com/editor)で、Lottie Fileのレイヤーを見てみましょう。左側に見えるのがレイヤーです。レイヤー名を指定することで、どのレイヤーに対してサブビューを追加するのかを指定できます。
 
-また、iOS, Android, React Native, Web と幅広く使用できる点も
+![Lottie Editor](./lottie-editor.png "Lottie Editor")
 
-Lottie は Airbnb のアニメーションライブラリで、非常に簡単にリッチなアニメーションを実現できるのが特徴です。今回は
 
-## 目的
+今回は、スケボー兄さんの顔を置き換えてみましょう。
+
+> Searches for the nearest child layer to the first Keypath and adds the subview to that layer. The subview will move and animate with the child layer. 
+
+ドキュメントにある通り、どのレイヤーにサブビューを追加するかを決めないといけません。今回は顔を置き換えるということで、レイヤー **"head"** にサブビューを追加します。
+
+```swift
+import UIKit
+import Lottie
+
+class ViewController: UIViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // play lottie file
+    let animationView = AnimationView(name: "41256-skateboarding")
+    animationView.frame = view.bounds
+    animationView.loopMode = .loop
+    animationView.contentMode = .scaleAspectFit
+    view.addSubview(animationView)
+    
+    // add label to replace face
+    let path = AnimationKeypath(keypath: "head")
+    let faceSubview = AnimationSubview()
+    let faceLabel = UILabel()
+    faceLabel.backgroundColor = .white
+    faceLabel.frame = CGRect(x: -50, y: -450, width: 200, height: 200)
+    faceLabel.text = "(ﾟωﾟ)"
+    faceLabel.textAlignment = .center
+    faceLabel.layer.cornerRadius = 100
+    faceLabel.clipsToBounds = true
+    faceLabel.font = UIFont.boldSystemFont(ofSize: 60)
+    faceSubview.addSubview(faceLabel)
+    animationView.addSubview(faceSubview, forLayerAt: path)
+    
+    animationView.play()
+  }
+}
+```
+
+結果こうなります。
+
+![Lottie Replace Face](./lottie-replace-face.gif "Lottie Replace Face")
+
+見事に顔が置き換えられ、動きに合わせ、新しい顔の位置、角度まで変わっていますね！
+
+「x, y座標が固定になってるけど、アニメーションのフレームサイズ変われば顔の位置ずれるのでは？」と思った方もいると思います。
+
+僕もそこは気になっていたのですが、その心配はありませんでした。どのフレームサイズでも、顔の位置がずれることはありませんでした。
+
+ユーザーのプロフィール画像を組み込んだアニメーションを作ったり、いろいろなことに応用できると思います。
+
+## Lottie の懸念点
+
+今まで散々Lottieの良い点をかいてきましたが、反対に、僕が問題だと思った点を書きたいと思います。
+
+***「自身のLottieファイルを作る」方法が少ない ***
+
+ことです。前章でお伝えした通り、Lottieファイルは[Adobe After Effects](https://www.adobe.com/products/aftereffects.html)からエクスポートする必要があるのですが、Adobe After Effectsは有償です。一定の無料期間はあるのですが、今後も定期的に使う場合、ライセンスの購入が必須となります。
+
+そこで無料でLottieファイルを作る方法を模索してみました。
+
+1. [Lottie Editor](https://edit.lottiefiles.com/) で既存のLottie Fileを編集
+2. [SVG to Lottie](https://lottiefiles.com/svg-to-lottie)より、SVGアニメーションファイルからLottieファイルを作る
+
+Figmaのプラグインもあったのですが、こちらは試せてないです。どなたか良い方法あれば教えてください。
+
+
+いかがだったでしょうか。今回はLottieを使ったアニメーションを実装してみました。
+
+今後も別のアニメーションライブラリを試してまた記事にしてみる予定です。調べている中で気になったのが、[svgator](https://www.svgator.com/)というSVGアニメーション作成ツールです。こちらは３つのプロジェクトまで無料でつくれます。[Macaw](https://github.com/exyte/Macaw)使って読みこけるのかも試してみたいと思います。
+
+最後まで読んでいただいてありがとうございました。
