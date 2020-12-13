@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { PropTypes } from 'prop-types'
 import { useLocation } from '@reach/router'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import ReactGA from 'react-ga'
 import { DiscussionEmbed } from 'disqus-react'
 import Header from '../components/header'
 import Bio from '../components/bio'
@@ -11,7 +12,7 @@ import Archives from '../components/archives'
 import SEO from '../components/seo'
 import TOC from '../components/toc'
 import { styler, breakpoints } from '../theme'
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 import Footer from '../components/footer'
 
 // ------------------------------------
@@ -30,7 +31,13 @@ const styles = styler({
   },
   main: {
     display: 'flex',
-    padding: `0 ${rhythm(3)}`,
+    padding: `0 5rem`,
+    [breakpoints.tablet]: {
+      padding: `0 40px`,
+    },
+    [breakpoints.phone]: {
+      padding: `0 20px`,
+    },
   },
   titleContainer: {
     display: 'flex',
@@ -45,7 +52,6 @@ const styles = styler({
     fontSize: rhythm(0.7),
   },
   blog: {
-    flex: 1,
     display: 'flex',
     flexDirection: 'column',
   },
@@ -53,14 +59,8 @@ const styles = styler({
     width: '100%',
     backgroundImage: 'var(--post)',
     background: 'var(--post)',
-    borderRadius: rhythm(0.3),
-    padding: rhythm(0.6),
-  },
-  postDate: {
-    ...scale(-1 / 5),
-    display: `block`,
-    marginBottom: rhythm(1),
-    marginTop: rhythm(-1),
+    borderRadius: 10,
+    padding: 20,
   },
   side: {
     display: 'flex',
@@ -103,6 +103,12 @@ const BlogPostTemplate = ({ data, location }) => {
     config: { identifier: slug, title },
   }
 
+  // ga
+  useEffect(() => {
+    const { pathname } = slug || {}
+    if (pathname) ReactGA.pageview(pathname)
+  }, [slug])
+
   return (
     <div className={styles.root}>
       <SEO
@@ -116,7 +122,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <div className={styles.blog}>
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>{post.frontmatter.title}</h1>
-            <p className={styles.postDate}>{post.frontmatter.date}</p>
+            <p>{post.frontmatter.date}</p>
           </div>
           <div className={styles.post}>
             <MDXRenderer>{post.body}</MDXRenderer>

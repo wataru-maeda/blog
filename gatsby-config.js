@@ -118,6 +118,9 @@ module.exports = {
           },
           {
             resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: 'High Contrast',
+            },
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
