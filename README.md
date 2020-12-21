@@ -6,4 +6,4 @@ This is a blog site that summarizes experiences such as overseas life and travel
 
 -[Link]](https://watarumaedablog.com/)
 
-Configure blog based on [gatsby-personal-starter-blog](https://github.com/thomaswang/gatsby-personal-starter-blog)
+Created the blog based on the [template](https://github.com/thomaswang/gatsby-personal-starter-blog)
