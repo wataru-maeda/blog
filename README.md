@@ -2,8 +2,10 @@
 
 ## About
 
-This is a blog site that summarizes experiences such as overseas life and travel, focusing on software development information.
+Personal blog site made with Gatsby + Netlify.
 
--[Link](https://watarumaedablog.com/)
+- [Blog](https://watarumaedablog.com/)
 
-Created the blog based on the [template](https://github.com/thomaswang/gatsby-personal-starter-blog)
+## Template
+
+Created the blog based on the template: [gatsby-personal-starter-blog](https://github.com/thomaswang/gatsby-personal-starter-blog)
