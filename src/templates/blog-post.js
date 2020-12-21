@@ -98,7 +98,7 @@ const BlogPostTemplate = ({ data, location }) => {
   // disqus
   const slug = useLocation()
   const { title } = post.frontmatter
-  const disqusShortname = process.env.GATSBY_DISQUS_SHORT_NAME
+  const disqusShortname = 'kiss-4'
   const disqusConfig = {
     config: { identifier: slug, title },
   }
