@@ -4,6 +4,6 @@
 
 This is a blog site that summarizes experiences such as overseas life and travel, focusing on software development information.
 
--[Link]](https://watarumaedablog.com/)
+-[Link](https://watarumaedablog.com/)
 
 Created the blog based on the [template](https://github.com/thomaswang/gatsby-personal-starter-blog)
