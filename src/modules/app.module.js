@@ -5,11 +5,8 @@
 const SET_THEME_TYPE = 'SET_THEME_TYPE'
 const SET_SIDE_MENU_OPEN = 'SET_SIDE_MENU_OPEN'
 
-const hours = new Date().getHours()
-const isDayTime = hours > 6 && hours < 20
-
 const initialState = {
-  theme: isDayTime ? 'light' : 'dark',
+  theme: 'dark',
   isOpen: false,
 }
 
