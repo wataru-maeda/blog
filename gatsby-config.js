@@ -28,6 +28,7 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-emotion`,
     {
       resolve: 'gatsby-plugin-local-search',
       options: {

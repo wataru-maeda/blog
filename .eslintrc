@@ -19,6 +19,7 @@
     "react/state-in-constructor": "off",
     "no-async-promise-executor": "off",
     "no-return-assign": "off",
+    "react/destructuring-assignment": "off",
     "import/prefer-default-export": 0
   },
   "globals": {
