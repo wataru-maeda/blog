@@ -1,4 +1,4 @@
-import earth from '../assets/earth.svg'
+import earth from '../../content/assets/earth.svg'
 
 const images = {
   earth,
